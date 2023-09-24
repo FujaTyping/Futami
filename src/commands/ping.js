@@ -14,7 +14,7 @@ class PingCommand extends Command {
     }
 
     async messageRun(message) {
-        const msg = await message.channel.send('กำลังทดสอบ ...');
+        const msg = await message.reply('กำลังทดสอบ ...');
 
         const Latency = Math.round(this.container.client.ws.ping)
         const API = msg.createdTimestamp - message.createdTimestamp
