@@ -5,7 +5,7 @@ class ReadyListener extends Listener {
     run(client) {
         client.user.setPresence({
             activities: [{
-                name: `at Voice Channel`,
+                name: `in Voice Channel`,
                 type: ActivityType.Streaming,
                 url: "https://www.twitch.tv/anime"
             }]
