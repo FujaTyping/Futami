@@ -53,7 +53,7 @@ class VolumeCommand extends Command {
                     const Content = new EmbedBuilder()
                         .setColor(color)
                         .setTitle('🔊 ระบบเสียง')
-                        .setDescription('ปรับระดับเสียงเป็น : **' + volume + "** %")
+                        .setDescription('ปรับระดับเสียงเป็น : **' + volume + "** %\n⚠️ การปรับระดับเสียงมากเกินไปอาจจะเป็นอันตรายต่อหู")
                         .setTimestamp()
 
                     return message.channel.send({ embeds: [Content] })

@@ -91,7 +91,7 @@ client.distube
         const Content = new EmbedBuilder()
             .setColor(color)
             .setTitle('🛑 เกิดอะไรขึ้น')
-            .setDescription("```\n" + `${e.toString().slice(0, 1974)}` + "```")
+            .setDescription("```\n" + `${e.toString().slice(0, 1974)}` + "\n```")
             .setTimestamp()
 
         if (channel) channel.send({ embeds: [Content] })
@@ -108,4 +108,12 @@ client.distube
         message.channel.send({ embeds: [Content] })
     }
     )
-    .on('finish', queue => queue.textChannel.send('เล่นเพลงเสร็จละ !!'))
+    .on('finish', queue => {
+        const Content = new EmbedBuilder()
+            .setColor(color)
+            .setTitle('เล่นเพลงเสร็จละ ✅')
+            .setDescription("ใช้คำสั่ง \`f.stop\` เพื่อนำบอทออกจากห้อง")
+            .setTimestamp()
+
+        queue.textChannel.send({ embeds: [Content] })
+    })
