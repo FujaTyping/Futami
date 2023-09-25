@@ -3,13 +3,13 @@ const { EmbedBuilder } = require('discord.js');
 
 const { color } = require('../../config.json');
 
-class SkipCommand extends Command {
+class QueueCommand extends Command {
     constructor(context, options) {
         super(context, {
             ...options,
-            name: 'skip',
-            aliases: ['sk'],
-            description: 'skip this song'
+            name: 'queue',
+            aliases: ['q'],
+            description: 'see queue in the server'
         });
     }
 
@@ -36,12 +36,14 @@ class SkipCommand extends Command {
 
                 return message.channel.send({ embeds: [Content] })
             } else {
-                const song = await queue.skip()
+                const q = queue.songs
+                    .map((song, i) => `${i === 0 ? 'กำลังเล่นเพลง ▶️ ' : `${i} .`} **${song.name}** - \`${song.formattedDuration}\` นาที`)
+                    .join('\n')
 
                 const Content = new EmbedBuilder()
                     .setColor(color)
-                    .setTitle('⏭️ ข้ามเพลงแล้ว')
-                    .setDescription('ข้ามเพลง : **' + queue.songs[0].name + '**')
+                    .setTitle('🎼 คิวเพลง')
+                    .setDescription(q)
                     .setTimestamp()
 
                 return message.channel.send({ embeds: [Content] })
@@ -50,5 +52,5 @@ class SkipCommand extends Command {
     }
 }
 module.exports = {
-    SkipCommand
+    QueueCommand
 };
