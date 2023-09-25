@@ -22,7 +22,7 @@ class PingCommand extends Command {
         const Content = new EmbedBuilder()
             .setColor(color)
             .setTitle('ผลการทดสอบ 🏓')
-            .setDescription('- 🤖 ความล่าช้าของ **บอท** : ' + Latency + "\n- 🪐 ความล่าช้าของ **API** : " + API)
+            .setDescription('- 🤖 ความล่าช้าของ **บอท** : ' + Latency + " มิลลิวินาที\n- 🪐 ความล่าช้าของ **API** : " + API + " มิลลิวินาที")
             .setTimestamp()
 
         return msg.edit({ embeds: [Content] });
