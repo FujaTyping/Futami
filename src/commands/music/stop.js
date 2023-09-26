@@ -30,7 +30,7 @@ class StopCommand extends Command {
             const Content = new EmbedBuilder()
                 .setColor(color)
                 .setTitle('👋🏻 ออกจากห้องแล้ว !!')
-                .setDescription('ไว้เจอกันใหม่น้า ~~')
+                .setDescription('ไว้เจอกันใหม่น้า ~~\nขอบคุณที่ใช้ ฟูตามิ 💙')
                 .setTimestamp()
 
             return await message.channel.send({ embeds: [Content] });

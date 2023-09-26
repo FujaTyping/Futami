@@ -112,7 +112,7 @@ client.distube
         const Content = new EmbedBuilder()
             .setColor(color)
             .setTitle('เล่นเพลงเสร็จละ ✅')
-            .setDescription("ใช้คำสั่ง \`f.stop\` เพื่อนำบอทออกจากห้อง")
+            .setDescription("ใช้คำสั่ง \`f.stop\` เพื่อนำบอทออกจากห้อง\nหรืออยากฟังเพลงต่อล่ะ ??")
             .setTimestamp()
 
         queue.textChannel.send({ embeds: [Content] })
