@@ -4,6 +4,7 @@ const express = require('express')
 const { DisTube } = require('distube');
 
 const app = express()
+const path = require('path');
 
 require('dotenv').config()
 const { prefix } = require('./config.json');
@@ -38,11 +39,13 @@ const main = async () => {
         client.logger.info('Connecting to Discord network');
         await client.login(process.env.token);
         client.logger.info(`Connected ${client.user.tag} successfully !`);
+        app.use(express.static(path.join(__dirname, '../service')))
         app.get('/', function (req, res) {
-            res.send('Up')
+            res.sendFile(__dirname + "../service/index.html")
         })
-        app.listen(6947)
-        client.logger.info('Web service is ready!');
+        const port = 6947
+        app.listen(port)
+        client.logger.info('Web service is online at port : ' + port);
     } catch (error) {
         client.logger.fatal(error);
         client.destroy();
