@@ -7,8 +7,8 @@
     "start": "node src/index.js"
   },
   "engines": {
-    "node": ">19.3.0",
-    "npm": ">8.19.2"
+    "node": ">18.18.0",
+    "npm": ">10.1.0"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
     "distube": "^4.1.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "sodium": "^3.0.2"
+    "ffmpeg-static": "^5.2.0",
+    "libsodium-wrappers": "^0.7.13"
   }
 }

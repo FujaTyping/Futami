@@ -35,11 +35,11 @@ client.distube = new DisTube(client, {
 
 const main = async () => {
     try {
-        client.logger.info('Futami is waking up...');
+        client.logger.info('Connecting to Discord network');
         await client.login(process.env.token);
-        client.logger.info('Futami is wake up!');
+        client.logger.info(`Connected ${client.user.tag} successfully !`);
         app.get('/', function (req, res) {
-            res.send('Hi - From Futami')
+            res.send('Up')
         })
         app.listen(6947)
         client.logger.info('Web service is ready!');
@@ -81,6 +81,7 @@ client.distube
         const Content = new EmbedBuilder()
             .setColor(color)
             .setTitle('➕ เพิ่มเพลงไปที่คิว')
+            .setThumbnail(song.thumbnail)
             .setDescription(`เพลง : **${song.name}**\nขอเพลงโดย : ${song.user}\nใช้คำสั่ง \`f.skip\` เพื่อข้ามไปเพลงต่อไป`)
             .setTimestamp()
 
@@ -91,7 +92,7 @@ client.distube
         const Content = new EmbedBuilder()
             .setColor(color)
             .setTitle('🛑 เกิดอะไรขึ้น')
-            .setDescription("```\n" + `${e.toString().slice(0, 1974)}` + "\n```")
+            .setDescription("```\n" + `${e.toString().slice(0, 1974)}` + "\n```\nหากเป็นข้อผิดผลาดที่สำคัญ ไปบอกผู้พัฒนาด้วย !!")
             .setTimestamp()
 
         if (channel) channel.send({ embeds: [Content] })
