@@ -28,7 +28,7 @@ class StatusCommand extends Command {
 
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle(`อัพเดทสถานะแล้ว ✅`)
+                .setTitle(`เปลื่ยนสถานะละ ✅`)
                 .setDescription(`ชื่อสถานะ : **` + Status + '**\nหมวดหมู่ : `Streaming`')
                 .setTimestamp()
 
