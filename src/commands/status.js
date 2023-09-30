@@ -29,7 +29,7 @@ class StatusCommand extends Command {
             const Content = new EmbedBuilder()
                 .setColor(color)
                 .setTitle(`เปลื่ยนสถานะละ ✅`)
-                .setDescription(`ชื่อสถานะ : **` + Status + '**\nหมวดหมู่ : `Streaming`')
+                .setDescription(`ชื่อสถานะ : **` + Status + '**\nหมวดหมู่ : `Streaming`\nลิ้งค์ : https://www.twitch.tv/anime')
                 .setTimestamp()
 
             return message.reply({ embeds: [Content] });

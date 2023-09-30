@@ -27,3 +27,18 @@
     background-position: center;
     background-size: cover;
 }
+
+.lefted {
+    text-align: left;
+}
+
+.usage {
+    color: gray !important;
+}
+
+.hero-end {
+    background-image: url('https://cdn.discordapp.com/attachments/1071401485239332864/1157726961943199784/Story.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
