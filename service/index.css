@@ -44,7 +44,14 @@
 }
 
 .hero-tap {
-    background-image: url('https://cdn.discordapp.com/attachments/1071401485239332864/1158082945261777028/bubbleV2.png');
+    background-image: url('https://cdn.discordapp.com/attachments/1071401485239332864/1158092762235801630/bubbleV3.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.hero-pp {
+    background-image: url('https://cdn.discordapp.com/attachments/1071401485239332864/1158093855602770030/sbubble.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
