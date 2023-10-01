@@ -42,3 +42,17 @@
     background-position: center;
     background-size: cover;
 }
+
+.hero-tap {
+    background-image: url('https://cdn.discordapp.com/attachments/1071401485239332864/1158082945261777028/bubbleV2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.hero-grass {
+    background-image: url('https://cdn.discordapp.com/attachments/1071401485239332864/1158084292749053972/grass.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
