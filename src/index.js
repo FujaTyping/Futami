@@ -98,8 +98,11 @@ client.distube
             .setDescription("```\n" + `${e.toString().slice(0, 1974)}` + "\n```\nหากเป็นข้อผิดผลาดที่สำคัญ ไปบอกผู้พัฒนาด้วย !!")
             .setTimestamp()
 
-        if (channel) channel.send({ embeds: [Content] })
-        else console.error(e)
+        if (channel) {
+            channel.send({ embeds: [Content] })
+        } else {
+            console.error(e)
+        }
     })
     .on('empty', channel => channel.send('ดูเหมือนว่าห้องนี้จะไม่มีคน... ไปละ !!'))
     .on('searchNoResult', (message, query) => {
