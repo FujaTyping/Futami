@@ -36,13 +36,6 @@
     color: gray !important;
 }
 
-.hero-end {
-    background-image: url('https://cdn.discordapp.com/attachments/1071401485239332864/1157726961943199784/Story.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
 .hero-tap {
     background-image: url('https://cdn.discordapp.com/attachments/1071401485239332864/1158092762235801630/bubbleV3.png');
     background-repeat: no-repeat;
@@ -50,15 +43,22 @@
     background-size: cover;
 }
 
-.hero-pp {
-    background-image: url('https://cdn.discordapp.com/attachments/1071401485239332864/1158093855602770030/sbubble.png');
+.hero-grass {
+    background-image: url('https://cdn.discordapp.com/attachments/1071401485239332864/1158084292749053972/grass.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
 
-.hero-grass {
-    background-image: url('https://cdn.discordapp.com/attachments/1071401485239332864/1158084292749053972/grass.png');
+.hero-music {
+    background-image: url('https://cdn.discordapp.com/attachments/1071401485239332864/1159027017912684617/musicV2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.hero-command {
+    background-image: url('https://cdn.discordapp.com/attachments/1071401485239332864/1159030061077385286/command.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
