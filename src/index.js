@@ -7,7 +7,7 @@ const app = express()
 const path = require('path');
 
 require('dotenv').config()
-const { prefix } = require('./config.json');
+const { prefix, debug } = require('./config.json');
 
 const client = new SapphireClient({
     defaultPrefix: prefix,
@@ -66,7 +66,8 @@ client.distube
         const Content = new EmbedBuilder()
             .setColor(color)
             .setTitle('💿 กำลังเล่นเพลง')
-            .setDescription(`เพลง : **${song.name}**\nอัพโหลดเพลงโดย : \`${song.uploader.name}\`\nระยะเวลา : \`${song.formattedDuration}\` นาที\nขอเพลงโดย : ${song.user} - <#${queue.voiceChannel.id}>`)
+            .setDescription(`เพลง : **${song.name}**\nอัพโหลดเพลงโดย : \`${song.uploader.name}\`\nเล่นเพลงในห้อง : <#${queue.voiceChannel.id}> - \`${song.formattedDuration}\` นาที`)
+            .setFooter({ text: `ขอเพลงโดย : ${song.user.username}`, iconURL: song.user.avatarURL() })
             .setTimestamp()
 
         const Button = new ButtonBuilder()
@@ -85,7 +86,8 @@ client.distube
             .setColor(color)
             .setTitle('➕ เพิ่มเพลงไปที่คิว')
             .setThumbnail(song.thumbnail)
-            .setDescription(`เพลง : **${song.name}**\nขอเพลงโดย : ${song.user}\nใช้คำสั่ง \`f.skip\` เพื่อข้ามไปเพลงต่อไป`)
+            .setDescription(`เพลง : **${song.name}**\nใช้คำสั่ง \`f.skip\` เพื่อข้ามไปเพลงต่อไป`)
+            .setFooter({ text: `ขอเพลงโดย : ${song.user.username}`, iconURL: song.user.avatarURL() })
             .setTimestamp()
 
         queue.textChannel.send({ embeds: [Content] })
@@ -124,3 +126,10 @@ client.distube
 
         queue.textChannel.send({ embeds: [Content] })
     })
+
+
+if (debug) {
+    client.on("debug", (d) => {
+        console.log(d)
+    });
+}

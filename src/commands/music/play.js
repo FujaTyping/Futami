@@ -25,6 +25,7 @@ class PlayCommand extends Command {
 
             return await message.reply({ embeds: [Content] });
         } else {
+            const msg = await message.reply('กำลังหาเพลง ...');
             const Song = await args.rest('string');
 
             client.distube.play(message.member.voice.channel, Song, {
@@ -32,6 +33,8 @@ class PlayCommand extends Command {
                 textChannel: message.channel,
                 message
             })
+
+            return await msg.edit('หาเพลงเสร็จละ 👌🏻');
         }
     }
 }
