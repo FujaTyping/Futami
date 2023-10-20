@@ -21,3 +21,5 @@ token=
 node .  or  node src/index.js
 ```
 5. 🎉 That all !
+
+<p align="center"> <img src="https://count.getloli.com/get/@futami?theme=moebooru" alt="futami" /> </p>
