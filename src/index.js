@@ -68,7 +68,7 @@ client.distube
             .setColor(color)
             .setTitle('💿 กำลังเล่นเพลง')
             .setDescription(`เพลง : **${song.name}**\nอัพโหลดเพลงโดย : \`${song.uploader.name}\`\nเล่นเพลงในห้อง : <#${queue.voiceChannel.id}> - \`${song.formattedDuration}\` นาที`)
-            .setFooter({ text: `ขอเพลงโดย : ${song.user.username}`, iconURL: song.user.avatarURL() })
+            .setFooter({ text: `ขอเพลงโดย : ${song.user.username} | 👍🏻 : ${song.likes} คน , 👀 : ${song.views} คน`, iconURL: song.user.avatarURL() })
             .setTimestamp()
 
         const Button = new ButtonBuilder()
@@ -87,7 +87,7 @@ client.distube
             .setColor(color)
             .setTitle('➕ เพิ่มเพลงไปที่คิว')
             .setThumbnail(song.thumbnail)
-            .setDescription(`เพลง : **${song.name}**\nใช้คำสั่ง \`f.skip\` เพื่อข้ามไปเพลงต่อไป`)
+            .setDescription(`เพลง : **${song.name}**\nใช้คำสั่ง \`f.skip\` เพื่อข้ามไปเพลงต่อไป **(คิวที่ ${queue.queues.size})**`)
             .setFooter({ text: `ขอเพลงโดย : ${song.user.username}`, iconURL: song.user.avatarURL() })
             .setTimestamp()
 

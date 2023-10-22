@@ -34,7 +34,7 @@ class PlayCommand extends Command {
                 message
             })
 
-            return await msg.edit('หาเพลงเสร็จละ 👌🏻');
+            return await msg.edit('เข้าช่องเสียงแล้ว ✅');
         }
     }
 }
