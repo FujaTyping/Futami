@@ -34,7 +34,13 @@ class PlayCommand extends Command {
                 message
             })
 
-            return await msg.edit('เข้าช่องเสียงแล้ว ✅');
+            const Content = new EmbedBuilder()
+                .setColor(color)
+                .setTitle('📣 ประกาศ !!')
+                .setDescription('ช่วงนี้บอทอาจจะหาเพลงไม่เจอบ่อย\n`Error : 429 too many request`')
+                .setTimestamp()
+
+            return await msg.edit({ content: 'กำลังเข้าช่องเสียง ...', embeds: [Content] });
         }
     }
 }

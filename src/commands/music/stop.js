@@ -25,27 +25,15 @@ class StopCommand extends Command {
 
             return await message.reply({ embeds: [Content] });
         } else {
-            const queue = client.distube.getQueue(message)
+            client.distube.voices.leave(message)
 
-            if (!queue) {
-                const Content = new EmbedBuilder()
-                    .setColor(color)
-                    .setTitle('⚠️ เตือน !!')
-                    .setDescription('ยังไม่มีเพลงที่เล่นอยู่ ลองเพิ่มมาสักเพลงดูสิ')
-                    .setTimestamp()
+            const Content = new EmbedBuilder()
+                .setColor(color)
+                .setTitle('👋🏻 ออกจากห้องแล้ว !!')
+                .setDescription('ไว้เจอกันใหม่น้า ~~\nขอบคุณที่ใช้ ฟูตามิ 💙')
+                .setTimestamp()
 
-                return message.channel.send({ embeds: [Content] })
-            } else {
-                client.distube.voices.leave(message)
-
-                const Content = new EmbedBuilder()
-                    .setColor(color)
-                    .setTitle('👋🏻 ออกจากห้องแล้ว !!')
-                    .setDescription('ไว้เจอกันใหม่น้า ~~\nขอบคุณที่ใช้ ฟูตามิ 💙')
-                    .setTimestamp()
-
-                return await message.channel.send({ embeds: [Content] });
-            }
+            return await message.channel.send({ embeds: [Content] });
         }
     }
 }
