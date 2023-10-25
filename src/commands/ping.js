@@ -25,7 +25,7 @@ class PingCommand extends Command {
             .setDescription('- 🤖 ความล่าช้าของ **บอท** : ' + Latency + " มิลลิวินาที\n- 🪐 ความล่าช้าของ **API** : " + API + " มิลลิวินาที")
             .setTimestamp()
 
-        return msg.edit({ embeds: [Content] });
+        return msg.edit({ content: 'ทดสอบเสร็จล่ะ !!', embeds: [Content] });
     }
 }
 module.exports = {

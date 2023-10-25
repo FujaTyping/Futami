@@ -119,9 +119,8 @@
                                 Music command
                             </div>
                             <div class="collapse-content lefted">
-                                <p><b>filter</b> : Make your song more funny &nbsp;<b><span
-                                            onclick="filter_modal.showModal()"
-                                            class="material-symbols-outlined">more_up</span></b><br>
+                                <p><b style="display: inline;">filter</b> : Make your song more funny &nbsp;<span
+                                        style="display: inline;" onclick="filter_modal.showModal()">⇥</span><br>
                                     <b>loop</b> : Loop song<br>
                                     <a class="usage">↳ usage : enter off , song or queue</a><br>
                                     <b>play</b> : Play song and join<br>
@@ -167,6 +166,7 @@
                             </div>
                             <div class="collapse-content lefted">
                                 <p>
+                                    <b>info</b> : Show server info<br>
                                     <b>about</b> : See about me<br>
                                     <b>ping</b> : See my response time<br>
                                 </p>
@@ -198,10 +198,11 @@
     </div>
     <dialog id="filter_modal" class="modal">
         <div class="modal-box">
-            <h3 class="font-bold text-lg">Filter list <a href="https://ffmpeg.org/ffmpeg-filters.html">(FFmpeg audio filter)</a></h3>
+            <h3 class="font-bold text-lg">Filter list <a href="https://ffmpeg.org/ffmpeg-filters.html">(FFmpeg audio
+                    filter)</a></h3>
             <p class="py-4">3d , bassboost , echo , karaoke , nightcore , vaporwave , flanger , gate , haas , reverse ,
                 surround , mcompand , phaser , tremolo , earwax<br>
-                <a class="usage">↳ usage : filter</a>
+                <a class="usage">↳ usage : enter filter</a>
             </p>
         </div>
         <form method="dialog" class="modal-backdrop">
