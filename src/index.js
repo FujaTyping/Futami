@@ -66,7 +66,7 @@ client.distube
 
         const Content = new EmbedBuilder()
             .setColor(color)
-            .setTitle('💿 กำลังเล่นเพลง')
+            .setTitle('🎃 กำลังเล่นเพลง')
             .setDescription(`เพลง : **${song.name}**\nอัพโหลดเพลงโดย : \`${song.uploader.name}\`\nเล่นเพลงในห้อง : <#${queue.voiceChannel.id}> - \`${song.formattedDuration}\` นาที`)
             .setFooter({ text: `ขอเพลงโดย : ${song.user.username} | 👍🏻 : ${song.likes} คน , 👀 : ${song.views} คน`, iconURL: song.user.avatarURL() })
             .setTimestamp()
