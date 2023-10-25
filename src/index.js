@@ -23,6 +23,8 @@ const { YtDlpPlugin } = require('@distube/yt-dlp')
 client.distube = new DisTube(client, {
     streamType: 1,
     leaveOnStop: false,
+    leaveOnEmpty: true,
+    leaveOnFinish: false,
     emitNewSongOnly: true,
     emitAddSongWhenCreatingQueue: false,
     emitAddListWhenCreatingQueue: false,
@@ -121,7 +123,7 @@ client.distube
     .on('finish', queue => {
         const Content = new EmbedBuilder()
             .setColor(color)
-            .setTitle('เล่นเพลงเสร็จละ ✅')
+            .setTitle('เล่นเพลงเสร็จละ 🩸')
             .setDescription("ใช้คำสั่ง \`f.stop\` เพื่อนำบอทออกจากห้อง\nหรืออยากฟังเพลงต่อล่ะ ??")
             .setTimestamp()
 
