@@ -50,7 +50,7 @@
                             class="badge badge-primary animate__animated animate__jello animate__delay-1s animate__infinite">All
                             service is
                             online</span></h1>
-                    <p class="py-6">Imagine music bot<br>Message from Futami : You're so cute >^<</p>
+                    <p class="py-6">Imagine music bot<br>Message from Futami : You're so cute >^<< /p>
                             <div class="btn-group">
                                 <button
                                     onclick="window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=1155156868554043484&permissions=8&scope=bot%20applications.commands';"
@@ -119,7 +119,9 @@
                                 Music command
                             </div>
                             <div class="collapse-content lefted">
-                                <p><b>filter</b> : Make your song more funny<br>
+                                <p><b>filter</b> : Make your song more funny &nbsp;<b><span
+                                            onclick="filter_modal.showModal()"
+                                            class="material-symbols-outlined">more_up</span></b><br>
                                     <b>loop</b> : Loop song<br>
                                     <a class="usage">↳ usage : enter off , song or queue</a><br>
                                     <b>play</b> : Play song and join<br>
@@ -194,6 +196,18 @@
             </aside>
         </footer>
     </div>
+    <dialog id="filter_modal" class="modal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg">Filter list <a href="https://ffmpeg.org/ffmpeg-filters.html">(FFmpeg audio filter)</a></h3>
+            <p class="py-4">3d , bassboost , echo , karaoke , nightcore , vaporwave , flanger , gate , haas , reverse ,
+                surround , mcompand , phaser , tremolo , earwax<br>
+                <a class="usage">↳ usage : filter</a>
+            </p>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
 </body>
 
 </html>
