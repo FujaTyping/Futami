@@ -16,10 +16,18 @@ npm install
 ```
 token=
 ```
-4. Run command (Don't forget to install [node](https://nodejs.org/en/download))
+4. Run command
 ```
 node .  or  node src/index.js
 ```
+> If you want to run when error then restart bot automatic
+> ```
+> npm install -g pm2
+> ```
+> Run command (For pm2)
+> ```
+> pm2 start src/index.js
+> ```
 5. 🎉 That all !
 
 <p align="center"> <img src="https://count.getloli.com/get/@futami?theme=moebooru" alt="futami" /> </p>
