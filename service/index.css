@@ -36,7 +36,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .hero-head {
-    background-image: url('./assets/background/header.png');
+    background-image: url('./assets/event/background/header-halloween.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
