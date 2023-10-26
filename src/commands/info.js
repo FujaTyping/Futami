@@ -1,6 +1,6 @@
 const { isMessageInstance } = require('@sapphire/discord.js-utilities');
 const { Command, container } = require('@sapphire/framework');
-const { EmbedBuilder } = require('discord.js');
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const os = require('os');
 
 const { color } = require('../config.json');
@@ -30,7 +30,15 @@ class InfoCommand extends Command {
             )
             .setTimestamp()
 
-        const msg = await interaction.reply({ embeds: [Content] });
+        const Button = new ButtonBuilder()
+            .setLabel('ดูสถานะต่างๆ')
+            .setURL('https://status.fujatyping.dev/')
+            .setStyle(ButtonStyle.Link);
+
+        const Row = new ActionRowBuilder()
+            .addComponents(Button);
+
+        const msg = await interaction.reply({ embeds: [Content], components: [Row] });
     }
 }
 
@@ -49,7 +57,7 @@ function getCPUUsage() {
         const total = cpu.times.user + cpu.times.nice + cpu.times.sys + cpu.times.idle + cpu.times.irq;
         const idle = cpu.times.idle;
         const usagePercentage = ((total - idle) / total) * 100;
-        return usagePercentage.toFixed(2) + '%';
+        return usagePercentage.toFixed(2) + ' %';
     });
     return CPUUsage;
 }
@@ -59,7 +67,7 @@ function getRAMUsage() {
     const freeMemory = os.freemem();
     const usedMemory = totalMemory - freeMemory;
     const memoryUsagePercentage = ((usedMemory / totalMemory) * 100).toFixed(2);
-    return memoryUsagePercentage + '%';
+    return memoryUsagePercentage + ' %';
 }
 module.exports = {
     InfoCommand
