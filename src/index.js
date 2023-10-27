@@ -1,5 +1,5 @@
-const { SapphireClient } = require('@sapphire/framework');
-const { GatewayIntentBits, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const { SapphireClient, ResultError } = require('@sapphire/framework');
+const { GatewayIntentBits, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, messageLink } = require('discord.js');
 const express = require('express')
 const { DisTube } = require('distube');
 
@@ -61,7 +61,7 @@ main();
 const { color } = require('./config.json');
 
 client.distube
-    .on('playSong', (queue, song) => {
+    .on('playSong', async (queue, song) => {
         const Img = new EmbedBuilder()
             .setColor(color)
             .setImage(song.thumbnail)
@@ -70,7 +70,7 @@ client.distube
             .setColor(color)
             .setTitle('🎃 กำลังเล่นเพลง')
             .setDescription(`เพลง : **${song.name}**\nอัพโหลดเพลงโดย : \`${song.uploader.name}\`\nเล่นเพลงในห้อง : <#${queue.voiceChannel.id}> - \`${song.formattedDuration}\` นาที`)
-            .setFooter({ text: `ขอเพลงโดย : ${song.user.username} | 👍🏻 : ${song.likes} คน , 👀 : ${song.views} คน`, iconURL: song.user.avatarURL() })
+            .setFooter({ text: `ขอเพลงโดย : ${song.user.username}`, iconURL: song.user.avatarURL() })
             .setTimestamp()
 
         const Button = new ButtonBuilder()
@@ -78,10 +78,48 @@ client.distube
             .setURL(song.url)
             .setStyle(ButtonStyle.Link);
 
-        const Row = new ActionRowBuilder()
-            .addComponents(Button);
+        const Status = new ButtonBuilder()
+            .setCustomId('status')
+            .setLabel('ดูสถานะเพลง')
+            .setStyle(ButtonStyle.Secondary);
 
-        queue.textChannel.send({ embeds: [Img, Content], components: [Row] })
+        const Row = new ActionRowBuilder()
+            .addComponents(Button, Status);
+
+        const Msg = await queue.textChannel.send({ embeds: [Img, Content], components: [Row] })
+
+        const Collector = Msg.createMessageComponentCollector({
+            filter: (buttonInteraction) => buttonInteraction.customId === 'status' && buttonInteraction.user.id === song.user.id,
+            time: 60000,
+            max: 1
+        });
+
+        Collector.on('collect', (buttonInteraction) => {
+            const Content = new EmbedBuilder()
+                .setColor(color)
+                .setTitle('🎃 กำลังเล่นเพลง')
+                .setDescription(`เพลง : **${song.name}**\nอัพโหลดเพลงโดย : \`${song.uploader.name}\`\nเล่นเพลงในห้อง : <#${queue.voiceChannel.id}> - \`${song.formattedDuration}\` นาที\n`)
+                .setFooter({ text: `ขอเพลงโดย : ${song.user.username}`, iconURL: song.user.avatarURL() })
+                .addFields(
+                    { name: '💿 สถานะตัวเล่นเพลง', value: `- ระดับเสียง : **${queue.volume} %**\n- ระบบลูป : **${queue.repeatMode ? (queue.repeatMode === 2 ? 'ลูปเพลงในคิว' : 'ลูปแค่เพลงนี้') : 'ปิด (ไม่มีลูป)'}**`, inline: true },
+                    { name: '🎵 ข้อมูลเพลง', value: `- ไลค์  : **${song.likes} คน**\n- ยอดคนดู : **${song.views} คน**`, inline: true }
+                )
+                .setTimestamp()
+
+            const Row = new ActionRowBuilder()
+                .addComponents(Button);
+
+            return Msg.edit({ embeds: [Img, Content], components: [Row] })
+        });
+
+        Collector.on('end', (collected, reason) => {
+            if (reason === 'time') {
+                const Row = new ActionRowBuilder()
+                    .addComponents(Button);
+
+                return Msg.edit({ embeds: [Img, Content], components: [Row] })
+            }
+        });
     }
     )
     .on('addSong', (queue, song) => {
