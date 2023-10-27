@@ -58,6 +58,7 @@ class LoopCommand extends Command {
                     .setColor(color)
                     .setTitle('🔁 ระบบลูป')
                     .setDescription('สถานะตอนนี้คือ : **' + mode + '**')
+                    .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
                     .setTimestamp()
 
                 return message.channel.send({ embeds: [Content] })

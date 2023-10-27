@@ -37,7 +37,7 @@ class QueueCommand extends Command {
                 return message.channel.send({ embeds: [Content] })
             } else {
                 const q = queue.songs
-                    .map((song, i) => `${i === 0 ? 'กำลังเล่นเพลง ▶️ ' : `${i} .`} **${song.name}** - \`${song.formattedDuration}\` นาที`)
+                    .map((song, i) => `${i === 0 ? '🎃 กำลังเล่นเพลง ' : `${i} .`} **${song.name}** - \`${song.formattedDuration}\` นาที`)
                     .join('\n')
 
                 const Content = new EmbedBuilder()

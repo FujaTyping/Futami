@@ -3,13 +3,13 @@ const { EmbedBuilder } = require('discord.js');
 
 const { color } = require('../../config.json');
 
-class VolumeCommand extends Command {
+class PauseCommand extends Command {
     constructor(context, options) {
         super(context, {
             ...options,
-            name: 'volume',
-            aliases: ['vol'],
-            description: 'play song from source'
+            name: 'pause',
+            aliases: ['ps'],
+            description: 'pause song is playing'
         });
     }
 
@@ -36,24 +36,24 @@ class VolumeCommand extends Command {
 
                 return message.channel.send({ embeds: [Content] })
             } else {
-                const Value = await args.rest('string');
-                const volume = parseInt(Value)
+                if (queue.paused) {
+                    queue.resume()
 
-                if (isNaN(volume)) {
                     const Content = new EmbedBuilder()
                         .setColor(color)
-                        .setTitle('⚠️ เตือน !!')
-                        .setDescription('ใส่ตัวเลข 0-100 เท่านั้น ไม่สามารถใช้ตัวอักษรได้')
+                        .setTitle('🛠️ ระบบควบคุม')
+                        .setDescription(`เล่นเพลง (ต่อ) : **${queue.songs[0].name}**`)
+                        .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
                         .setTimestamp()
 
                     return message.channel.send({ embeds: [Content] })
                 } else {
-                    queue.setVolume(volume)
+                    queue.pause()
 
                     const Content = new EmbedBuilder()
                         .setColor(color)
-                        .setTitle('🔊 ระบบเสียง')
-                        .setDescription('ปรับระดับเสียงเป็น : **' + volume + "** %\n⚠️ การปรับระดับเสียงมากเกินไปอาจจะเป็นอันตรายต่อหู")
+                        .setTitle('🛠️ ระบบควบคุม')
+                        .setDescription(`หยุดเพลง (ชั่วคราว) : **${queue.songs[0].name}**`)
                         .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
                         .setTimestamp()
 
@@ -64,5 +64,5 @@ class VolumeCommand extends Command {
     }
 }
 module.exports = {
-    VolumeCommand
+    PauseCommand
 };

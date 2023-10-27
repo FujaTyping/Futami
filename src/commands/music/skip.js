@@ -42,6 +42,7 @@ class SkipCommand extends Command {
                     .setColor(color)
                     .setTitle('⏭️ ข้ามเพลงแล้ว')
                     .setDescription('ข้ามเพลง : **' + queue.songs[0].name + '**')
+                    .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
                     .setTimestamp()
 
                 return message.channel.send({ embeds: [Content] })

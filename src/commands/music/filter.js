@@ -60,6 +60,7 @@ class FilterCommand extends Command {
                     .setColor(color)
                     .setTitle('🎛️ ระบบฟิลเตอร์')
                     .setDescription(`ฟิลเตอร์ตอนนี้คือ : **${queue.filters.names.join(', ') || 'Off'}**\nสามารถใช้ฟิลเตอร์หลายๆอัน รวมกันได้ !!`)
+                    .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
                     .setTimestamp()
 
                 return message.channel.send({ embeds: [Content] })
