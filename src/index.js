@@ -106,16 +106,28 @@ client.distube
                 )
                 .setTimestamp()
 
+            const Status = new ButtonBuilder()
+                .setCustomId('status')
+                .setLabel('ดูสถานะเพลง')
+                .setStyle(ButtonStyle.Secondary)
+                .setDisabled(true);
+
             const Row = new ActionRowBuilder()
-                .addComponents(Button);
+                .addComponents(Button, Status);
 
             return Msg.edit({ embeds: [Img, Content], components: [Row] })
         });
 
         Collector.on('end', (collected, reason) => {
             if (reason === 'time') {
+                const Status = new ButtonBuilder()
+                    .setCustomId('status')
+                    .setLabel('ดูสถานะเพลง')
+                    .setStyle(ButtonStyle.Secondary)
+                    .setDisabled(true);
+
                 const Row = new ActionRowBuilder()
-                    .addComponents(Button);
+                    .addComponents(Button, Status);
 
                 return Msg.edit({ embeds: [Img, Content], components: [Row] })
             }
