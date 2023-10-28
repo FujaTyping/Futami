@@ -134,8 +134,8 @@ client.distube
         });
     }
     )
-    .on('addSong', (queue, song) => {
-        const Content = new EmbedBuilder()
+    .on('addSong', async (queue, song) => {
+        const BeforeContent = new EmbedBuilder()
             .setColor(color)
             .setTitle('➕ เพิ่มเพลงไปที่คิว')
             .setThumbnail(song.thumbnail)
@@ -143,7 +143,60 @@ client.distube
             .setFooter({ text: `ขอเพลงโดย : ${song.user.username}`, iconURL: song.user.avatarURL() })
             .setTimestamp()
 
-        queue.textChannel.send({ embeds: [Content] })
+        const Button = new ButtonBuilder()
+            .setCustomId('skip')
+            .setLabel('ข้ามเพลง (ที่เล่นอยู่)')
+            .setStyle(ButtonStyle.Secondary);
+
+        const Row = new ActionRowBuilder()
+            .addComponents(Button);
+
+        const Msg = await queue.textChannel.send({ embeds: [BeforeContent], components: [Row] })
+
+        const Collector = Msg.createMessageComponentCollector({
+            filter: (buttonInteraction) => buttonInteraction.customId === 'skip' && buttonInteraction.user.id === song.user.id,
+            time: 30000,
+            max: 1
+        });
+
+        Collector.on('collect', async (buttonInteraction) => {
+            const song = await queue.skip()
+
+            const Content = new EmbedBuilder()
+                .setColor(color)
+                .setTitle('⏭️ ข้ามเพลงแล้ว')
+                .setDescription('ข้ามเพลง : **' + queue.songs[0].name + '**')
+                .setFooter({ text: `ใช้คำสั่งโดย : ${song.user.username}`, iconURL: song.user.avatarURL() })
+                .setTimestamp()
+
+            queue.textChannel.send({ embeds: [Content] })
+
+            const Button = new ButtonBuilder()
+                .setCustomId('skip')
+                .setLabel('ข้ามเพลง (ที่เล่นอยู่)')
+                .setStyle(ButtonStyle.Secondary)
+                .setDisabled(true);
+
+            const Row = new ActionRowBuilder()
+                .addComponents(Button);
+
+            return Msg.edit({ embeds: [BeforeContent], components: [Row] })
+        });
+
+        Collector.on('end', (collected, reason) => {
+            if (reason === 'time') {
+                const Button = new ButtonBuilder()
+                    .setCustomId('skip')
+                    .setLabel('ข้ามเพลง (ที่เล่นอยู่)')
+                    .setStyle(ButtonStyle.Secondary)
+                    .setDisabled(true);
+
+                const Row = new ActionRowBuilder()
+                    .addComponents(Button);
+
+                return Msg.edit({ embeds: [BeforeContent], components: [Row] })
+            }
+        });
     }
     )
     .on('error', (channel, e) => {
