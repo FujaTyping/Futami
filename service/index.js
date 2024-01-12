@@ -22,3 +22,16 @@ function Top() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
+
+function ContinueInvite() {
+    const Box = document.getElementById("agreeBox");
+    const Text = document.getElementById("agreeText");
+
+    if (Box.checked) {
+        Text.style.color = 'white';
+        pleaseread_modal.close()
+        window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=1155156868554043484&permissions=8&scope=bot%20applications.commands';
+    } else {
+        Text.style.color = 'red';
+    }
+}
