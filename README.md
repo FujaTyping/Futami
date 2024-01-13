@@ -1,5 +1,5 @@
 # 💙 Futami
-Imagine a music bot , Bot that build with [Sapphire framwwork](sapphirejs.dev) , [Discord.js](https://discordjs.guide/#before-you-begin) and [Distube](https://distube.js.org/)
+Imagine a music bot , Bot that build with [Sapphire framwwork](sapphirejs.dev) , [Discord.js](https://discordjs.guide/#before-you-begin) , [Distube](https://distube.js.org/) and [Gamecord](https://discord-gamecord.js.org/)
 
 # ⁉ How to use
 0. Clone this repo (Don't forget to install [git](https://git-scm.com/downloads))
