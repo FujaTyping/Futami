@@ -16,13 +16,17 @@ class AboutCommand extends Command {
     }
 
     async chatInputRun(interaction) {
+        const Img = new EmbedBuilder()
+            .setColor(color)
+            .setImage('https://cdn.discordapp.com/attachments/1071401485239332864/1195406329280471060/Card-Futami.png')
+
         const Content = new EmbedBuilder()
             .setColor(color)
             .setTitle('✌🏻 เกี่ยวกับ ฟูตามิ')
             .setDescription('ฟูตามิเป็นบอทเพลงที่สร้างขึ้นโดย [FujaTyping](https://fujatyping.dev/) เพื่อตอบสนองคำขอของ **ph007phop** เพื่อนสนิทของเขา ฟูตามิสามารถเปิดเพลงจากแหล่งต่างๆ ได้มากมายและได้รับความนิยมอย่างรวดเร็วในหมู่ผู้ใช้ Discord')
             .setTimestamp()
 
-        const msg = await interaction.reply({ embeds: [Content] });
+        const msg = await interaction.reply({ embeds: [Img, Content] });
     }
 }
 module.exports = {
