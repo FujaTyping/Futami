@@ -6,7 +6,7 @@ class GuildCreateListener extends Listener {
     run(guild) {
         const Img = new EmbedBuilder()
             .setColor(color)
-            .setImage('https://cdn.discordapp.com/attachments/1071401485239332864/1195406329280471060/Card-Futami.png')
+            .setImage('https://futami.fujatyping.dev/assets/banner/Card-Futami.png')
 
         const Content = new EmbedBuilder()
             .setColor(color)
