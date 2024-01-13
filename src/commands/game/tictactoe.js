@@ -34,7 +34,7 @@ class TicTacToeCommand extends Command {
                 overTitle: 'เกมจบลงแล้ว',
                 requestTitle: '🔷 คำขอเชิญให้ร่วมเล่นเกม',
                 requestColor: colorHex,
-                rejectTitle: '🔶 ยกเลิกคำของแล้ว',
+                rejectTitle: '🔶 ยกเลิกคำขอแล้ว',
                 rejectColor: colorHex
             },
             emojis: {
