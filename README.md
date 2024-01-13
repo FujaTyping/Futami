@@ -30,4 +30,7 @@ node .  or  node src/index.js
 > ```
 5. 🎉 That all !
 
+# 🔷 Custom components
+- Custom **discord-gamecord** text : `node_modules/discord-gamecord/src/...`
+
 <p align="center"> <img src="https://count.getloli.com/get/@futami?theme=moebooru" alt="futami" /> </p>
