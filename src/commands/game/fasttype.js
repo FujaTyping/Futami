@@ -28,7 +28,7 @@ class FastTypeCommand extends Command {
             '967', '480', '33', 'general', '36', '4236', '27', '110', '58', 'all', 'help', 'they', 'part', 'but'
         ];
         const ShuffledWords = Words.slice().sort(() => Math.random() - 0.5);
-        const RandomWords = ShuffledWords.slice(0, 12);
+        const RandomWords = ShuffledWords.slice(0, 14);
 
         const Game = new FastType({
             message: interaction,
