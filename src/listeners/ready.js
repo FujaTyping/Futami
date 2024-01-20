@@ -2,8 +2,8 @@ const { Listener } = require('@sapphire/framework');
 const { ActivityType } = require('discord.js');
 
 class ReadyListener extends Listener {
-    run(client) {
-        const ActivityText = [`in ${client.guilds.cache.size} Servers`, 'at Voice Channel', 'with You']
+    async run(client) {
+        const ActivityText = [`in ${client.guilds.cache.size} Servers`, 'at Voice Channel', `with ${client.users.cache.size} Users`]
 
         setInterval(() => {
             const RandomActivityText = Math.floor(Math.random() * ActivityText.length);
@@ -15,7 +15,7 @@ class ReadyListener extends Listener {
                     url: "https://www.twitch.tv/anime"
                 }]
             });
-        }, 15000)
+        }, 30000)
     }
 }
 module.exports = {
