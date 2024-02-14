@@ -9,7 +9,7 @@ class VolumeCommand extends Command {
             ...options,
             name: 'volume',
             aliases: ['vol'],
-            description: 'play song from source'
+            description: 'change the song volume'
         });
     }
 
@@ -43,21 +43,32 @@ class VolumeCommand extends Command {
                     const Content = new EmbedBuilder()
                         .setColor(color)
                         .setTitle('⚠️ เตือน !!')
-                        .setDescription('ใส่ตัวเลข 0-100 เท่านั้น ไม่สามารถใช้ตัวอักษรได้')
+                        .setDescription('ใส่ตัวเลข 0-500 เท่านั้น ไม่สามารถใช้ตัวอักษรได้')
                         .setTimestamp()
 
                     return message.channel.send({ embeds: [Content] })
                 } else {
-                    queue.setVolume(volume)
+                    if (volume > 500) {
+                        const Content = new EmbedBuilder()
+                            .setColor(color)
+                            .setTitle('🔊 ระบบเสียง')
+                            .setDescription('🚫 ไม่สามารถปรับเสียงเป็น : **' + volume + "** % ได้\n⚠️ กรุณาใส่ตัวเลข 0-500 เท่านั้น")
+                            .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
+                            .setTimestamp()
 
-                    const Content = new EmbedBuilder()
-                        .setColor(color)
-                        .setTitle('🔊 ระบบเสียง')
-                        .setDescription('ปรับระดับเสียงเป็น : **' + volume + "** %\n⚠️ การปรับระดับเสียงมากเกินไปอาจจะเป็นอันตรายต่อหู")
-                        .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
-                        .setTimestamp()
+                        return message.channel.send({ embeds: [Content] })
+                    } else {
+                        queue.setVolume(volume)
 
-                    return message.channel.send({ embeds: [Content] })
+                        const Content = new EmbedBuilder()
+                            .setColor(color)
+                            .setTitle('🔊 ระบบเสียง')
+                            .setDescription('ปรับระดับเสียงเป็น : **' + volume + "** %\n⚠️ การปรับระดับเสียงมากเกินไปอาจจะเป็นอันตรายต่อหู")
+                            .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
+                            .setTimestamp()
+
+                        return message.channel.send({ embeds: [Content] })
+                    }
                 }
             }
         }
