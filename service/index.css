@@ -92,6 +92,13 @@ body::-webkit-scrollbar-thumb {
     background-size: cover;
 }
 
+.hero-game {
+    background-image: url('./assets/background/content-game.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
 .image-feature {
     box-shadow: rgba(20, 55, 119, 0.4) -5px 5px, rgba(35, 62, 113, 0.3) -10px 10px, rgba(35, 62, 113, 0.2) -15px 15px, rgba(35, 62, 113, 0.1) -20px 20px, rgba(35, 62, 113, 0.05) -25px 25px !important;
 }
