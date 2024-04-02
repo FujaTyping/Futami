@@ -110,3 +110,13 @@ body::-webkit-scrollbar-thumb {
     display: none;
     z-index: 1;
 }
+
+.alert-top {
+    position: fixed !important;
+    top: 20px !important;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    width: 350px;
+    margin: auto;
+}
