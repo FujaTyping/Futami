@@ -68,7 +68,7 @@ client.distube
 
         const Content = new EmbedBuilder()
             .setColor(color)
-            .setTitle('🌴 กำลังเล่นเพลง')
+            .setTitle('💿 กำลังเล่นเพลง')
             .setDescription(`เพลง : **${song.name}**\nอัพโหลดเพลงโดย : \`${song.uploader.name}\`\nเล่นเพลงในห้อง : <#${queue.voiceChannel.id}> - \`${song.formattedDuration}\` นาที`)
             .setFooter({ text: `ขอเพลงโดย : ${song.user.username}`, iconURL: song.user.avatarURL() })
             .setTimestamp()
@@ -97,7 +97,7 @@ client.distube
         Collector.on('collect', (buttonInteraction) => {
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle('🌴 กำลังเล่นเพลง')
+                .setTitle('💿 กำลังเล่นเพลง')
                 .setDescription(`เพลง : **${song.name}**\nอัพโหลดเพลงโดย : \`${song.uploader.name}\`\nเล่นเพลงในห้อง : <#${queue.voiceChannel.id}> - \`${song.formattedDuration}\` นาที\n`)
                 .setFooter({ text: `ขอเพลงโดย : ${song.user.username}`, iconURL: song.user.avatarURL() })
                 .addFields(
@@ -226,7 +226,7 @@ client.distube
     .on('finish', queue => {
         const Content = new EmbedBuilder()
             .setColor(color)
-            .setTitle('เล่นเพลงเสร็จละ ☀️')
+            .setTitle('เล่นเพลงเสร็จละ 🎙️')
             .setDescription("ใช้คำสั่ง \`f.stop\` เพื่อนำบอทออกจากห้อง\nหรืออยากฟังเพลงต่อล่ะ ??")
             .setTimestamp()
 
