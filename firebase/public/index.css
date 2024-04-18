@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+* {
+    scroll-behavior: smooth;
+    font-family: Roboto Condensed;
+}
+
+body::-webkit-scrollbar {
+    width: 13px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #233E71;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #345ca8;
+    border-radius: 20px;
+    border: 3px solid #233E71;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.profile {
+    width: 150px !important;
+}
+
+.hero-normal {
+    padding: 40px;
+}
+
+.hero-head {
+    background-image: url('./assets/background/header.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.lefted {
+    text-align: left;
+}
+
+.usage {
+    color: gray !important;
+}
+
+.hero-tap {
+    background-image: url('./assets/background/header-tap.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.hero-grass {
+    background-image: url('./assets/background/content-grass.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.hero-music {
+    background-image: url('./assets/background/content-spalsh.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.hero-command {
+    background-image: url('./assets/background/content-command.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.hero-mod {
+    background-image: url('./assets/background/content-mod.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.hero-footer {
+    background-image: url('./assets/background/footer.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.hero-game {
+    background-image: url('./assets/background/content-game.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.image-feature {
+    box-shadow: rgba(20, 55, 119, 0.4) -5px 5px, rgba(35, 62, 113, 0.3) -10px 10px, rgba(35, 62, 113, 0.2) -15px 15px, rgba(35, 62, 113, 0.1) -20px 20px, rgba(35, 62, 113, 0.05) -25px 25px !important;
+}
+
+.button-top {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    display: none;
+    z-index: 1;
+}
+
+.alert-top {
+    position: fixed !important;
+    top: 20px !important;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    width: 350px;
+    margin: auto;
+}
