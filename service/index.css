@@ -105,6 +105,14 @@ body::-webkit-scrollbar-thumb {
 
 .button-top {
     position: fixed !important;
+    bottom: 100px !important;
+    right: 20px !important;
+    display: none;
+    z-index: 1;
+}
+
+.button-top-PP {
+    position: fixed !important;
     bottom: 20px !important;
     right: 20px !important;
     display: none;
