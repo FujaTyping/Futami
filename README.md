@@ -33,6 +33,9 @@ node .  or  node src/index.js
 # 🔷 Custom components
 - Custom **discord-gamecord** text : `node_modules/discord-gamecord/src/...`
 
+# 💰 Support
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L4L5X244N)
+
 <p align="center"> <img src="https://count.getloli.com/get/@futami?theme=moebooru" alt="futami" /> </p>
 
 ~~# ⚠️ This project is archive~~
