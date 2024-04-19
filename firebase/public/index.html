@@ -26,6 +26,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script defer src="./index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -67,6 +68,12 @@
                             Terms</button>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div style="padding-bottom: 20px;" class="hero bg-base-100 arrow-assets">
+            <div class="hero-content text-center">
+                <button onclick="GetLastSong()" class="btn"><span class="material-symbols-outlined">equalizer</span>
+                    Player Status</button>
             </div>
         </div>
         <img width="100%" src="./assets/divider.png">
@@ -208,7 +215,7 @@
                         friend, ph007phop. Fuumi can play music from a variety of sources and quickly gained popularity
                         among Discord users.</p>
                     <div class="btn-group">
-                        <button onclick="window.location.href = 'https://link.siraphop.me/discord';"
+                        <button onclick="window.location.href = 'https://discord.gg/D5nVCNskqN';"
                             class="btn bg-base-300"><span class="material-symbols-outlined">support_agent</span>
                             Support</button>
                         <button onclick="window.location.href = 'https://github.com/FujaTyping/Futami';"
@@ -269,6 +276,32 @@
                 </form>
             </div>
         </div>
+    </dialog>
+    <dialog id="LastSongDisplay" class="modal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg">Futami player - Lastest song</h3>
+            <div class="overflow-x-auto">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Uploader</th>
+                        </tr>
+                    </thead>
+                    <tbody id="DataTable">
+                        <tr id="FetchData" class="bg-base-200">
+                            <td>Fetching...</td>
+                            <td>Fetching...</td>
+                            <td>Fetching...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
     </dialog>
 </body>
 

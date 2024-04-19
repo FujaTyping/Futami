@@ -49,3 +49,31 @@ function ContinueInvite() {
         Text.style.color = 'red';
     }
 }
+
+function GetLastSong() {
+    LastSongDisplay.showModal()
+
+    axios.get('https://futami.onrender.com/database')
+        .then(function (response) {
+
+            const Data = response.data.LastSong;
+            //console.log(Data)
+            const TableBody = document.getElementById('DataTable');
+
+            TableBody.innerHTML = '';
+
+            Data.forEach(Song => {
+                const Row = document.createElement('tr');
+                Row.classList.add('bg-base-200');
+                Row.innerHTML = `
+                        <td>${Song.id}</td>
+                        <td>${Song.name}</td>
+                        <td>${Song.uploader}</td>
+                    `;
+                TableBody.appendChild(Row);
+            });
+        })
+        .catch(function (error) {
+            console.error('[ERROR] : ', error);
+        });
+}
