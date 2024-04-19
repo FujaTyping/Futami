@@ -2,10 +2,14 @@ const fs = require('node:fs');
 const { SapphireClient, ResultError } = require('@sapphire/framework');
 const { GatewayIntentBits, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, messageLink } = require('discord.js');
 const express = require('express')
+const cors = require('cors');
 const { DisTube, Song } = require('distube');
 
 const app = express()
 const path = require('path');
+app.use(cors({
+    origin: '*'
+}));
 
 require('dotenv').config()
 const { prefix, debug } = require('./config.json');
