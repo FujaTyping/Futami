@@ -6,7 +6,7 @@ class GuildCreateListener extends Listener {
     run(guild) {
         const Img = new EmbedBuilder()
             .setColor(color)
-            .setImage('https://futami.fujatyping.dev/assets/banner/Card-Futami.png')
+            .setImage('https://futami.siraphop.me/assets/banner/Card-Futami.png')
 
         const Content = new EmbedBuilder()
             .setColor(color)
@@ -17,7 +17,7 @@ class GuildCreateListener extends Listener {
 
         const Button = new ButtonBuilder()
             .setLabel('เว็ปไซต์ของฟูตามิ')
-            .setURL('https://futami.fujatyping.dev/')
+            .setURL('https://futami.siraphop.me/')
             .setStyle(ButtonStyle.Link);
 
         const Row = new ActionRowBuilder()

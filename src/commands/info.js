@@ -32,7 +32,7 @@ class InfoCommand extends Command {
 
         const Button = new ButtonBuilder()
             .setLabel('ดูสถานะต่างๆ')
-            .setURL('https://status.fujatyping.dev/')
+            .setURL('https://status.siraphop.me/')
             .setStyle(ButtonStyle.Link);
 
         const Row = new ActionRowBuilder()
