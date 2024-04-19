@@ -1,7 +1,8 @@
+const fs = require('node:fs');
 const { SapphireClient, ResultError } = require('@sapphire/framework');
 const { GatewayIntentBits, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, messageLink } = require('discord.js');
 const express = require('express')
-const { DisTube } = require('distube');
+const { DisTube, Song } = require('distube');
 
 const app = express()
 const path = require('path');
@@ -19,6 +20,17 @@ const client = new SapphireClient({
 const { SpotifyPlugin } = require('@distube/spotify')
 const { SoundCloudPlugin } = require('@distube/soundcloud')
 const { YtDlpPlugin } = require('@distube/yt-dlp')
+
+let SongId = 0;
+let LastData = {
+    LastSong: [
+        {
+            id: SongId,
+            name: "Nothing is playing previous",
+            uploader: ""
+        }
+    ]
+};
 
 client.distube = new DisTube(client, {
     streamType: 1,
@@ -43,11 +55,13 @@ const main = async () => {
         await client.login(process.env.token);
         client.logger.info(`Connected ${client.user.tag} successfully !`);
         app.use(express.static(path.join(__dirname, '../service')))
+        app.use('/database', express.static(path.join(__dirname, './database.json')));
         app.get('/', function (req, res) {
             res.sendFile(__dirname + "../service/index.html")
         })
         const port = 6947
         app.listen(port)
+        fs.writeFileSync('./src/database.json', JSON.stringify(LastData));
         client.logger.info('Web service is online at port : ' + port);
     } catch (error) {
         client.logger.fatal(error);
@@ -62,6 +76,40 @@ const { color } = require('./config.json');
 
 client.distube
     .on('playSong', async (queue, song) => {
+        if (SongId == 0) {
+            SongId = SongId + 1
+            LastData = {
+                LastSong: [
+                    {
+                        id: SongId,
+                        name: `${song.name}`,
+                        uploader: `${song.uploader.name}`
+                    }
+                ]
+            };
+        } else if (SongId >= 8) {
+            SongId = 1
+            LastData = {
+                LastSong: [
+                    {
+                        id: SongId,
+                        name: `${song.name}`,
+                        uploader: `${song.uploader.name}`
+                    }
+                ]
+            };
+        } else if (SongId >= 1) {
+            SongId = SongId + 1
+            let NewLastData = {
+                LastSong: {
+                    id: SongId,
+                    name: `${song.name}`,
+                    uploader: `${song.uploader.name}`
+                }
+            };
+            LastData.LastSong.push(NewLastData);
+        }
+
         const Img = new EmbedBuilder()
             .setColor(color)
             .setImage(song.thumbnail)
@@ -87,6 +135,7 @@ client.distube
             .addComponents(Button, Status);
 
         const Msg = await queue.textChannel.send({ embeds: [Img, Content], components: [Row] })
+        fs.writeFileSync('./src/database.json', JSON.stringify(LastData));
 
         const Collector = Msg.createMessageComponentCollector({
             filter: (buttonInteraction) => buttonInteraction.customId === 'status' && buttonInteraction.user.id === song.user.id,
