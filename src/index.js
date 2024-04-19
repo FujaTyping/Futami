@@ -105,11 +105,9 @@ client.distube
         } else if (SongId >= 1) {
             SongId = SongId + 1
             let NewLastData = {
-                LastSong: {
-                    id: SongId,
-                    name: `${song.name}`,
-                    uploader: `${song.uploader.name}`
-                }
+                id: SongId,
+                name: `${song.name}`,
+                uploader: `${song.uploader.name}`
             };
             LastData.LastSong.push(NewLastData);
         }
