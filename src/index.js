@@ -63,6 +63,9 @@ const main = async () => {
         app.get('/', function (req, res) {
             res.sendFile(__dirname + "../service/index.html")
         })
+        app.use((req, res, next) => {
+            res.status(404).sendFile(path.join(__dirname, '../service', '404.html'));
+        });
         const port = 6947
         app.listen(port)
         fs.writeFileSync('./src/database.json', JSON.stringify(LastData));
