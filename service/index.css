@@ -144,3 +144,43 @@ body::-webkit-scrollbar-thumb {
     z-index: 1;
     margin: auto;
 }
+
+.loader {
+    height: 4px;
+    width: 100%;
+    --c: no-repeat linear-gradient(#2B4D8B 0 0);
+    background: var(--c), var(--c), #ffffff;
+    background-size: 60% 100%;
+    animation: l16 3s infinite;
+    border-radius: 50px;
+}
+
+@keyframes l16 {
+    0% {
+        background-position: -150% 0, -150% 0
+    }
+
+    66% {
+        background-position: 250% 0, -150% 0
+    }
+
+    100% {
+        background-position: 250% 0, 250% 0
+    }
+}
+
+.text-focus-in {
+    animation: text-focus-in 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@keyframes text-focus-in {
+    0% {
+        filter: blur(12px);
+        opacity: 0;
+    }
+
+    100% {
+        filter: blur(0px);
+        opacity: 1;
+    }
+}

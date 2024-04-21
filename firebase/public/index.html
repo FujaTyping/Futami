@@ -94,7 +94,8 @@
                     <h1 class="text-5xl font-bold">Support many music platform</h1>
                     <p class="py-6">Future will support more platform :D</p>
                     <div class="flex flex-col w-full lg:flex-row">
-                        <div class="grid flex-grow h-20 card bg-base-300 rounded-box place-items-center">Soundcloud /
+                        <div class="grid flex-grow h-20 card bg-base-300 rounded-box place-items-center">𝓨𝓸𝓾𝓽𝓾𝓫𝓮
+                            / Soundcloud /
                             Spotify / Deezer</div>
                         <div class="divider lg:divider-horizontal">OR</div>
                         <div class="grid flex-grow h-20 card bg-base-300 rounded-box place-items-center">Name / Title of
@@ -285,8 +286,12 @@
     <dialog id="LastSongDisplay" class="modal">
         <div class="modal-box">
             <h3 class="font-bold text-lg">Futami player - Lastest song</h3>
+            <div style="display: block;" id="FetchLoader">
+                <p class="py-4" style="text-align: center;">Fetching data...</p>
+                <div class="loader"></div>
+            </div>
             <div class="overflow-x-auto">
-                <table class="table">
+                <table style="display: none;" id="FetchTable" class="table text-focus-in">
                     <thead>
                         <tr>
                             <th>Thumbnail</th>

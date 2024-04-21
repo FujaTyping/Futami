@@ -52,6 +52,8 @@ function ContinueInvite() {
 
 function GetLastSong() {
     LastSongDisplay.showModal()
+    const Loader = document.getElementById('FetchLoader')
+    const FTable = document.getElementById('FetchTable')
 
     axios.get('https://futami.onrender.com/database')
         .then(function (response) {
@@ -80,6 +82,13 @@ function GetLastSong() {
                 }
                 TableBody.appendChild(Row);
             });
+
+            if (Loader.style.display == 'block' && FTable.style.display == 'none') {
+                setTimeout(function () {
+                    Loader.style.display = 'none';
+                    FTable.style.display = 'block';
+                }, 2000);
+            }
         })
         .catch(function (error) {
             console.error('[ERROR] : ', error);
