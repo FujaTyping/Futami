@@ -65,11 +65,19 @@ function GetLastSong() {
             Data.forEach(Song => {
                 const Row = document.createElement('tr');
                 Row.classList.add('bg-base-200');
-                Row.innerHTML = `
-                        <td>${Song.id}</td>
-                        <td>${Song.name}</td>
-                        <td>${Song.uploader}</td>
-                    `;
+                if (Song.thumbnail != "-") {
+                    Row.innerHTML = `
+                    <td><img style="max-width: 7rem;" src="${Song.thumbnail}" class="max-w-sm rounded-lg shadow-2xl" /></td>
+                    <td>${Song.name}</td>
+                    <td>${Song.uploader}</td>
+                `;
+                } else {
+                    Row.innerHTML = `
+                    <td>${Song.thumbnail}</td>
+                    <td>${Song.name}</td>
+                    <td>${Song.uploader}</td>
+                `;
+                }
                 TableBody.appendChild(Row);
             });
         })
