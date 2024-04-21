@@ -31,7 +31,8 @@ let LastData = {
         {
             id: SongId,
             name: "Nothing is playing previous",
-            uploader: ""
+            uploader: "-",
+            thumbnail: "-"
         }
     ]
 };
@@ -90,18 +91,20 @@ client.distube
                     {
                         id: SongId,
                         name: `${song.name}`,
-                        uploader: `${song.uploader.name}`
+                        uploader: `${song.uploader.name}`,
+                        thumbnail: `${song.thumbnail}`
                     }
                 ]
             };
-        } else if (SongId >= 8) {
+        } else if (SongId >= 10) {
             SongId = 1
             LastData = {
                 LastSong: [
                     {
                         id: SongId,
                         name: `${song.name}`,
-                        uploader: `${song.uploader.name}`
+                        uploader: `${song.uploader.name}`,
+                        thumbnail: `${song.thumbnail}`
                     }
                 ]
             };
@@ -110,7 +113,8 @@ client.distube
             let NewLastData = {
                 id: SongId,
                 name: `${song.name}`,
-                uploader: `${song.uploader.name}`
+                uploader: `${song.uploader.name}`,
+                thumbnail: `${song.thumbnail}`
             };
             LastData.LastSong.push(NewLastData);
         }
@@ -266,7 +270,7 @@ client.distube
             console.error(e)
         }
     })
-    .on('empty', channel => channel.send('ดูเหมือนว่าห้องนี้จะไม่มีคน... ไปละ !!'))
+    .on('empty', queue => queue.textChannel.send('👋🏻 ดูเหมือนว่าห้องนี้จะไม่มีคน... ไปละ !!'))
     .on('searchNoResult', (message, query) => {
         const Content = new EmbedBuilder()
             .setColor(color)
