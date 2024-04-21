@@ -77,3 +77,19 @@ function GetLastSong() {
             console.error('[ERROR] : ', error);
         });
 }
+
+const CheckParallaxContainer = document.querySelector('.parallax-container');
+
+if (CheckParallaxContainer !== null) {
+    document.addEventListener("DOMContentLoaded", function () {
+        let ParallaxContainer = document.querySelector('.parallax-container');
+        let ParallaxImg = document.querySelector('.parallax-img');
+
+        ParallaxContainer.addEventListener('mousemove', function (e) {
+            let x = e.clientX / window.innerWidth;
+            let y = e.clientY / window.innerHeight;
+
+            ParallaxImg.style.transform = 'translate(-' + x * 50 + 'px, -' + y * 50 + 'px)';
+        });
+    });
+}
