@@ -112,7 +112,7 @@ body::-webkit-scrollbar-thumb {
 
 .button-top {
     position: fixed !important;
-    bottom: 100px !important;
+    bottom: 85px !important;
     right: 20px !important;
     display: none;
     z-index: 1;
@@ -183,4 +183,14 @@ body::-webkit-scrollbar-thumb {
         filter: blur(0px);
         opacity: 1;
     }
+}
+
+#bmc-wbtn {
+    width: 3.1rem !important;
+    height: 3.1rem !important;
+}
+
+#bmc-wbtn .img {
+    width: 30px !important;
+    height: 30px !important;
 }
