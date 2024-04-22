@@ -5,7 +5,7 @@ function GetLastData() {
     const FTable = document.getElementById('FetchTable')
     const ContainF = document.getElementById('FetchContainer')
 
-    axios.get('http://api.futami.siraphop.me:6947/player')
+    axios.get('https://futami.onrender.com/player')
         .then(function (response) {
 
             const Data = response.data.LastSong;
@@ -38,7 +38,7 @@ function GetLastData() {
             console.error('[ERROR] : ', error);
         });
 
-    axios.get('http://api.futami.siraphop.me:6947/system')
+    axios.get('https://futami.onrender.com/system')
         .then(function (response) {
             const SystemData = response.data.System;
             const CpuUsage = SystemData.cpuusage;
