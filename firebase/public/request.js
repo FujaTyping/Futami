@@ -57,6 +57,6 @@ function GetLastData() {
         Loader.style.display = 'none';
         FTable.style.display = 'block';
         ContainF.classList.remove('min-h-screen');
-        ContainF.classList.add('sas-content');
+        //ContainF.classList.add('sas-content');
     }, 2000);
 }
