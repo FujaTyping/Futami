@@ -56,7 +56,7 @@ function GetLastData() {
     setTimeout(function () {
         Loader.style.display = 'none';
         FTable.style.display = 'block';
-        ContainF.classList.remove('prepare-load');
+        ContainF.classList.remove('min-h-screen');
         ContainF.classList.add('sas-content');
     }, 2000);
 }
