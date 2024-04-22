@@ -50,51 +50,6 @@ function ContinueInvite() {
     }
 }
 
-function GetLastSong() {
-    LastSongDisplay.showModal()
-    const Loader = document.getElementById('FetchLoader')
-    const FTable = document.getElementById('FetchTable')
-
-    axios.get('https://futami.onrender.com/database')
-        .then(function (response) {
-
-            const Data = response.data.LastSong;
-            //console.log(Data)
-            const TableBody = document.getElementById('DataTable');
-
-            TableBody.innerHTML = '';
-
-            Data.forEach(Song => {
-                const Row = document.createElement('tr');
-                Row.classList.add('bg-base-200');
-                if (Song.thumbnail != "-") {
-                    Row.innerHTML = `
-                    <td><img style="max-width: 7rem;" src="${Song.thumbnail}" class="max-w-sm rounded-lg shadow-2xl" /></td>
-                    <td>${Song.name}</td>
-                    <td>${Song.uploader}</td>
-                `;
-                } else {
-                    Row.innerHTML = `
-                    <td>${Song.thumbnail}</td>
-                    <td>${Song.name}</td>
-                    <td>${Song.uploader}</td>
-                `;
-                }
-                TableBody.appendChild(Row);
-            });
-
-            if (Loader.style.display == 'block' && FTable.style.display == 'none') {
-                setTimeout(function () {
-                    Loader.style.display = 'none';
-                    FTable.style.display = 'block';
-                }, 2000);
-            }
-        })
-        .catch(function (error) {
-            console.error('[ERROR] : ', error);
-        });
-}
-
 const CheckParallaxContainer = document.querySelector('.parallax-container');
 
 if (CheckParallaxContainer !== null) {
