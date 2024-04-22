@@ -41,11 +41,15 @@ function GetLastData() {
     axios.get('https://futami.onrender.com/system')
         .then(function (response) {
             const SystemData = response.data.System;
-            const CpuUsage = SystemData.cpuusage.split(',')[0];
+            const CpuUsage = SystemData.cpuusage;
             const RamUsage = SystemData.ramusage;
             const Ping = SystemData.ping;
 
-            document.getElementById('DataCpu').textContent = CpuUsage;
+            const CpuUsageArray = CpuUsage.split(',').map(parseFloat);
+            const TotalCpuUsage = CpuUsageArray.reduce((acc, curr) => acc + curr, 0);
+            const AverageCpuUsage = TotalCpuUsage / CpuUsageArray.length;
+
+            document.getElementById('DataCpu').textContent = AverageCpuUsage.toFixed(2) + " %";
             document.getElementById('DataRam').textContent = RamUsage;
             document.getElementById('DataPing').textContent = Ping + " ms";
         })

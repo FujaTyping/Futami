@@ -116,18 +116,16 @@ client.distube
                     }
                 ]
             };
-        } else if (SongId >= 10) {
-            SongId = 1
-            LastData = {
-                LastSong: [
-                    {
-                        id: SongId,
-                        name: `${song.name}`,
-                        uploader: `${song.uploader.name}`,
-                        thumbnail: `${song.thumbnail}`
-                    }
-                ]
+        } else if (SongId >= 15) {
+            SongId = SongId + 1
+            let NewLastData = {
+                id: SongId,
+                name: `${song.name}`,
+                uploader: `${song.uploader.name}`,
+                thumbnail: `${song.thumbnail}`
             };
+            LastData.LastSong.shift();
+            LastData.LastSong.push(NewLastData);
         } else if (SongId >= 1) {
             SongId = SongId + 1
             let NewLastData = {
