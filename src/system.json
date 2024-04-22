@@ -1,0 +1,11 @@
+{
+    "System": {
+        "cpuusage": "00.00%",
+        "ramusage": "00.00%",
+        "ping": "0"
+    },
+    "Bot": {
+        "guild": "0",
+        "users": "0"
+    }
+}

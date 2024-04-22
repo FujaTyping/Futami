@@ -25,6 +25,8 @@ const { SpotifyPlugin } = require('@distube/spotify')
 const { SoundCloudPlugin } = require('@distube/soundcloud')
 const { YtDlpPlugin } = require('@distube/yt-dlp')
 
+const { GetCPUUsage, GetRAMUsage } = require('./compute.js')
+
 let SongId = 0;
 let LastData = {
     LastSong: [
@@ -35,6 +37,18 @@ let LastData = {
             thumbnail: "-"
         }
     ]
+};
+
+let StartSystemData = {
+    System: {
+        cpuusage: "00.00%",
+        ramusage: "00.00%",
+        ping: "0"
+    },
+    Bot: {
+        guild: "0",
+        users: "0"
+    }
 };
 
 client.distube = new DisTube(client, {
@@ -60,7 +74,8 @@ const main = async () => {
         await client.login(process.env.token);
         client.logger.info(`Connected ${client.user.tag} successfully !`);
         app.use(express.static(path.join(__dirname, '../service')))
-        app.use('/database', express.static(path.join(__dirname, './database.json')));
+        app.use('/system', express.static(path.join(__dirname, './system.json')));
+        app.use('/player', express.static(path.join(__dirname, './player.json')));
         app.get('/', function (req, res) {
             res.sendFile(__dirname + "../service/index.html")
         })
@@ -69,7 +84,12 @@ const main = async () => {
         });
         const port = 6947
         app.listen(port)
-        fs.writeFileSync('./src/database.json', JSON.stringify(LastData));
+        fs.writeFileSync('./src/player.json', JSON.stringify(LastData));
+        fs.writeFileSync('./src/system.json', JSON.stringify(StartSystemData));
+        UpdateSystemData()
+        setInterval(() => {
+            UpdateSystemData()
+        }, 180000)
         client.logger.info('Web service is online at port : ' + port);
     } catch (error) {
         client.logger.fatal(error);
@@ -296,4 +316,20 @@ if (debug) {
     client.on("debug", (d) => {
         console.log(d)
     });
+}
+
+function UpdateSystemData() {
+    let SystemData = {
+        System: {
+            cpuusage: `${GetCPUUsage()}`,
+            ramusage: `${GetRAMUsage()}`,
+            ping: `${client.ws.ping}`
+        },
+        Bot: {
+            guild: `${client.guilds.cache.size}`,
+            users: `${client.users.cache.size}`
+        }
+    };
+
+    fs.writeFileSync('./src/system.json', JSON.stringify(SystemData));
 }
