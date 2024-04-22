@@ -106,6 +106,20 @@ body::-webkit-scrollbar-thumb {
     background-size: cover;
 }
 
+.sas-headder {
+    background-image: url('./assets/background/header-sas.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.sas-content {
+    background-image: url('./assets/background/content-data.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
 .image-feature {
     box-shadow: rgba(20, 55, 119, 0.4) -5px 5px, rgba(35, 62, 113, 0.3) -10px 10px, rgba(35, 62, 113, 0.2) -15px 15px, rgba(35, 62, 113, 0.1) -20px 20px, rgba(35, 62, 113, 0.05) -25px 25px !important;
 }
@@ -148,7 +162,7 @@ body::-webkit-scrollbar-thumb {
 .loader {
     height: 4px;
     width: 100%;
-    --c: no-repeat linear-gradient(#2B4D8B 0 0);
+    --c: no-repeat linear-gradient(#233E71 0 0);
     background: var(--c), var(--c), #ffffff;
     background-size: 60% 100%;
     animation: l16 3s infinite;
@@ -193,4 +207,8 @@ body::-webkit-scrollbar-thumb {
 #bmc-wbtn .img {
     width: 30px !important;
     height: 30px !important;
+}
+
+.prepare-load {
+    height: 50vh;
 }

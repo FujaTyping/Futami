@@ -26,7 +26,6 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script defer src="./index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -73,8 +72,8 @@
         </div>
         <div style="padding-bottom: 20px;" class="hero bg-base-100 arrow-assets">
             <div class="hero-content text-center">
-                <button onclick="GetLastSong()" class="btn"><span class="material-symbols-outlined">equalizer</span>
-                    Player Status</button>
+                <a href="./statics.html" class="btn"><span class="material-symbols-outlined">equalizer</span>
+                    Futami Statics</a>
             </div>
         </div>
         <img width="100%" src="./assets/divider.png">
@@ -281,36 +280,6 @@
                 </form>
             </div>
         </div>
-    </dialog>
-    <dialog id="LastSongDisplay" class="modal">
-        <div class="modal-box">
-            <h3 class="font-bold text-lg">Futami player - Lastest song</h3>
-            <div style="display: block;" id="FetchLoader">
-                <p class="py-4" style="text-align: center;">Fetching data...</p>
-                <div class="loader"></div>
-            </div>
-            <div class="overflow-x-auto">
-                <table style="display: none;" id="FetchTable" class="table text-focus-in">
-                    <thead>
-                        <tr>
-                            <th>Thumbnail</th>
-                            <th>Name</th>
-                            <th>Uploader</th>
-                        </tr>
-                    </thead>
-                    <tbody id="DataTable">
-                        <tr id="FetchData" class="bg-base-200">
-                            <td>Fetching...</td>
-                            <td>Fetching...</td>
-                            <td>Fetching...</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <form method="dialog" class="modal-backdrop">
-            <button>close</button>
-        </form>
     </dialog>
 </body>
 
