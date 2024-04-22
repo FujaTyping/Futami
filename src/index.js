@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const { SapphireClient, ResultError } = require('@sapphire/framework');
 const { GatewayIntentBits, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, messageLink } = require('discord.js');
 const express = require('express')
+const https = require("https");
 const cors = require('cors');
 const { DisTube, Song } = require('distube');
 
@@ -12,7 +13,7 @@ app.use(cors({
 }));
 
 require('dotenv').config()
-const { prefix, debug } = require('./config.json');
+const { prefix, ssl, debug } = require('./config.json');
 
 const client = new SapphireClient({
     defaultPrefix: prefix,
@@ -83,7 +84,14 @@ const main = async () => {
             res.status(404).sendFile(path.join(__dirname, '../service', '404.html'));
         });
         const port = 6947
-        app.listen(port)
+        if (ssl == true) {
+            https.createServer({
+                key: fs.readFileSync("./src/ssl/key.pem"),
+                cert: fs.readFileSync("./src/ssl/cert.pem"),
+            }, app).listen(port);
+        } else {
+            app.listen(port)
+        }
         fs.writeFileSync('./src/player.json', JSON.stringify(LastData));
         fs.writeFileSync('./src/system.json', JSON.stringify(StartSystemData));
         UpdateSystemData()
