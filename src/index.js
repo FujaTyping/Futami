@@ -164,7 +164,7 @@ client.distube
             .addComponents(Button, Status);
 
         const Msg = await queue.textChannel.send({ embeds: [Img, Content], components: [Row] })
-        fs.writeFileSync('./src/database.json', JSON.stringify(LastData));
+        fs.writeFileSync('./src/player.json', JSON.stringify(LastData));
 
         const Collector = Msg.createMessageComponentCollector({
             filter: (buttonInteraction) => buttonInteraction.customId === 'status' && buttonInteraction.user.id === song.user.id,
