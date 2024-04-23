@@ -1,0 +1,62 @@
+const axios = require('axios');
+const { Listener } = require('@sapphire/framework');
+const { EmbedBuilder } = require('discord.js');
+const { name, color } = require('../config.json');
+
+require('dotenv').config()
+const { ChatEndpoint } = require('../config.json');
+
+class MessageCreateListener extends Listener {
+    run(message) {
+        if (!message.author.bot) {
+            const Keyword = ['Futami', 'futami', 'ฟูตามิ', '<@1155156868554043484>']
+
+            Keyword.forEach(async keyword => {
+                if (message.content.includes(keyword)) {
+                    await message.channel.sendTyping();
+
+                    let Prompt = JSON.stringify({
+                        "model": "typhoon-instruct",
+                        "messages": [
+                            {
+                                "role": "system",
+                                "content": "ฉันคือ ฟูตามิ (Futami) ฟูตามินั้นเป็นผู้ชาย หนุ่มน้อยอายุ 17 ที่เป็นเพื่อนสนิทกับเพื่อนๆทุกคน"
+                            },
+                            {
+                                "role": "user",
+                                "content": `${message.content}`
+                            }
+                        ],
+                        "max_tokens": 75,
+                        "temperature": 0.7,
+                        "top_p": 1,
+                        "stream": false
+                    });
+                    let Config = {
+                        method: 'post',
+                        maxBodyLength: Infinity,
+                        url: `${ChatEndpoint}`,
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${process.env.typoon}`
+                        },
+                        data: Prompt
+                    };
+
+                    axios.request(Config)
+                        .then(async (response) => {
+                            let Data = response.data;
+                            //console.log(response.data)
+                            await message.channel.send(Data.choices[0].message.content);
+                        })
+                        .catch(async (error) => {
+                            await message.channel.send(`ผมไม่สามารถคุยกับคุณได้นะตอนนี้ : \`${error}\``);
+                        });
+                }
+            });
+        }
+    }
+}
+module.exports = {
+    MessageCreateListener
+};
