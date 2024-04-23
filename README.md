@@ -15,6 +15,7 @@ npm install
 > Use this value
 ```
 token=
+typoon= **Up to you
 ```
 4. Run command
 ```
