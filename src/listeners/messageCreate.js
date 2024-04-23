@@ -47,10 +47,10 @@ class MessageCreateListener extends Listener {
                         .then(async (response) => {
                             let Data = response.data;
                             //console.log(response.data)
-                            await message.channel.send(Data.choices[0].message.content);
+                            await message.reply(Data.choices[0].message.content);
                         })
                         .catch(async (error) => {
-                            await message.channel.send(`ผมไม่สามารถคุยกับคุณได้นะตอนนี้ : \`${error}\``);
+                            await message.reply(`ผมไม่สามารถคุยกับคุณได้นะตอนนี้ : \`${error}\``);
                         });
                 }
             });
