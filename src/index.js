@@ -13,7 +13,7 @@ app.use(cors({
 }));
 
 require('dotenv').config()
-const { prefix, ssl, debug } = require('./config.json');
+const { prefix, port, ssl, debug } = require('./config.json');
 
 const client = new SapphireClient({
     defaultPrefix: prefix,
@@ -77,13 +77,13 @@ const main = async () => {
         app.use(express.static(path.join(__dirname, '../service')))
         app.use('/system', express.static(path.join(__dirname, './system.json')));
         app.use('/player', express.static(path.join(__dirname, './player.json')));
+        //app.use('/.well-known/acme-challenge/YOUR_SECRET', express.static(path.join(__dirname, './YOUR_FILE')));
         app.get('/', function (req, res) {
             res.sendFile(__dirname + "../service/index.html")
         })
         app.use((req, res, next) => {
             res.status(404).sendFile(path.join(__dirname, '../service', '404.html'));
         });
-        const port = 6947
         if (ssl == true) {
             https.createServer({
                 key: fs.readFileSync("./src/ssl/key.pem"),
