@@ -55,6 +55,15 @@
                         <p class="py-4" style="text-align: center;">Fetching data... (This process may take a while)</p>
                         <div class="loader"></div>
                     </div>
+                    <div id="AlertFailed" style="margin-top: 40px;display: none;" role="alert"
+                        class="alert alert-error swing-in-top-fwd">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>Failed to fetch data from API</span>
+                    </div>
                 </div>
                 <div style="display: none;" id="FetchTable" class="overflow-x-auto text-focus-in">
                     <h1 style="font-family: Young Serif;" class="text-5xl font-bold">Status</h1>

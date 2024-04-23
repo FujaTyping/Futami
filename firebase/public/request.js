@@ -4,6 +4,9 @@ function GetLastData() {
     const Loader = document.getElementById('FetchLoader')
     const FTable = document.getElementById('FetchTable')
     const ContainF = document.getElementById('FetchContainer')
+    const AlertFail = document.getElementById('AlertFailed')
+
+    let FailedCount = 0;
 
     axios.get('https://api.futami.siraphop.me:6947/player')
         .then(function (response) {
@@ -35,6 +38,7 @@ function GetLastData() {
 
         })
         .catch(function (error) {
+            FailedCount = FailedCount + 1;
             console.error('[ERROR] : ', error);
         });
 
@@ -54,13 +58,18 @@ function GetLastData() {
             document.getElementById('DataPing').textContent = Ping + " ms";
         })
         .catch(function (error) {
+            FailedCount = FailedCount + 1;
             console.error('[ERROR] : ', error);
         });
 
     setTimeout(function () {
-        Loader.style.display = 'none';
-        FTable.style.display = 'block';
-        ContainF.classList.remove('min-h-screen');
-        //ContainF.classList.add('sas-content');
-    }, 2000);
+        if (FailedCount >= 1) {
+            AlertFail.style.display = 'flex';
+        } else {
+            Loader.style.display = 'none';
+            FTable.style.display = 'block';
+            ContainF.classList.remove('min-h-screen');
+            //ContainF.classList.add('sas-content');
+        }
+    }, Math.floor(Math.random() * 3001) + 2000);
 }
