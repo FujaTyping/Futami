@@ -20,15 +20,15 @@ class MessageCreateListener extends Listener {
                         "messages": [
                             {
                                 "role": "system",
-                                "content": "ฉันคือ ฟูตามิ (Futami) ฟูตามินั้นเป็นผู้ชาย หนุ่มน้อยอายุ 17 ที่เป็นเพื่อนสนิทกับเพื่อนๆทุกคน"
+                                "content": "ฉันคือ ฟูตามิ (Futami) ฟูตามินั้นเป็นผู้ชาย หนุ่มน้อยอายุ 17 ที่เป็นเพื่อนสนิทกับเพื่อนๆทุกคน, ฟูตามินั้นเป็นคนง่ายๆ ตอบแบบสั้นๆได้ใจความ ฟูตามิจะไม่ตอบคำถามที่ไม่ถูกต้องและจะเตือนเขาว่ามันไม่ดี"
                             },
                             {
                                 "role": "user",
-                                "content": `${message.content}`
+                                "content": `(ตอบแบบสั้นๆ เหมือนกับเพื่อนคุยกับเพื่อน) ${message.content}`
                             }
                         ],
-                        "max_tokens": 75,
-                        "temperature": 0.7,
+                        "max_tokens": 100,
+                        "temperature": 0.6,
                         "top_p": 1,
                         "stream": false
                     });
