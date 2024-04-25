@@ -17,6 +17,7 @@ npm install
 ```
 token=
 typoon= **Up to you
+waqi= **Up to you
 ```
 4. Run command
 ```
