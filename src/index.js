@@ -14,6 +14,8 @@ app.use(cors({
 
 require('dotenv').config()
 const { prefix, port, ssl, debug } = require('./config.json');
+const CurrentDate = new Date();
+const DateString = `${CurrentDate.getDate()}/${CurrentDate.getMonth()}/${CurrentDate.getFullYear()} @ ${CurrentDate.getHours()}:${CurrentDate.getMinutes()}:${CurrentDate.getSeconds()}`;
 
 const client = new SapphireClient({
     defaultPrefix: prefix,
@@ -329,11 +331,12 @@ function UpdateSystemData() {
         System: {
             cpuusage: `${GetCPUUsage()}`,
             ramusage: `${GetRAMUsage()}`,
-            ping: `${client.ws.ping}`
+            uptimesince: `${DateString}`
         },
         Bot: {
             guild: `${client.guilds.cache.size}`,
-            users: `${client.users.cache.size}`
+            users: `${client.users.cache.size}`,
+            ping: `${client.ws.ping}`
         }
     };
 
