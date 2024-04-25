@@ -88,8 +88,8 @@ const main = async () => {
         });
         if (ssl == true) {
             https.createServer({
-                key: fs.readFileSync("./src/ssl/key.pem"),
-                cert: fs.readFileSync("./src/ssl/cert.pem"),
+                key: fs.readFileSync("./src/ssl/key.pem"), //privkey.pem
+                cert: fs.readFileSync("./src/ssl/cert.pem"), //fullchain.pem
             }, app).listen(port);
         } else {
             app.listen(port)
