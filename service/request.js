@@ -44,10 +44,11 @@ function GetLastData() {
 
     axios.get('https://api.futami.siraphop.me:6947/system')
         .then(function (response) {
+            const BotData = response.data.Bot
             const SystemData = response.data.System;
             const CpuUsage = SystemData.cpuusage;
             const RamUsage = SystemData.ramusage;
-            const Ping = SystemData.ping;
+            const Ping = BotData.ping;
 
             const CpuUsageArray = CpuUsage.split(',').map(parseFloat);
             const TotalCpuUsage = CpuUsageArray.reduce((acc, curr) => acc + curr, 0);
@@ -56,6 +57,7 @@ function GetLastData() {
             document.getElementById('DataCpu').textContent = AverageCpuUsage.toFixed(2) + " %";
             document.getElementById('DataRam').textContent = RamUsage;
             document.getElementById('DataPing').textContent = Ping + " ms";
+            document.getElementById('DataUptime').textContent = "Uptime since : " + SystemData.uptimesince;
         })
         .catch(function (error) {
             FailedCount = FailedCount + 1;
