@@ -34,7 +34,7 @@ function ContinueInvite() {
         Text.style.color = 'white';
         Text2.style.color = 'white';
         pleaseread_modal.close()
-        window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=1155156868554043484&permissions=8&scope=bot%20applications.commands';
+        window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=1155156868554043484&permissions=11537416&scope=bot%20applications.commands';
     } else {
         Text.style.color = 'red';
         Text2.style.color = 'red';
@@ -44,7 +44,7 @@ function ContinueInvite() {
     if (Box.checked) {
         Text.style.color = 'white';
         pleaseread_modal.close()
-        window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=1155156868554043484&permissions=8&scope=bot%20applications.commands';
+        window.location.href = 'https://discord.com/api/oauth2/authorize?client_id=1155156868554043484&permissions=11537416&scope=bot%20applications.commands';
     } else {
         Text.style.color = 'red';
     }
