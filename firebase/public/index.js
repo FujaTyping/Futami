@@ -1,10 +1,10 @@
 let top_button = document.getElementById("top-button");
 
 window.onscroll = function () {
-    check_scroll();
+    Check_scroll();
 };
 
-function check_scroll() {
+function Check_scroll() {
     if (
         document.body.scrollTop > 500 ||
         document.documentElement.scrollTop > 500
