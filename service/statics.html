@@ -25,15 +25,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="./darkmode.js"></script>
     <script defer src="./index.js"></script>
     <script defer src="./request.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
-<body>
-    <button class="btn btn-circle btn-outline button-top-PP animate__animated" id="top-button">
+<body onmousemove="GetCursor(event)">
+    <button class="btn btn-circle btn-outline button-top animate__animated" id="top-button">
         <span class="material-symbols-outlined">
             vertical_align_top
+        </span>
+    </button>
+    <button onclick="RealDarkMode()" class="btn btn-circle btn-outline button-dark animate__animated">
+        <span class="material-symbols-outlined">
+            nights_stay
         </span>
     </button>
     <div>
@@ -68,7 +74,7 @@
                 <div style="display: none;" id="FetchTable" class="overflow-x-auto text-focus-in">
                     <h1 style="font-family: Young Serif;" class="text-5xl font-bold">Status</h1>
                     <p class="py-4">Futami's server status (VPS)<br><b id="DataUptime"></b></p>
-                    <div class="stats  stats-vertical lg:stats-horizontal shadow">
+                    <div class="stats stats-vertical lg:stats-horizontal shadow">
 
                         <div class="stat">
                             <div class="stat-figure text-base-300">
@@ -119,6 +125,12 @@
                             </tr>
                         </tbody>
                     </table>
+                    <h1 style="font-family: Young Serif;margin-top: 50px;" class="text-5xl font-bold">Web Statics</h1>
+                    <p class="py-4">Futami web visit count</p>
+                    <div class="footer footer-center">
+                        <img width="250px" style="margin-top: 8px;"
+                            src="https://count.getloli.com/get/@futami?theme=moebooru">
+                    </div>
                 </div>
             </div>
         </div>
