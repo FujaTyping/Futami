@@ -6,6 +6,9 @@ function GetCursor(event) {
     CursorY = event.clientY;
 }
 
+// Original code : petya0927/real-dark-mode
+// Modifiled : FujaTyping
+
 function RealDarkMode(options = {
     color: "#000000",
     size: 150,

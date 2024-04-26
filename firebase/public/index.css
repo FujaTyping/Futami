@@ -270,3 +270,9 @@ body::-webkit-scrollbar-thumb {
         opacity: 1;
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .lastjoin {
+        flex-direction: column !important;
+    }
+}
