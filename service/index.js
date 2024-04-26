@@ -65,3 +65,11 @@ if (CheckParallaxContainer !== null) {
         });
     });
 }
+
+function ShowMoreFeature() {
+    const Button = document.getElementById('MoreText')
+    const Contaner = document.getElementById('OtherFeature')
+
+    Button.style.display = 'none';
+    Contaner.style.display = 'block';
+}
