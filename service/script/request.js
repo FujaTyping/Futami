@@ -1,3 +1,7 @@
+const config = {
+    apiEndpoint: "api.futami.siraphop.me:6947"
+}
+
 window.onload = CheckPath()
 
 function CheckPath() {
@@ -12,7 +16,7 @@ function CheckPath() {
 }
 
 function GetStat() {
-    axios.get('https://api.futami.siraphop.me:6947/system')
+    axios.get(`https://${config.apiEndpoint}/system`)
         .then(function (response) {
             const BotData = response.data.Bot
             const Guild = BotData.guild
@@ -54,7 +58,7 @@ function GetLastData() {
 
     let FailedCount = 0;
 
-    axios.get('https://api.futami.siraphop.me:6947/player')
+    axios.get(`https://${config.apiEndpoint}/player`)
         .then(function (response) {
 
             const Data = response.data.LastSong;
@@ -88,7 +92,7 @@ function GetLastData() {
             console.error('[ERROR] : ', error);
         });
 
-    axios.get('https://api.futami.siraphop.me:6947/system')
+    axios.get(`https://${config.apiEndpoint}/system`)
         .then(function (response) {
             const BotData = response.data.Bot
             const SystemData = response.data.System;
