@@ -1,11 +1,17 @@
 {
-    "name": "Futami",
-    "prefix": "f.",
-    "ChatEndpoint": "https://api.opentyphoon.ai/v1/chat/completions",
-    "color": 7453402,
-    "colorHex": "#71BADA",
-    "owner": "729556554491232256",
-    "port": 6947,
-    "ssl": false,
-    "debug": false
+    "bot": {
+        "name": "Futami",
+        "prefix": "f.",
+        "owner": "729556554491232256",
+        "debug": false
+    },
+    "chat": {
+        "ChatEndpoint": "https://api.opentyphoon.ai/v1/chat/completions",
+        "color": 7453402,
+        "colorHex": "#71BADA"
+    },
+    "server": {
+        "port": 6947,
+        "ssl": false
+    }
 }

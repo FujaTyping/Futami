@@ -2,7 +2,9 @@ const { isMessageInstance } = require('@sapphire/discord.js-utilities');
 const { Command } = require('@sapphire/framework');
 const { EmbedBuilder } = require('discord.js');
 
-const { color } = require('../config.json');
+//const { color } = require('../config.json');
+const config = require('../config.json');
+const color = config.chat.color
 
 class AboutCommand extends Command {
     constructor(context, options) {

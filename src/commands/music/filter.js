@@ -1,7 +1,9 @@
 const { Command, container } = require('@sapphire/framework');
 const { EmbedBuilder } = require('discord.js');
 
-const { color } = require('../../config.json');
+//const { color } = require('../../config.json');
+const config = require('../../config.json');
+const color = config.chat.color
 
 class FilterCommand extends Command {
     constructor(context, options) {

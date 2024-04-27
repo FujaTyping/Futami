@@ -12,8 +12,14 @@ app.use(cors({
     origin: '*'
 }));
 
+//const { prefix, port, ssl, debug } = require('./config.json');
+const config = require('./config.json');
+const prefix = config.bot.prefix
+const port = config.server.port
+const ssl = config.server.ssl
+const debug = config.bot.debug
 require('dotenv').config()
-const { prefix, port, ssl, debug } = require('./config.json');
+
 const CurrentDate = new Date();
 const DateString = `${CurrentDate.getDate()}/${CurrentDate.getMonth()}/${CurrentDate.getFullYear()} @ ${CurrentDate.getHours()}:${CurrentDate.getMinutes()}:${CurrentDate.getSeconds()}`;
 

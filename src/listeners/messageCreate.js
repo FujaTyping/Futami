@@ -1,10 +1,11 @@
 const axios = require('axios');
 const { Listener } = require('@sapphire/framework');
 const { EmbedBuilder } = require('discord.js');
-const { name, color } = require('../config.json');
 
+//const { ChatEndpoint } = require('../config.json');
+const config = require('../config.json');
+const ChatEndpoint = config.chat.ChatEndpoint
 require('dotenv').config()
-const { ChatEndpoint } = require('../config.json');
 
 class MessageCreateListener extends Listener {
     run(message) {

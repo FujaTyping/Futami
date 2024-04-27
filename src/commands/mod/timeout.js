@@ -2,7 +2,9 @@ const { isMessageInstance } = require('@sapphire/discord.js-utilities');
 const { Command } = require('@sapphire/framework');
 const { EmbedBuilder, Message, PermissionsBitField } = require('discord.js');
 
-const { color } = require('../../config.json');
+//const { color } = require('../../config.json');
+const config = require('../../config.json');
+const color = config.chat.color
 
 class TimeoutCommand extends Command {
     constructor(context, options) {

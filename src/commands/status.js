@@ -1,7 +1,10 @@
 const { Command, container } = require('@sapphire/framework');
 const { EmbedBuilder, ActivityType } = require('discord.js');
 
-const { color, owner } = require('../config.json');
+//const { color, owner } = require('../config.json');
+const config = require('../config.json');
+const color = config.chat.color
+const owner = config.bot.owner
 
 class StatusCommand extends Command {
     constructor(context, options) {

@@ -3,7 +3,10 @@ const { Command } = require('@sapphire/framework');
 const { EmbedBuilder } = require('discord.js');
 const { TicTacToe } = require('discord-gamecord');
 
-const { color, colorHex } = require('../../config.json');
+//const { color, colorHex } = require('../../config.json');
+const config = require('../../config.json');
+const color = config.chat.color
+const colorHex = config.chat.colorHex
 
 class TicTacToeCommand extends Command {
     constructor(context, options) {

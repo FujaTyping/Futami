@@ -3,7 +3,9 @@ const { Command, container } = require('@sapphire/framework');
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const os = require('os');
 
-const { color } = require('../config.json');
+//const { color } = require('../config.json');
+const config = require('../config.json');
+const color = config.chat.color
 
 class InfoCommand extends Command {
     constructor(context, options) {

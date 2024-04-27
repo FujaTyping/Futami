@@ -3,7 +3,9 @@ const { Command } = require('@sapphire/framework');
 const { EmbedBuilder, Emoji } = require('discord.js');
 const { MatchPairs } = require('discord-gamecord');
 
-const { colorHex } = require('../../config.json');
+//const { colorHex } = require('../../config.json');
+const config = require('../../config.json');
+const colorHex = config.chat.colorHex
 const { Emojis } = require('./data/emoji.json');
 
 class MatchPairsCommand extends Command {
