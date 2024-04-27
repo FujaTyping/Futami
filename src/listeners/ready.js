@@ -1,5 +1,5 @@
 const { Listener } = require('@sapphire/framework');
-const { ActivityType } = require('discord.js');
+const { ActivityType, ActivityPlatform } = require('discord.js');
 
 class ReadyListener extends Listener {
     async run(client) {

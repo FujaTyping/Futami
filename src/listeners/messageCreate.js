@@ -2,9 +2,9 @@ const axios = require('axios');
 const { Listener } = require('@sapphire/framework');
 const { EmbedBuilder } = require('discord.js');
 
-//const { ChatEndpoint } = require('../config.json');
+//const { chatEndpoint } = require('../config.json');
 const config = require('../config.json');
-const ChatEndpoint = config.chat.ChatEndpoint
+const ChatEndpoint = config.chat.chatEndpoint
 require('dotenv').config()
 
 class MessageCreateListener extends Listener {

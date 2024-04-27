@@ -5,6 +5,7 @@ const express = require('express')
 const https = require("https");
 const cors = require('cors');
 const { DisTube, Song } = require('distube');
+const { DefaultWebSocketManagerOptions: { identifyProperties } } = require("@discordjs/ws");
 
 const app = express()
 const path = require('path');
@@ -18,7 +19,10 @@ const prefix = config.bot.prefix
 const port = config.server.port
 const ssl = config.server.ssl
 const debug = config.bot.debug
+const mobile = config.bot.mobile
 require('dotenv').config()
+
+if (mobile == true) { identifyProperties.browser = "Discord Android"; }
 
 const CurrentDate = new Date();
 const DateString = `${CurrentDate.getDate()}/${CurrentDate.getMonth()}/${CurrentDate.getFullYear()} @ ${CurrentDate.getHours()}:${CurrentDate.getMinutes()}:${CurrentDate.getSeconds()}`;
@@ -27,7 +31,8 @@ const client = new SapphireClient({
     defaultPrefix: prefix,
     disableMentionPrefix: true,
     intents: [GatewayIntentBits.MessageContent, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildVoiceStates],
-    loadMessageCommandListeners: true
+    loadMessageCommandListeners: true,
+    typing: true
 });
 
 const { SpotifyPlugin } = require('@distube/spotify')

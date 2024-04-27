@@ -3,10 +3,11 @@
         "name": "Futami",
         "prefix": "f.",
         "owner": "729556554491232256",
+        "mobile": false,
         "debug": false
     },
     "chat": {
-        "ChatEndpoint": "https://api.opentyphoon.ai/v1/chat/completions",
+        "chatEndpoint": "ENDPOINT_HERE",
         "color": 7453402,
         "colorHex": "#71BADA"
     },
