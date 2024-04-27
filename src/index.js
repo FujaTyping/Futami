@@ -33,8 +33,7 @@ const client = new SapphireClient({
     defaultPrefix: prefix,
     disableMentionPrefix: true,
     intents: [GatewayIntentBits.MessageContent, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildVoiceStates],
-    loadMessageCommandListeners: true,
-    typing: true
+    loadMessageCommandListeners: true
 });
 
 const { SpotifyPlugin } = require('@distube/spotify')
