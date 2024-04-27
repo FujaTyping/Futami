@@ -5,7 +5,6 @@ const express = require('express')
 const https = require("https");
 const cors = require('cors');
 const { DisTube, Song } = require('distube');
-const { DefaultWebSocketManagerOptions: { identifyProperties } } = require("@discordjs/ws");
 
 const app = express()
 const path = require('path');
@@ -22,7 +21,10 @@ const debug = config.bot.debug
 const mobile = config.bot.mobile
 require('dotenv').config()
 
-if (mobile == true) { identifyProperties.browser = "Discord Android"; }
+if (mobile == true) {
+    const { DefaultWebSocketManagerOptions: { identifyProperties } } = require("@discordjs/ws");
+    identifyProperties.browser = "Discord Android";
+}
 
 const CurrentDate = new Date();
 const DateString = `${CurrentDate.getDate()}/${CurrentDate.getMonth()}/${CurrentDate.getFullYear()} @ ${CurrentDate.getHours()}:${CurrentDate.getMinutes()}:${CurrentDate.getSeconds()}`;
