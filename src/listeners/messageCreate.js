@@ -2,7 +2,6 @@ const axios = require('axios');
 const { Listener } = require('@sapphire/framework');
 const { EmbedBuilder } = require('discord.js');
 
-//const { chatEndpoint } = require('../config.json');
 const config = require('../config.json');
 const ChatEndpoint = config.chat.chatEndpoint
 require('dotenv').config()

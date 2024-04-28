@@ -3,7 +3,6 @@ const { Command } = require('@sapphire/framework');
 const { EmbedBuilder } = require('discord.js');
 const { FastType } = require('discord-gamecord');
 
-//const { colorHex } = require('../../config.json');
 const config = require('../../config.json');
 const colorHex = config.chat.colorHex
 const { Words } = require('./data/word.json');

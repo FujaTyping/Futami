@@ -12,7 +12,6 @@ app.use(cors({
     origin: '*'
 }));
 
-//const { prefix, port, ssl, debug } = require('./config.json');
 const config = require('./config.json');
 const prefix = config.bot.prefix
 const color = config.chat.color

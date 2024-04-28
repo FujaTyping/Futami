@@ -3,7 +3,6 @@ const { Command } = require('@sapphire/framework');
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const axios = require('axios')
 
-//const { color } = require('../../config.json');
 const config = require('../../config.json');
 const color = config.chat.color
 

@@ -1,7 +1,6 @@
 const { Listener } = require('@sapphire/framework');
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 
-//const { name, color } = require('../config.json');
 const config = require('../config.json');
 const color = config.chat.color
 
