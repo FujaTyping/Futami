@@ -15,6 +15,7 @@ app.use(cors({
 //const { prefix, port, ssl, debug } = require('./config.json');
 const config = require('./config.json');
 const prefix = config.bot.prefix
+const color = config.chat.color
 const port = config.server.port
 const ssl = config.server.ssl
 const debug = config.bot.debug
@@ -54,7 +55,7 @@ let LastData = {
     ]
 };
 
-let StartSystemData = {
+let MainSystemData = {
     System: {
         cpuusage: "00.00%",
         ramusage: "00.00%",
@@ -89,12 +90,10 @@ const main = async () => {
         await client.login(process.env.token);
         client.logger.info(`Connected ${client.user.tag} successfully !`);
         app.use(express.static(path.join(__dirname, '../service')))
-        app.use('/system', express.static(path.join(__dirname, './system.json')));
-        app.use('/player', express.static(path.join(__dirname, './player.json')));
-        //app.use('/.well-known/acme-challenge/YOUR_SECRET', express.static(path.join(__dirname, './YOUR_FILE')));
-        app.get('/', function (req, res) {
-            res.sendFile(__dirname + "../service/index.html")
-        })
+        app.get('/', function (req, res) { res.sendFile(__dirname + "../service/index.html") })
+        app.get('/system', (req, res) => { res.json(MainSystemData) })
+        app.get('/player', (req, res) => { res.json(LastData) })
+        //app.get('/.well-known/acme-challenge/YOUR_SECRET', function (req, res) { res.sendFile(__dirname + "/ssl/YOUR_SSL_HERE") })
         app.use((req, res, next) => {
             res.status(404).sendFile(path.join(__dirname, '../service', '404.html'));
         });
@@ -106,8 +105,6 @@ const main = async () => {
         } else {
             app.listen(port)
         }
-        fs.writeFileSync('./src/player.json', JSON.stringify(LastData));
-        fs.writeFileSync('./src/system.json', JSON.stringify(StartSystemData));
         UpdateSystemData()
         setInterval(() => {
             UpdateSystemData()
@@ -121,8 +118,6 @@ const main = async () => {
 };
 
 main();
-
-const { color } = require('./config.json');
 
 client.distube
     .on('playSong', async (queue, song) => {
@@ -138,7 +133,7 @@ client.distube
                     }
                 ]
             };
-        } else if (SongId >= 15) {
+        } else if (SongId >= 18) {
             SongId = SongId + 1
             let NewLastData = {
                 id: SongId,
@@ -184,7 +179,6 @@ client.distube
             .addComponents(Button, Status);
 
         const Msg = await queue.textChannel.send({ embeds: [Img, Content], components: [Row] })
-        fs.writeFileSync('./src/player.json', JSON.stringify(LastData));
 
         const Collector = Msg.createMessageComponentCollector({
             filter: (buttonInteraction) => buttonInteraction.customId === 'status' && buttonInteraction.user.id === song.user.id,
@@ -339,7 +333,7 @@ if (debug) {
 }
 
 function UpdateSystemData() {
-    let SystemData = {
+    MainSystemData = {
         System: {
             cpuusage: `${GetCPUUsage()}`,
             ramusage: `${GetRAMUsage()}`,
@@ -351,6 +345,4 @@ function UpdateSystemData() {
             ping: `${client.ws.ping}`
         }
     };
-
-    fs.writeFileSync('./src/system.json', JSON.stringify(SystemData));
 }
