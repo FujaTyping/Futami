@@ -1,6 +1,5 @@
 # 💙 Futami
-Imagine a music bot , Bot that build with [Sapphire framwwork](sapphirejs.dev) , [Discord.js](https://discordjs.guide/#before-you-begin) , [Distube](https://distube.js.org/) and [Gamecord](https://discord-gamecord.js.org/)<br>
-ChatBot API by : [opentyphoon](https://opentyphoon.ai/)
+Imagine a music bot , Bot that build with [Sapphire framwwork](sapphirejs.dev) , [Discord.js](https://discordjs.guide/#before-you-begin) , [Distube](https://distube.js.org/) and [Gamecord](https://discord-gamecord.js.org/)
 
 # ⁉ How to use
 0. Clone this repo (Don't forget to install [git](https://git-scm.com/downloads))
@@ -36,13 +35,11 @@ node .  or  node src/index.js
 # 🔷 Custom components
 - Custom **discord-gamecord** text : `node_modules/discord-gamecord/src/...`
 
-# 💰 Support
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L4L5X244N) &nbsp; <a href="https://www.buymeacoffee.com/fujatyping" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png" alt="Buy Me A Coffee" style="height: 30px !important;width: 120px !important;" ></a>
-
-<p align="center"> <img src="https://count.getloli.com/get/@futami?theme=moebooru" alt="futami" /> </p>
-
 ~~# ⚠️ This project is archive~~
 ~~It's mean no longer maintained , won't receive updates or bug fixes and completely discontinued after 31.03.24~~
+
+# 
+<p align="center"> <img src="https://count.getloli.com/get/@futami?theme=moebooru" alt="futami" /> </p>
 
 > Thank you for your support<br/>
 > Made with 🩷 by FujaTyping
