@@ -11,7 +11,7 @@ function GetCursor(event) {
 
 function RealDarkMode(options = {
     color: "#000000",
-    size: 150,
+    size: 180,
     falloff: 0.5,
     opacity: 0.90,
     zIndex: 9999,
