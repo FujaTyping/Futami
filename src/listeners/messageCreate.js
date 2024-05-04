@@ -10,7 +10,7 @@ class MessageCreateListener extends Listener {
     run(message) {
         if (!message.author.bot) {
             let AnswerAlready = false;
-            const Keyword = ['Futami', 'futami', 'ฟูตามิ', '<@1155156868554043484>']
+            const Keyword = ['Futami', 'futami', 'ฟูตามิ', 'ฟุตามิ', '<@1155156868554043484>']
 
             Keyword.forEach(async keyword => {
                 if (AnswerAlready == false) {
@@ -50,7 +50,7 @@ class MessageCreateListener extends Listener {
                             .then(async (response) => {
                                 let Data = response.data;
                                 //console.log(response.data)
-                                await message.reply(Data.choices[0].message.content);
+                                await message.reply("<:FTTY:1236361695149162647> " + Data.choices[0].message.content);
                             })
                             .catch(async (error) => {
                                 await message.reply(`ผมไม่สามารถคุยกับคุณได้นะตอนนี้ : \`${error}\``);
