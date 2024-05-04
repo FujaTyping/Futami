@@ -50,7 +50,7 @@ class MessageCreateListener extends Listener {
                             .then(async (response) => {
                                 let Data = response.data;
                                 //console.log(response.data)
-                                await message.reply("<:FTTY:1236361695149162647> " + Data.choices[0].message.content);
+                                await message.reply("(<:FTTF:1236363295020023828>) " + Data.choices[0].message.content);
                             })
                             .catch(async (error) => {
                                 await message.reply(`ผมไม่สามารถคุยกับคุณได้นะตอนนี้ : \`${error}\``);
