@@ -114,6 +114,7 @@ function GetLastData() {
             console.error('[ERROR] : ', error);
         });
 
+    //console.log(FailedCount)
     if (FailedCount >= 1) {
         AlertFail.style.display = 'flex';
     } else {
