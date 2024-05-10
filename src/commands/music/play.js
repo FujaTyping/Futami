@@ -1,8 +1,12 @@
 const { Command, container } = require('@sapphire/framework');
 const { EmbedBuilder } = require('discord.js');
+const fs = require('fs');
 
 const config = require('../../config.json');
 const color = config.chat.color
+
+const PlaylistDataJSON = fs.readFileSync('./src/commands/music/data/playlist.json', 'utf8');
+const DataPlaylist = JSON.parse(PlaylistDataJSON);
 
 class PlayCommand extends Command {
     constructor(context, options) {
@@ -15,6 +19,7 @@ class PlayCommand extends Command {
     }
 
     async messageRun(message, args) {
+        let Song = await args.rest('string');
         const { client } = container;
 
         if (!message.member.voice.channel) {
@@ -26,24 +31,49 @@ class PlayCommand extends Command {
 
             return await message.reply({ embeds: [Content] });
         } else {
-            const msg = await message.reply('กำลังหาเพลง ...');
-            const Song = await args.rest('string');
+            if (Song.includes('--playlist')) {
+                let PlaylistName = Song.replace('--playlist', '').trim();
+                const Playlist = DataPlaylist.find(PlaySong => PlaySong.name === PlaylistName);
 
-            client.distube.play(message.member.voice.channel, Song, {
-                member: message.member,
-                textChannel: message.channel,
-                message
-            })
+                if (Playlist) {
+                    Song = Playlist.url
+                    const msg = await message.reply('กำลังดึงเพลงจากเพลย์ลิส ...');
 
-            /*
-            const Content = new EmbedBuilder()
-                .setColor(color)
-                .setTitle('📣 ประกาศ !!')
-                .setDescription('ช่วงนี้บอทอาจจะหาเพลงไม่เจอบ่อย\n`Error : 429 too many request`')
-                .setTimestamp()
-            */
+                    client.distube.play(message.member.voice.channel, Song, {
+                        member: message.member,
+                        textChannel: message.channel,
+                        message
+                    })
 
-            return await msg.edit({ content: 'เจอเพลงล่ะ ✨'/*, embeds: [Content] */ });
+                    const Content = new EmbedBuilder()
+                        .setColor(color)
+                        .setTitle('▶️ ข้อมูลเพลย์ลิส')
+                        .setDescription(`เพลย์ลิส : **${Playlist.title}**\nเพิ่มโดย : \`${Playlist.add}\``)
+                        .setTimestamp()
+
+                    return await msg.edit({ content: 'ดึงข้อมูลเพลงเสร็จล่ะ ✨', embeds: [Content] });
+                } else {
+                    return await message.reply('ดูเหมือนว่าจะไม่มีเพลย์ลิสในฐานข้อมูลของฟูตามินะ !!');
+                }
+            } else {
+                const msg = await message.reply('กำลังหาเพลง ...');
+
+                client.distube.play(message.member.voice.channel, Song, {
+                    member: message.member,
+                    textChannel: message.channel,
+                    message
+                })
+
+                /*
+                const Content = new EmbedBuilder()
+                    .setColor(color)
+                    .setTitle('📣 ประกาศ !!')
+                    .setDescription('ช่วงนี้บอทอาจจะหาเพลงไม่เจอบ่อย\n`Error : 429 too many request`')
+                    .setTimestamp()
+                */
+
+                return await msg.edit({ content: 'เจอเพลงล่ะ ✨'/*, embeds: [Content] */ });
+            }
         }
     }
 }
