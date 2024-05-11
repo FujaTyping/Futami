@@ -6,6 +6,25 @@ const axios = require('axios')
 const config = require('../../config.json');
 const color = config.chat.color
 
+const Choices = [
+    { name: 'กอด', value: 'hug' },
+    { name: 'จูบ', value: 'kiss' },
+    { name: 'บองก์', value: 'bonk' },
+    { name: 'ยีท', value: 'yeet' },
+    { name: 'โบกมือ ให้', value: 'wave' },
+    { name: 'ไฮไฟว์ กับ', value: 'highfive' },
+    { name: 'จับมือ', value: 'handhold' },
+    { name: 'ตบ', value: 'slap' },
+    { name: 'ฆ่า', value: 'kill' },
+    { name: 'เตะ', value: 'kick' },
+    { name: 'กัด', value: 'bite' },
+    { name: 'เต้น กับ', value: 'dance' },
+    { name: 'ยิ้ม ให้', value: 'smile' },
+    { name: 'ร้องให้ กับ', value: 'cry' },
+    { name: 'มีความสุข กับ', value: 'happy' },
+    { name: 'ลูบหัว', value: 'pat' }
+];
+
 class EmoteCommand extends Command {
     constructor(context, options) {
         super(context, { ...options });
@@ -50,25 +69,6 @@ class EmoteCommand extends Command {
     async chatInputRun(interaction) {
         const Action = interaction.options.getString('action')
         const User = interaction.options.getUser('user')
-
-        const Choices = [
-            { name: 'กอด', value: 'hug' },
-            { name: 'จูบ', value: 'kiss' },
-            { name: 'บองก์', value: 'bonk' },
-            { name: 'ยีท', value: 'yeet' },
-            { name: 'โบกมือ ให้', value: 'wave' },
-            { name: 'ไฮไฟว์ กับ', value: 'highfive' },
-            { name: 'จับมือ', value: 'handhold' },
-            { name: 'ตบ', value: 'slap' },
-            { name: 'ฆ่า', value: 'kill' },
-            { name: 'เตะ', value: 'kick' },
-            { name: 'กัด', value: 'bite' },
-            { name: 'เต้น กับ', value: 'dance' },
-            { name: 'ยิ้ม ให้', value: 'smile' },
-            { name: 'ร้องให้ กับ', value: 'cry' },
-            { name: 'มีความสุข กับ', value: 'happy' },
-            { name: 'ลูบหัว', value: 'pat' }
-        ];
 
         const Emote = Choices.find(choice => choice.value === Action)?.name;
 

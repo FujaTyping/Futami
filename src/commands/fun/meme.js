@@ -38,7 +38,7 @@ class MemeCommand extends Command {
                     .setTimestamp()
 
                 const Button = new ButtonBuilder()
-                    .setLabel('ดูโพสต์ใน reddit')
+                    .setLabel('ดูโพสต์ใน Reddit')
                     .setURL(Response.postLink)
                     .setStyle(ButtonStyle.Link);
 
