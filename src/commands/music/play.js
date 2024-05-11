@@ -33,7 +33,7 @@ class PlayCommand extends Command {
         } else {
             if (Song.includes('--playlist')) {
                 let PlaylistName = Song.replace('--playlist', '').trim();
-                const Playlist = DataPlaylist.find(PlaySong => PlaySong.name === PlaylistName);
+                const Playlist = DataPlaylist.Playlist.find(PlaySong => PlaySong.name === PlaylistName);
 
                 if (Playlist) {
                     Song = Playlist.url
@@ -48,7 +48,7 @@ class PlayCommand extends Command {
                     const Content = new EmbedBuilder()
                         .setColor(color)
                         .setTitle('▶️ ข้อมูลเพลย์ลิส')
-                        .setDescription(`เพลย์ลิส : **${Playlist.title}**\nเพิ่มโดย : \`${Playlist.add}\``)
+                        .setDescription(`เพลย์ลิส : **${Playlist.title}**\nเพิ่มโดย : \`${Playlist.request}\``)
                         .setTimestamp()
 
                     return await msg.edit({ content: 'ดึงข้อมูลเพลงเสร็จล่ะ ✨', embeds: [Content] });
