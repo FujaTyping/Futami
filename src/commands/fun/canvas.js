@@ -49,6 +49,14 @@ class CanvasCommand extends Command {
         const User = interaction.options.getUser('user')
         const Text = interaction.options.getString('text')
 
+        const Content = new EmbedBuilder()
+            .setColor(color)
+            .setTitle('✏️ ระบบสร้างมีม')
+            .setDescription('กำลังสร้างมีม รอแปปนึง ..')
+            .setTimestamp()
+
+        const msg = await interaction.reply({ embeds: [Content], fetchReply: true });
+
         if (Format == 'stonks') {
             const canvas = createCanvas(666, 499)
             const ctx = canvas.getContext('2d')
@@ -73,12 +81,12 @@ class CanvasCommand extends Command {
                     const Content = new EmbedBuilder()
                         .setColor(color)
                         .setTitle(`✏️ ระบบสร้างมีม`)
-                        .setDescription(`คำบรรยาย : **${Text}**`)
+                        .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
                         .setImage('attachment://Stonks.png')
                         .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
                         .setTimestamp()
 
-                    return interaction.reply({ embeds: [Content], files: [FinishImage] });
+                    return interaction.editReply({ embeds: [Content], files: [FinishImage] });
                 })
             })
         } else if (Format == 'changemymind') {
@@ -106,12 +114,12 @@ class CanvasCommand extends Command {
                     const Content = new EmbedBuilder()
                         .setColor(color)
                         .setTitle(`✏️ ระบบสร้างมีม`)
-                        .setDescription(`คำบรรยาย : **${Text}**`)
+                        .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
                         .setImage('attachment://ChangeMyMind.png')
                         .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
                         .setTimestamp()
 
-                    return interaction.reply({ embeds: [Content], files: [FinishImage] });
+                    return interaction.editReply({ embeds: [Content], files: [FinishImage] });
                 })
             })
         } else if (Format == 'unodrawcards') {
@@ -138,12 +146,12 @@ class CanvasCommand extends Command {
                     const Content = new EmbedBuilder()
                         .setColor(color)
                         .setTitle(`✏️ ระบบสร้างมีม`)
-                        .setDescription(`คำบรรยาย : **${Text}**`)
+                        .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
                         .setImage('attachment://Uno.png')
                         .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
                         .setTimestamp()
 
-                    return interaction.reply({ embeds: [Content], files: [FinishImage] });
+                    return interaction.editReply({ embeds: [Content], files: [FinishImage] });
                 })
             })
         } else if (Format == 'waitingskeleton') {
@@ -170,12 +178,12 @@ class CanvasCommand extends Command {
                     const Content = new EmbedBuilder()
                         .setColor(color)
                         .setTitle(`✏️ ระบบสร้างมีม`)
-                        .setDescription(`คำบรรยาย : **${Text}**`)
+                        .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
                         .setImage('attachment://Skeleton.png')
                         .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
                         .setTimestamp()
 
-                    return interaction.reply({ embeds: [Content], files: [FinishImage] });
+                    return interaction.editReply({ embeds: [Content], files: [FinishImage] });
                 })
             })
         }
