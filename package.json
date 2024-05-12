@@ -30,6 +30,8 @@
     "@distube/ytsr": "^2.0.0",
     "@sapphire/framework": "^5.1.0",
     "axios": "^1.6.8",
+    "canvas": "^2.11.2",
+    "canvas-webp": "^1.0.0",
     "cors": "^2.8.5",
     "discord-gamecord": "^4.4.2",
     "discord.js": "^14.14.1",
