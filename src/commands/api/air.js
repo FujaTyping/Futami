@@ -3,7 +3,7 @@ const { Command, err } = require('@sapphire/framework');
 const { EmbedBuilder } = require('discord.js');
 const axios = require('axios')
 
-const config = require('../config.json');
+const config = require('../../config.json');
 const color = config.chat.color
 require('dotenv').config()
 
