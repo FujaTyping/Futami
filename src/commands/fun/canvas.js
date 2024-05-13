@@ -25,7 +25,10 @@ class CanvasCommand extends Command {
                             { name: 'Stonks', value: 'stonks' },
                             { name: 'Change My Mind', value: 'changemymind' },
                             { name: 'UNO Draw 25 Cards', value: 'unodrawcards' },
-                            { name: 'Waiting Skeleton', value: 'waitingskeleton' }
+                            { name: 'Waiting Skeleton', value: 'waitingskeleton' },
+                            { name: 'Unsettled Tom', value: 'unsettledtom' },
+                            { name: 'I Am Once Again Asking', value: 'iamonceagainasking' },
+                            { name: 'Surprised Pikachu', value: 'surprisedpikachu' }
                         )
                         .setRequired(true)
                 )
@@ -164,15 +167,27 @@ class CanvasCommand extends Command {
                     const Buffer = canvas.toBuffer('image/png')
                     const FinishImage = new AttachmentBuilder(Buffer, { name: 'Uno.png' });
 
-                    const Content = new EmbedBuilder()
-                        .setColor(color)
-                        .setTitle(`✏️ ระบบสร้างมีม`)
-                        .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
-                        .setImage('attachment://Uno.png')
-                        .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
-                        .setTimestamp()
+                    if (Text2) {
+                        const Content = new EmbedBuilder()
+                            .setColor(color)
+                            .setTitle(`✏️ ระบบสร้างมีม`)
+                            .setDescription(`คำบรรยาย : (${User}) **${Text} ${Text2}**`)
+                            .setImage('attachment://Uno.png')
+                            .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
+                            .setTimestamp()
 
-                    return interaction.editReply({ embeds: [Content], files: [FinishImage] });
+                        return interaction.editReply({ embeds: [Content], files: [FinishImage] });
+                    } else {
+                        const Content = new EmbedBuilder()
+                            .setColor(color)
+                            .setTitle(`✏️ ระบบสร้างมีม`)
+                            .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
+                            .setImage('attachment://Uno.png')
+                            .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
+                            .setTimestamp()
+
+                        return interaction.editReply({ embeds: [Content], files: [FinishImage] });
+                    }
                 })
             })
         } else if (Format == 'waitingskeleton') {
@@ -202,6 +217,121 @@ class CanvasCommand extends Command {
                         .setTitle(`✏️ ระบบสร้างมีม`)
                         .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
                         .setImage('attachment://Skeleton.png')
+                        .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
+                        .setTimestamp()
+
+                    return interaction.editReply({ embeds: [Content], files: [FinishImage] });
+                })
+            })
+        } else if (Format == 'unsettledtom') {
+            const canvas = createCanvas(618, 499)
+            const ctx = canvas.getContext('2d')
+            loadImage('./src/commands/fun/data/canvas/Tom.jpg').then((Bg) => {
+                ctx.drawImage(Bg, 0, 0, canvas.width, canvas.height)
+                const TextWidth = ctx.measureText(Text).width;
+
+                const x = canvas.width / 2;
+                const y = 63;
+
+                ctx.font = '53px Impact'
+                ctx.fillStyle = 'white'
+                ctx.strokeStyle = 'rgba(0,0,0,3)'
+                ctx.textAlign = 'center'
+                ctx.fillText(Text, x, y)
+                ctx.strokeText(Text, x, y)
+
+                const Buffer = canvas.toBuffer('image/png')
+                const FinishImage = new AttachmentBuilder(Buffer, { name: 'Tom.png' });
+
+                const Content = new EmbedBuilder()
+                    .setColor(color)
+                    .setTitle(`✏️ ระบบสร้างมีม`)
+                    .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
+                    .setImage('attachment://Tom.png')
+                    .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
+                    .setTimestamp()
+
+                return interaction.editReply({ embeds: [Content], files: [FinishImage] });
+            })
+        } else if (Format == 'surprisedpikachu') {
+            const canvas = createCanvas(500, 500)
+            const ctx = canvas.getContext('2d')
+            loadImage('./src/commands/fun/data/canvas/Pikachu.jpg').then((Bg) => {
+                ctx.drawImage(Bg, 0, 0, canvas.width, canvas.height)
+                const TextWidth = ctx.measureText(Text).width;
+
+                let x = canvas.width / 2;
+                let y;
+
+                if (!Text2) {
+                    y = 120;
+                } else {
+                    y = 90;
+                }
+
+                ctx.font = '50px Impact'
+                ctx.fillStyle = 'white'
+                ctx.strokeStyle = 'rgba(0,0,0,3)'
+                ctx.textAlign = 'center'
+                ctx.fillText(Text, x, y)
+                ctx.strokeText(Text, x, y)
+                if (Text2) {
+                    ctx.fillText(Text2, x, y + 55)
+                    ctx.strokeText(Text2, x, y + 55)
+                }
+
+                const Buffer = canvas.toBuffer('image/png')
+                const FinishImage = new AttachmentBuilder(Buffer, { name: 'Pikachu.png' });
+
+                if (Text2) {
+                    const Content = new EmbedBuilder()
+                        .setColor(color)
+                        .setTitle(`✏️ ระบบสร้างมีม`)
+                        .setDescription(`คำบรรยาย : (${User}) **${Text} ${Text2}**`)
+                        .setImage('attachment://Pikachu.png')
+                        .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
+                        .setTimestamp()
+
+                    return interaction.editReply({ embeds: [Content], files: [FinishImage] });
+                } else {
+                    const Content = new EmbedBuilder()
+                        .setColor(color)
+                        .setTitle(`✏️ ระบบสร้างมีม`)
+                        .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
+                        .setImage('attachment://Pikachu.png')
+                        .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
+                        .setTimestamp()
+
+                    return interaction.editReply({ embeds: [Content], files: [FinishImage] });
+                }
+            })
+        } else if (Format == 'iamonceagainasking') {
+            const canvas = createCanvas(500, 500)
+            const ctx = canvas.getContext('2d')
+            loadImage('./src/commands/fun/data/canvas/Ask.jpg').then((Bg) => {
+                loadImage(`${User.avatarURL().replace(".webp", ".png")}`).then((Avatar) => {
+                    ctx.drawImage(Bg, 0, 0, canvas.width, canvas.height)
+                    ctx.drawImage(Avatar, 205, 110, 150, 150)
+                    const TextWidth = ctx.measureText(Text).width;
+
+                    const x = canvas.width / 2;
+                    const y = 480;
+
+                    ctx.font = '50px Impact'
+                    ctx.fillStyle = 'white'
+                    ctx.strokeStyle = 'rgba(0,0,0,3)'
+                    ctx.textAlign = 'center'
+                    ctx.fillText(Text, x, y)
+                    ctx.strokeText(Text, x, y)
+
+                    const Buffer = canvas.toBuffer('image/png')
+                    const FinishImage = new AttachmentBuilder(Buffer, { name: 'Ask.png' });
+
+                    const Content = new EmbedBuilder()
+                        .setColor(color)
+                        .setTitle(`✏️ ระบบสร้างมีม`)
+                        .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
+                        .setImage('attachment://Ask.png')
                         .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
                         .setTimestamp()
 
