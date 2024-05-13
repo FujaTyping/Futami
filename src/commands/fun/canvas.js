@@ -41,6 +41,11 @@ class CanvasCommand extends Command {
                         .setDescription('เขียนข้อความว่าอะไรดี ??')
                         .setRequired(true)
                 )
+                .addStringOption((option) =>
+                    option
+                        .setName('text-bottom')
+                        .setDescription('เขียนข้อความบรรทัดที่ 2 ว่าอะไรดี ??')
+                )
         );
     }
 
@@ -48,6 +53,7 @@ class CanvasCommand extends Command {
         const Format = interaction.options.getString('create')
         const User = interaction.options.getUser('user')
         const Text = interaction.options.getString('text')
+        const Text2 = interaction.options.getString('text-bottom') ?? false;
 
         const Content = new EmbedBuilder()
             .setColor(color)
@@ -66,12 +72,13 @@ class CanvasCommand extends Command {
                     ctx.drawImage(Avatar, 75, 35, 160, 160)
                     const TextWidth = ctx.measureText(Text).width;
 
-                    const x = 425 - TextWidth / 2;
+                    const x = 500;
                     const y = 340;
 
                     ctx.font = '45px Impact'
                     ctx.fillStyle = 'white'
                     ctx.strokeStyle = 'rgba(0,0,0,3)'
+                    ctx.textAlign = 'center'
                     ctx.fillText(Text, x, y)
                     ctx.strokeText(Text, x, y)
 
@@ -98,12 +105,13 @@ class CanvasCommand extends Command {
                     ctx.drawImage(Avatar, 195, 30, 95, 95)
                     const TextWidth = ctx.measureText(Text).width;
 
-                    const x = 300 - TextWidth / 2;
-                    const y = 365;
+                    const x = 350;
+                    const y = 370;
 
                     ctx.font = '45px Impact'
                     ctx.fillStyle = 'white'
                     ctx.strokeStyle = 'rgba(0,0,0,3)'
+                    ctx.textAlign = 'center'
                     ctx.rotate(-0.1)
                     ctx.fillText(Text, x, y)
                     ctx.strokeText(Text, x, y)
@@ -131,14 +139,27 @@ class CanvasCommand extends Command {
                     ctx.drawImage(Avatar, 315, 45, 100, 100)
                     const TextWidth = ctx.measureText(Text).width;
 
-                    const x = 100 - TextWidth / 2;
-                    const y = 215;
+                    let x;
+                    let y;
+
+                    if (!Text2) {
+                        x = 150;
+                        y = 215;
+                    } else {
+                        x = 150 + 10;
+                        y = 195;
+                    }
 
                     ctx.font = '35px Impact'
                     ctx.fillStyle = 'white'
                     ctx.strokeStyle = 'rgba(0,0,0,3)'
+                    ctx.textAlign = 'center'
                     ctx.fillText(Text, x, y)
                     ctx.strokeText(Text, x, y)
+                    if (Text2) {
+                        ctx.fillText(Text2, x - 10, y + 35)
+                        ctx.strokeText(Text2, x - 10, y + 35)
+                    }
 
                     const Buffer = canvas.toBuffer('image/png')
                     const FinishImage = new AttachmentBuilder(Buffer, { name: 'Uno.png' });
@@ -163,12 +184,13 @@ class CanvasCommand extends Command {
                     ctx.drawImage(Avatar, 195, 80, 130, 130)
                     const TextWidth = ctx.measureText(Text).width;
 
-                    const x = 185 - TextWidth / 2;
+                    const x = canvas.width / 2;
                     const y = 640;
 
                     ctx.font = '50px Impact'
                     ctx.fillStyle = 'white'
                     ctx.strokeStyle = 'rgba(0,0,0,3)'
+                    ctx.textAlign = 'center'
                     ctx.fillText(Text, x, y)
                     ctx.strokeText(Text, x, y)
 
