@@ -28,7 +28,10 @@ class CanvasCommand extends Command {
                             { name: 'Waiting Skeleton', value: 'waitingskeleton' },
                             { name: 'Unsettled Tom', value: 'unsettledtom' },
                             { name: 'I Am Once Again Asking', value: 'iamonceagainasking' },
-                            { name: 'Surprised Pikachu', value: 'surprisedpikachu' }
+                            { name: 'Surprised Pikachu', value: 'surprisedpikachu' },
+                            { name: 'This is Worthless', value: 'thisisworthless' },
+                            { name: 'Dr Evil air quotes', value: 'drevilairquotes' },
+                            { name: "Now That’s What I Call", value: 'nowthatswhaticall' }
                         )
                         .setRequired(true)
                 )
