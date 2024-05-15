@@ -2,7 +2,6 @@ const { isMessageInstance } = require('@sapphire/discord.js-utilities');
 const { Command } = require('@sapphire/framework');
 const { AttachmentBuilder, EmbedBuilder } = require('discord.js');
 const { registerFont, createCanvas, loadImage } = require('canvas')
-require("canvas-webp");
 
 const config = require('../../config.json');
 const color = config.chat.color
@@ -340,6 +339,124 @@ class CanvasCommand extends Command {
 
                     return interaction.editReply({ embeds: [Content], files: [FinishImage] });
                 })
+            })
+        } else if (Format == 'thisisworthless') {
+            const canvas = createCanvas(500, 560)
+            const ctx = canvas.getContext('2d')
+            loadImage('./src/commands/fun/data/canvas/Worth.jpg').then((Bg) => {
+                loadImage(`${User.avatarURL().replace(".webp", ".png")}`).then((Avatar) => {
+                    ctx.drawImage(Bg, 0, 0, canvas.width, canvas.height)
+                    ctx.drawImage(Avatar, 175, 345, 140, 140)
+                    const TextWidth = ctx.measureText(Text).width;
+
+                    let y;
+                    const x = canvas.width / 2;
+
+                    if (!Text2) {
+                        y = 180;
+                    } else {
+                        y = 160;
+                    }
+
+                    ctx.font = '50px Impact'
+                    ctx.fillStyle = 'white'
+                    ctx.strokeStyle = 'rgba(0,0,0,3)'
+                    ctx.textAlign = 'center'
+                    ctx.fillText(Text, x, y)
+                    ctx.strokeText(Text, x, y)
+                    if (Text2) {
+                        ctx.fillText(Text2, x, y + 50)
+                        ctx.strokeText(Text2, x, y + 50)
+                    }
+
+                    const Buffer = canvas.toBuffer('image/png')
+                    const FinishImage = new AttachmentBuilder(Buffer, { name: 'Worth.png' });
+
+                    if (Text2) {
+                        const Content = new EmbedBuilder()
+                            .setColor(color)
+                            .setTitle(`✏️ ระบบสร้างมีม`)
+                            .setDescription(`คำบรรยาย : (${User}) **${Text} ${Text2}**`)
+                            .setImage('attachment://Worth.png')
+                            .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
+                            .setTimestamp()
+
+                        return interaction.editReply({ embeds: [Content], files: [FinishImage] });
+                    } else {
+                        const Content = new EmbedBuilder()
+                            .setColor(color)
+                            .setTitle(`✏️ ระบบสร้างมีม`)
+                            .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
+                            .setImage('attachment://Worth.png')
+                            .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
+                            .setTimestamp()
+
+                        return interaction.editReply({ embeds: [Content], files: [FinishImage] });
+                    }
+                })
+            })
+        } else if (Format == 'drevilairquotes') {
+            const canvas = createCanvas(667, 500)
+            const ctx = canvas.getContext('2d')
+            loadImage('./src/commands/fun/data/canvas/Dr.jpg').then((Bg) => {
+                loadImage(`${User.avatarURL().replace(".webp", ".png")}`).then((Avatar) => {
+                    ctx.drawImage(Bg, 0, 0, canvas.width, canvas.height)
+                    ctx.drawImage(Avatar, 265, 55, 160, 160)
+                    const TextWidth = ctx.measureText(Text).width;
+
+                    const x = canvas.width / 2;
+                    const y = 480;
+
+                    ctx.font = '53px Impact'
+                    ctx.fillStyle = 'white'
+                    ctx.strokeStyle = 'rgba(0,0,0,3)'
+                    ctx.textAlign = 'center'
+                    ctx.fillText(Text, x, y)
+                    ctx.strokeText(Text, x, y)
+
+                    const Buffer = canvas.toBuffer('image/png')
+                    const FinishImage = new AttachmentBuilder(Buffer, { name: 'Dr.png' });
+
+                    const Content = new EmbedBuilder()
+                        .setColor(color)
+                        .setTitle(`✏️ ระบบสร้างมีม`)
+                        .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
+                        .setImage('attachment://Dr.png')
+                        .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
+                        .setTimestamp()
+
+                    return interaction.editReply({ embeds: [Content], files: [FinishImage] });
+                })
+            })
+        } else if (Format == 'nowthatswhaticall') {
+            const canvas = createCanvas(738, 477)
+            const ctx = canvas.getContext('2d')
+            loadImage('./src/commands/fun/data/canvas/Now.jpg').then((Bg) => {
+                ctx.drawImage(Bg, 0, 0, canvas.width, canvas.height)
+                const TextWidth = ctx.measureText(Text).width;
+
+                const x = canvas.width / 2;
+                const y = 400;
+
+                ctx.font = '60px Impact'
+                ctx.fillStyle = 'white'
+                ctx.strokeStyle = 'rgba(0,0,0,3)'
+                ctx.textAlign = 'center'
+                ctx.fillText(Text, x, y)
+                ctx.strokeText(Text, x, y)
+
+                const Buffer = canvas.toBuffer('image/png')
+                const FinishImage = new AttachmentBuilder(Buffer, { name: 'Now.png' });
+
+                const Content = new EmbedBuilder()
+                    .setColor(color)
+                    .setTitle(`✏️ ระบบสร้างมีม`)
+                    .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
+                    .setImage('attachment://Now.png')
+                    .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
+                    .setTimestamp()
+
+                return interaction.editReply({ embeds: [Content], files: [FinishImage] });
             })
         }
     }
