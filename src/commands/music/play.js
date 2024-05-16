@@ -53,7 +53,14 @@ class PlayCommand extends Command {
 
                     return await msg.edit({ content: 'ดึงข้อมูลเพลงเสร็จล่ะ ✨', embeds: [Content] });
                 } else {
-                    return await message.reply('ดูเหมือนว่าจะไม่มีเพลย์ลิสในฐานข้อมูลของฟูตามินะ !!');
+                    let PlaylistName = Song.replace('--playlist', '').trim();
+                    const Content = new EmbedBuilder()
+                        .setColor(color)
+                        .setTitle('⚠️ เตือน !!')
+                        .setDescription(`ดูเหมือนว่าจะไม่มีเพลย์ลิส **${PlaylistName}** ในฐานข้อมูลของฟูตามินะ`)
+                        .setTimestamp()
+
+                    return await message.reply({ embeds: [Content] });
                 }
             } else {
                 const msg = await message.reply('กำลังหาเพลง ...');

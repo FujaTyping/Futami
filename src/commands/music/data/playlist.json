@@ -5,6 +5,18 @@
             "url": "https://music.youtube.com/playlist?list=PLVLAqJEhYVIC7lDnLZAbqHKBfsh72rOTA&si=Tivipe7I37z7yleI",
             "request": "fujatyping",
             "title": "FJT's STREAMBEATS"
+        },
+        {
+            "name": "STARRAIL",
+            "url": "https://music.youtube.com/playlist?list=PLVLAqJEhYVIAupGVRFoL2WQQ0kG3Hoez4&si=ewDvE4chNqQcHDsl",
+            "request": "fujatyping",
+            "title": "FJT's STARRAIL"
+        },
+        {
+            "name": "ANIME",
+            "url": "https://music.youtube.com/playlist?list=PLVLAqJEhYVICWmTk2SVzMQhSILW0Ea56f&si=3f8E5NH1gCuQwRw5",
+            "request": "fujatyping",
+            "title": "FJT's ANIME"
         }
     ]
 }
