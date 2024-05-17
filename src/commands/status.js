@@ -4,6 +4,7 @@ const { EmbedBuilder, ActivityType } = require('discord.js');
 const config = require('../config.json');
 const color = config.chat.color
 const owner = config.bot.owner
+const emote = config.default
 
 class StatusCommand extends Command {
     constructor(context, options) {
@@ -30,7 +31,7 @@ class StatusCommand extends Command {
 
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle(`เปลื่ยนสถานะละ ✅`)
+                .setTitle(`เปลื่ยนสถานะละ ${emote.success}`)
                 .setDescription(`ชื่อสถานะ : **` + Status + '**\nหมวดหมู่ : `Streaming`\nลิ้งค์ : https://www.twitch.tv/anime')
                 .setTimestamp()
 
@@ -38,7 +39,7 @@ class StatusCommand extends Command {
         } else {
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle('⚠️ เตือน !!')
+                .setTitle(`${emote.warning} เตือน !!`)
                 .setDescription('เป็นผู้พัฒนาถึงใช้งานคำสั่งได้')
                 .setTimestamp()
 

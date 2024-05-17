@@ -4,6 +4,7 @@ const { EmbedBuilder, Message, PermissionsBitField } = require('discord.js');
 
 const config = require('../../config.json');
 const color = config.chat.color
+const emote = config.default
 
 class KickCommand extends Command {
     constructor(context, options) {
@@ -55,7 +56,7 @@ class KickCommand extends Command {
         } else {
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle(`⚠️ เตือน !!`)
+                .setTitle(`${emote.warning} เตือน !!`)
                 .setDescription(`<@${interaction.user.id}> คิดจะทำอะไรหนะ ??\nถ้าจะใช้คำสั่งนี้ต้องมีสิทธ์ Administrator ก่อน !!`)
                 .setTimestamp()
 

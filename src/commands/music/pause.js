@@ -3,6 +3,7 @@ const { EmbedBuilder } = require('discord.js');
 
 const config = require('../../config.json');
 const color = config.chat.color
+const emote = config.default
 
 class PauseCommand extends Command {
     constructor(context, options) {
@@ -20,7 +21,7 @@ class PauseCommand extends Command {
         if (!message.member.voice.channel) {
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle('⚠️ เตือน !!')
+                .setTitle(`${emote.warning} เตือน !!`)
                 .setDescription('การใช้งานคำสั่งเพลงทุกคำสั่ง ต้องเข้าในช่องเสียงก่อนทุกครั้ง')
                 .setTimestamp()
 
@@ -31,7 +32,7 @@ class PauseCommand extends Command {
             if (!queue) {
                 const Content = new EmbedBuilder()
                     .setColor(color)
-                    .setTitle('⚠️ เตือน !!')
+                    .setTitle(`${emote.warning} เตือน !!`)
                     .setDescription('ยังไม่มีเพลงที่เล่นอยู่ ลองเพิ่มมาสักเพลงดูสิ')
                     .setTimestamp()
 

@@ -3,6 +3,7 @@ const { EmbedBuilder } = require('discord.js');
 
 const config = require('../../config.json');
 const color = config.chat.color
+const emote = config.default
 
 class VolumeCommand extends Command {
     constructor(context, options) {
@@ -20,7 +21,7 @@ class VolumeCommand extends Command {
         if (!message.member.voice.channel) {
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle('⚠️ เตือน !!')
+                .setTitle(`${emote.warning} เตือน !!`)
                 .setDescription('การใช้งานคำสั่งเพลงทุกคำสั่ง ต้องเข้าในช่องเสียงก่อนทุกครั้ง')
                 .setTimestamp()
 
@@ -31,7 +32,7 @@ class VolumeCommand extends Command {
             if (!queue) {
                 const Content = new EmbedBuilder()
                     .setColor(color)
-                    .setTitle('⚠️ เตือน !!')
+                    .setTitle(`${emote.warning} เตือน !!`)
                     .setDescription('ยังไม่มีเพลงที่เล่นอยู่ ลองเพิ่มมาสักเพลงดูสิ')
                     .setTimestamp()
 
@@ -43,7 +44,7 @@ class VolumeCommand extends Command {
                 if (isNaN(volume)) {
                     const Content = new EmbedBuilder()
                         .setColor(color)
-                        .setTitle('⚠️ เตือน !!')
+                        .setTitle(`${emote.warning} เตือน !!`)
                         .setDescription('ใส่ตัวเลข 0-500 เท่านั้น ไม่สามารถใช้ตัวอักษรได้')
                         .setTimestamp()
 
@@ -53,7 +54,7 @@ class VolumeCommand extends Command {
                         const Content = new EmbedBuilder()
                             .setColor(color)
                             .setTitle('🔊 ระบบเสียง')
-                            .setDescription('🚫 ไม่สามารถปรับเสียงเป็น : **' + volume + "** % ได้\n⚠️ กรุณาใส่ตัวเลข 0-500 เท่านั้น")
+                            .setDescription(`${emote.error} ไม่สามารถปรับเสียงเป็น : **` + volume + `** % ได้\n${emote.warning} กรุณาใส่ตัวเลข 0-500 เท่านั้น`)
                             .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
                             .setTimestamp()
 
@@ -64,7 +65,7 @@ class VolumeCommand extends Command {
                         const Content = new EmbedBuilder()
                             .setColor(color)
                             .setTitle('🔊 ระบบเสียง')
-                            .setDescription('ปรับระดับเสียงเป็น : **' + volume + "** %\n⚠️ การปรับระดับเสียงมากเกินไปอาจจะเป็นอันตรายต่อหู")
+                            .setDescription('ปรับระดับเสียงเป็น : **' + volume + `** %\n${emote.warning} การปรับระดับเสียงมากเกินไปอาจจะเป็นอันตรายต่อหู`)
                             .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
                             .setTimestamp()
 

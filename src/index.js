@@ -19,6 +19,7 @@ const port = config.server.port
 const ssl = config.server.ssl
 const debug = config.bot.debug
 const mobile = config.bot.mobile
+const emote = config.default
 require('dotenv').config()
 
 if (mobile == true) {
@@ -293,7 +294,7 @@ client.distube
     .on('error', (channel, e) => {
         const Content = new EmbedBuilder()
             .setColor(color)
-            .setTitle('🛑 เกิดอะไรขึ้น')
+            .setTitle(`${emote.error} เกิดอะไรขึ้น`)
             .setDescription("```\n" + `${e.toString().slice(0, 1974)}` + "\n```\nหากเป็นข้อผิดผลาดที่สำคัญ ไปบอกผู้พัฒนาด้วย !!")
             .setTimestamp()
 
@@ -307,7 +308,7 @@ client.distube
     .on('searchNoResult', (message, query) => {
         const Content = new EmbedBuilder()
             .setColor(color)
-            .setTitle('⚠️ เตือน ??')
+            .setTitle(`${emote.warning} เตือน ??`)
             .setDescription("ไม่พบเพลง : **" + query + "**\nใส่ลิ้งค์เพลง / ชื่อเพลง / เพลง ใหม่ด้วย")
             .setTimestamp()
 

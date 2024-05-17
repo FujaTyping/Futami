@@ -5,6 +5,7 @@ const axios = require('axios')
 
 const config = require('../../config.json');
 const color = config.chat.color
+const emote = config.default
 require('dotenv').config()
 
 class AirCommand extends Command {
@@ -73,7 +74,7 @@ class AirCommand extends Command {
             .catch(error => {
                 const Content = new EmbedBuilder()
                     .setColor(color)
-                    .setTitle(`🛑 เกิดอะไรขึ้น`)
+                    .setTitle(`${emote.error} เกิดอะไรขึ้น`)
                     .setDescription("```\n" + error + "\n```")
                     .setTimestamp()
 

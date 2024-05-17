@@ -4,6 +4,7 @@ const { EmbedBuilder } = require('discord.js');
 const config = require('../config.json');
 const color = config.chat.color
 const owner = config.bot.owner
+const emote = config.default
 
 class DMCommand extends Command {
     constructor(context, options) {
@@ -24,7 +25,7 @@ class DMCommand extends Command {
 
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle('✅ ส่งข้อความไปยังส่วนตัวเรียบร้อยแล้ว')
+                .setTitle(`${emote.success} ส่งข้อความไปยังส่วนตัวเรียบร้อยแล้ว`)
                 .setDescription(`- ✉️ ข้อความ : **${Args.slice(1).join(' ')}**\n- 📩 ส่งไปยัง : **${Args[0]}**`)
                 .setTimestamp()
 
@@ -32,7 +33,7 @@ class DMCommand extends Command {
         } else {
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle('⚠️ เตือน !!')
+                .setTitle(`${emote.warning} เตือน !!`)
                 .setDescription('เป็นผู้พัฒนาถึงใช้งานคำสั่งได้')
                 .setTimestamp()
 

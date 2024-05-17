@@ -11,6 +11,11 @@
         "color": 7453402,
         "colorHex": "#71BADA"
     },
+    "default": {
+        "success": "✅",
+        "warning": "⚠️",
+        "error": "❌"
+    },
     "server": {
         "port": 6947,
         "ssl": false
