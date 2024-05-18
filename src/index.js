@@ -67,6 +67,9 @@ let MainSystemData = {
     }
 };
 
+const PlaylistDataJSON = fs.readFileSync('./src/commands/music/data/playlist.json', 'utf8');
+const DataPlaylist = JSON.parse(PlaylistDataJSON);
+
 client.distube = new DisTube(client, {
     streamType: 1,
     leaveOnStop: false,
@@ -93,6 +96,7 @@ const main = async () => {
         app.get('/', function (req, res) { res.sendFile(__dirname + "../service/index.html") })
         app.get('/system', (req, res) => { res.json(MainSystemData) })
         app.get('/player', (req, res) => { res.json(LastData) })
+        app.get('/player/playlist', (req, res) => { res.json(DataPlaylist) })
         //app.get('/.well-known/acme-challenge/YOUR_SECRET', function (req, res) { res.sendFile(__dirname + "/ssl/YOUR_SSL_HERE") })
         app.use((req, res, next) => {
             res.status(404).sendFile(path.join(__dirname, '../service', '404.html'));
