@@ -186,7 +186,7 @@ client.distube
 
         const Collector = Msg.createMessageComponentCollector({
             filter: (buttonInteraction) => buttonInteraction.customId === 'status' && buttonInteraction.user.id === song.user.id,
-            time: 60000,
+            time: song.duration * 1000,
             max: 1
         });
 
@@ -251,7 +251,7 @@ client.distube
 
         const Collector = Msg.createMessageComponentCollector({
             filter: (buttonInteraction) => buttonInteraction.customId === 'skip' && buttonInteraction.user.id === song.user.id,
-            time: 30000,
+            time: (song.duration * 1000) / 2,
             max: 1
         });
 
