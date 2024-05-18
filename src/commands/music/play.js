@@ -1,5 +1,5 @@
 const { Command, container } = require('@sapphire/framework');
-const { EmbedBuilder } = require('discord.js');
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const fs = require('fs');
 
 const config = require('../../config.json');
@@ -61,7 +61,15 @@ class PlayCommand extends Command {
                         .setDescription(`ดูเหมือนว่าจะไม่มีเพลย์ลิส **${PlaylistName}** ในฐานข้อมูลของฟูตามินะ`)
                         .setTimestamp()
 
-                    return await message.reply({ embeds: [Content] });
+                    const Button = new ButtonBuilder()
+                        .setLabel('เพลย์ลิสของฟูตามิ')
+                        .setURL('https://futami.siraphop.me/statics?playlist')
+                        .setStyle(ButtonStyle.Link);
+
+                    const Row = new ActionRowBuilder()
+                        .addComponents(Button);
+
+                    return await message.reply({ embeds: [Content], components: [Row] });
                 }
             } else {
                 const msg = await message.reply('กำลังหาเพลง ...');
