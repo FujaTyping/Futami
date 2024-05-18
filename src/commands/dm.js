@@ -26,7 +26,7 @@ class DMCommand extends Command {
             const Content = new EmbedBuilder()
                 .setColor(color)
                 .setTitle(`${emote.success} ส่งข้อความไปยังส่วนตัวเรียบร้อยแล้ว`)
-                .setDescription(`- ✉️ ข้อความ : **${Args.slice(1).join(' ')}**\n- 📩 ส่งไปยัง : **${Args[0]}**`)
+                .setDescription(`- ✉️ ข้อความ : **${Args.slice(1).join(' ')}**\n- 📩 ส่งไปยัง : **<@${Args[0]}>**`)
                 .setTimestamp()
 
             return message.reply({ embeds: [Content] });
