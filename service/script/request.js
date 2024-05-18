@@ -1,3 +1,4 @@
+const BaseUrl = window.location.href;
 const config = {
     apiEndpoint: "api.futami.siraphop.me:6947"
 }
@@ -10,6 +11,10 @@ function CheckPath() {
 
     if (CurrentUrl.includes("/statics") || CurrentUrl.includes("/statics.html")) {
         GetLastData();
+        if (BaseUrl.indexOf('?playlist') !== -1) {
+            ShowPlaylist.showModal();
+            GetPlaylist();
+        }
     } else if (CurrentUrl.includes("/") || CurrentUrl.includes("/index.html") || CurrentUrl.includes("/index")) {
         GetStat();
     }
@@ -135,4 +140,31 @@ function GetLastData() {
         }
     }, Math.floor(Math.random() * 3001) + 2000);
     */
+}
+
+function GetPlaylist() {
+    axios.get(`https://${config.apiEndpoint}/player/playlist`)
+        .then(function (response) {
+
+            const Data = response.data.Playlist;
+            //console.log(Data)
+            const TableBody = document.getElementById('PlayDataTable');
+
+            TableBody.innerHTML = '';
+
+            Data.forEach(List => {
+                const Row = document.createElement('tr');
+                Row.classList.add('bg-base-200');
+                Row.innerHTML = `
+                    <td>${List.name}</td>
+                    <td>${List.title}</td>
+                    <td>${List.request}</td>
+                `;
+                TableBody.appendChild(Row);
+            });
+
+        })
+        .catch(function (error) {
+            console.error('[ERROR] : ', error);
+        });
 }

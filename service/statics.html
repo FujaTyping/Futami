@@ -143,6 +143,31 @@
             </aside>
         </footer>
     </div>
+    <dialog id="ShowPlaylist" class="modal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg">Playlist List</h3>
+            <p class="py-4">Here is Futami's playlist</p>
+            <table class="table text-focus-in">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Title</th>
+                        <th>Request</th>
+                    </tr>
+                </thead>
+                <tbody id="PlayDataTable">
+                    <tr id="FetchData" class="bg-base-200">
+                        <td>Fetching...</td>
+                        <td>Fetching...</td>
+                        <td>Fetching...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
 </body>
 
 </html>
