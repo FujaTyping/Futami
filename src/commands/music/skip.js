@@ -11,44 +11,35 @@ class SkipCommand extends Command {
             ...options,
             name: 'skip',
             aliases: ['sk'],
-            description: 'skip this song'
+            description: 'skip this song',
+            preconditions: ['InVoiceChannel']
         });
     }
 
     async messageRun(message) {
         const { client } = container;
 
-        if (!message.member.voice.channel) {
+        const queue = client.distube.getQueue(message)
+
+        if (!queue) {
             const Content = new EmbedBuilder()
                 .setColor(color)
                 .setTitle(`${emote.warning} เตือน !!`)
-                .setDescription('การใช้งานคำสั่งเพลงทุกคำสั่ง ต้องเข้าในช่องเสียงก่อนทุกครั้ง')
+                .setDescription('ยังไม่มีเพลงที่เล่นอยู่ ลองเพิ่มมาสักเพลงดูสิ')
                 .setTimestamp()
 
-            return await message.reply({ embeds: [Content] });
+            return message.channel.send({ embeds: [Content] })
         } else {
-            const queue = client.distube.getQueue(message)
+            const song = await queue.skip()
 
-            if (!queue) {
-                const Content = new EmbedBuilder()
-                    .setColor(color)
-                    .setTitle(`${emote.warning} เตือน !!`)
-                    .setDescription('ยังไม่มีเพลงที่เล่นอยู่ ลองเพิ่มมาสักเพลงดูสิ')
-                    .setTimestamp()
+            const Content = new EmbedBuilder()
+                .setColor(color)
+                .setTitle('⏭️ ข้ามเพลงแล้ว')
+                .setDescription('ข้ามเพลง : **' + queue.songs[0].name + '**')
+                .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
+                .setTimestamp()
 
-                return message.channel.send({ embeds: [Content] })
-            } else {
-                const song = await queue.skip()
-
-                const Content = new EmbedBuilder()
-                    .setColor(color)
-                    .setTitle('⏭️ ข้ามเพลงแล้ว')
-                    .setDescription('ข้ามเพลง : **' + queue.songs[0].name + '**')
-                    .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
-                    .setTimestamp()
-
-                return message.channel.send({ embeds: [Content] })
-            }
+            return message.channel.send({ embeds: [Content] })
         }
     }
 }

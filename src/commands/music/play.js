@@ -15,7 +15,8 @@ class PlayCommand extends Command {
             ...options,
             name: 'play',
             aliases: ['p'],
-            description: 'play song from source'
+            description: 'play song from source',
+            preconditions: ['InVoiceChannel']
         });
     }
 
@@ -23,56 +24,13 @@ class PlayCommand extends Command {
         let Song = await args.rest('string');
         const { client } = container;
 
-        if (!message.member.voice.channel) {
-            const Content = new EmbedBuilder()
-                .setColor(color)
-                .setTitle(`${emote.warning} เตือน !!`)
-                .setDescription('การใช้งานคำสั่งเพลงทุกคำสั่ง ต้องเข้าในช่องเสียงก่อนทุกครั้ง')
-                .setTimestamp()
+        if (Song.includes('--playlist')) {
+            let PlaylistName = Song.replace('--playlist', '').trim();
+            const Playlist = DataPlaylist.Playlist.find(PlaySong => PlaySong.name === PlaylistName);
 
-            return await message.reply({ embeds: [Content] });
-        } else {
-            if (Song.includes('--playlist')) {
-                let PlaylistName = Song.replace('--playlist', '').trim();
-                const Playlist = DataPlaylist.Playlist.find(PlaySong => PlaySong.name === PlaylistName);
-
-                if (Playlist) {
-                    Song = Playlist.url
-                    const msg = await message.reply('กำลังดึงเพลงจากเพลย์ลิส ...');
-
-                    client.distube.play(message.member.voice.channel, Song, {
-                        member: message.member,
-                        textChannel: message.channel,
-                        message
-                    })
-
-                    const Content = new EmbedBuilder()
-                        .setColor(color)
-                        .setTitle('▶️ ข้อมูลเพลย์ลิส')
-                        .setDescription(`เพลย์ลิส : **${Playlist.title}**\nเพิ่มโดย : \`${Playlist.request}\``)
-                        .setTimestamp()
-
-                    return await msg.edit({ content: 'ดึงข้อมูลเพลงเสร็จล่ะ ✨', embeds: [Content] });
-                } else {
-                    let PlaylistName = Song.replace('--playlist', '').trim();
-                    const Content = new EmbedBuilder()
-                        .setColor(color)
-                        .setTitle(`${emote.warning} เตือน !!`)
-                        .setDescription(`ดูเหมือนว่าจะไม่มีเพลย์ลิส **${PlaylistName}** ในฐานข้อมูลของฟูตามินะ`)
-                        .setTimestamp()
-
-                    const Button = new ButtonBuilder()
-                        .setLabel('เพลย์ลิสของฟูตามิ')
-                        .setURL('https://futami.siraphop.me/statics?playlist')
-                        .setStyle(ButtonStyle.Link);
-
-                    const Row = new ActionRowBuilder()
-                        .addComponents(Button);
-
-                    return await message.reply({ embeds: [Content], components: [Row] });
-                }
-            } else {
-                const msg = await message.reply('กำลังหาเพลง ...');
+            if (Playlist) {
+                Song = Playlist.url
+                const msg = await message.reply('กำลังดึงเพลงจากเพลย์ลิส ...');
 
                 client.distube.play(message.member.voice.channel, Song, {
                     member: message.member,
@@ -80,16 +38,49 @@ class PlayCommand extends Command {
                     message
                 })
 
-                /*
                 const Content = new EmbedBuilder()
                     .setColor(color)
-                    .setTitle('📣 ประกาศ !!')
-                    .setDescription('ช่วงนี้บอทอาจจะหาเพลงไม่เจอบ่อย\n`Error : 429 too many request`')
+                    .setTitle('▶️ ข้อมูลเพลย์ลิส')
+                    .setDescription(`เพลย์ลิส : **${Playlist.title}**\nเพิ่มโดย : \`${Playlist.request}\``)
                     .setTimestamp()
-                */
 
-                return await msg.edit({ content: 'เจอเพลงล่ะ ✨'/*, embeds: [Content] */ });
+                return await msg.edit({ content: 'ดึงข้อมูลเพลงเสร็จล่ะ ✨', embeds: [Content] });
+            } else {
+                let PlaylistName = Song.replace('--playlist', '').trim();
+                const Content = new EmbedBuilder()
+                    .setColor(color)
+                    .setTitle(`${emote.warning} เตือน !!`)
+                    .setDescription(`ดูเหมือนว่าจะไม่มีเพลย์ลิส **${PlaylistName}** ในฐานข้อมูลของฟูตามินะ`)
+                    .setTimestamp()
+
+                const Button = new ButtonBuilder()
+                    .setLabel('เพลย์ลิสของฟูตามิ')
+                    .setURL('https://futami.siraphop.me/statics?playlist')
+                    .setStyle(ButtonStyle.Link);
+
+                const Row = new ActionRowBuilder()
+                    .addComponents(Button);
+
+                return await message.reply({ embeds: [Content], components: [Row] });
             }
+        } else {
+            const msg = await message.reply('กำลังหาเพลง ...');
+
+            client.distube.play(message.member.voice.channel, Song, {
+                member: message.member,
+                textChannel: message.channel,
+                message
+            })
+
+            /*
+            const Content = new EmbedBuilder()
+                .setColor(color)
+                .setTitle('📣 ประกาศ !!')
+                .setDescription('ช่วงนี้บอทอาจจะหาเพลงไม่เจอบ่อย\n`Error : 429 too many request`')
+                .setTimestamp()
+            */
+
+            return await msg.edit({ content: 'เจอเพลงล่ะ ✨'/*, embeds: [Content] */ });
         }
     }
 }

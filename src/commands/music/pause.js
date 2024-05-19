@@ -11,56 +11,47 @@ class PauseCommand extends Command {
             ...options,
             name: 'pause',
             aliases: ['ps'],
-            description: 'pause song is playing'
+            description: 'pause song is playing',
+            preconditions: ['InVoiceChannel']
         });
     }
 
     async messageRun(message, args) {
         const { client } = container;
 
-        if (!message.member.voice.channel) {
+        const queue = client.distube.getQueue(message)
+
+        if (!queue) {
             const Content = new EmbedBuilder()
                 .setColor(color)
                 .setTitle(`${emote.warning} เตือน !!`)
-                .setDescription('การใช้งานคำสั่งเพลงทุกคำสั่ง ต้องเข้าในช่องเสียงก่อนทุกครั้ง')
+                .setDescription('ยังไม่มีเพลงที่เล่นอยู่ ลองเพิ่มมาสักเพลงดูสิ')
                 .setTimestamp()
 
-            return await message.reply({ embeds: [Content] });
+            return message.channel.send({ embeds: [Content] })
         } else {
-            const queue = client.distube.getQueue(message)
+            if (queue.paused) {
+                queue.resume()
 
-            if (!queue) {
                 const Content = new EmbedBuilder()
                     .setColor(color)
-                    .setTitle(`${emote.warning} เตือน !!`)
-                    .setDescription('ยังไม่มีเพลงที่เล่นอยู่ ลองเพิ่มมาสักเพลงดูสิ')
+                    .setTitle('🛠️ ระบบควบคุม')
+                    .setDescription(`เล่นเพลง (ต่อ) : **${queue.songs[0].name}**`)
+                    .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
                     .setTimestamp()
 
                 return message.channel.send({ embeds: [Content] })
             } else {
-                if (queue.paused) {
-                    queue.resume()
+                queue.pause()
 
-                    const Content = new EmbedBuilder()
-                        .setColor(color)
-                        .setTitle('🛠️ ระบบควบคุม')
-                        .setDescription(`เล่นเพลง (ต่อ) : **${queue.songs[0].name}**`)
-                        .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
-                        .setTimestamp()
+                const Content = new EmbedBuilder()
+                    .setColor(color)
+                    .setTitle('🛠️ ระบบควบคุม')
+                    .setDescription(`หยุดเพลง (ชั่วคราว) : **${queue.songs[0].name}**`)
+                    .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
+                    .setTimestamp()
 
-                    return message.channel.send({ embeds: [Content] })
-                } else {
-                    queue.pause()
-
-                    const Content = new EmbedBuilder()
-                        .setColor(color)
-                        .setTitle('🛠️ ระบบควบคุม')
-                        .setDescription(`หยุดเพลง (ชั่วคราว) : **${queue.songs[0].name}**`)
-                        .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
-                        .setTimestamp()
-
-                    return message.channel.send({ embeds: [Content] })
-                }
+                return message.channel.send({ embeds: [Content] })
             }
         }
     }
