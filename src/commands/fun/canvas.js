@@ -438,7 +438,7 @@ class CanvasCommand extends Command {
                 const x = canvas.width / 2;
                 const y = 400;
 
-                ctx.font = '60px Impact'
+                ctx.font = '65px Impact'
                 ctx.fillStyle = 'white'
                 ctx.strokeStyle = 'rgba(0,0,0,3)'
                 ctx.textAlign = 'center'
