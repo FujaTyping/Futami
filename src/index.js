@@ -33,7 +33,7 @@ const DateString = `${CurrentDate.getDate()}/${CurrentDate.getMonth()}/${Current
 const client = new SapphireClient({
     defaultPrefix: prefix,
     disableMentionPrefix: true,
-    intents: [GatewayIntentBits.MessageContent, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildVoiceStates],
+    intents: [GatewayIntentBits.MessageContent, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.GuildMembers],
     loadMessageCommandListeners: true
 });
 
