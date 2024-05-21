@@ -5,7 +5,7 @@ const config = require('../../config.json');
 const color = config.chat.color
 const emote = config.default
 
-class PauseCommand extends Command {
+class ShuffleCommand extends Command {
     constructor(context, options) {
         super(context, {
             ...options,
@@ -44,5 +44,5 @@ class PauseCommand extends Command {
     }
 }
 module.exports = {
-    PauseCommand
+    ShuffleCommand
 };
