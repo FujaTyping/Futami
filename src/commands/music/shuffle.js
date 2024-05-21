@@ -5,18 +5,18 @@ const config = require('../../config.json');
 const color = config.chat.color
 const emote = config.default
 
-class QueueCommand extends Command {
+class PauseCommand extends Command {
     constructor(context, options) {
         super(context, {
             ...options,
-            name: 'queue',
-            aliases: ['q'],
-            description: 'see queue in the server',
+            name: 'shuffle',
+            aliases: ['sf'],
+            description: 'shuffle song in guild',
             preconditions: ['InVoiceChannel']
         });
     }
 
-    async messageRun(message) {
+    async messageRun(message, args) {
         const { client } = container;
 
         const queue = client.distube.getQueue(message)
@@ -30,14 +30,13 @@ class QueueCommand extends Command {
 
             return message.channel.send({ embeds: [Content] })
         } else {
-            const q = queue.songs
-                .map((song, i) => `${i === 0 ? '▶️ กำลังเล่นเพลง ' : `${i} .`} **${song.name}** - \`${song.formattedDuration}\` นาที`)
-                .join('\n')
+            queue.shuffle()
 
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle('🎼 คิวเพลง')
-                .setDescription(q)
+                .setTitle('🔀 สลับเพลงแล้ว')
+                .setDescription('สลับเพลงทั้งหมดที่อยู่ในคิว')
+                .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
                 .setTimestamp()
 
             return message.channel.send({ embeds: [Content] })
@@ -45,5 +44,5 @@ class QueueCommand extends Command {
     }
 }
 module.exports = {
-    QueueCommand
+    PauseCommand
 };
