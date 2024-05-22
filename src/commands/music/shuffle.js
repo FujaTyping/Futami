@@ -34,8 +34,8 @@ class ShuffleCommand extends Command {
 
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle('🔀 สลับเพลงแล้ว')
-                .setDescription('สลับเพลงทั้งหมดที่อยู่ในคิว')
+                .setTitle('🔀 ระบบสลับเพลง')
+                .setDescription('สลับเพลงทั้งหมดที่อยู่ในคิวแล้ว')
                 .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
                 .setTimestamp()
 

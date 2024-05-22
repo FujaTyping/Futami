@@ -31,12 +31,12 @@ class QueueCommand extends Command {
             return message.channel.send({ embeds: [Content] })
         } else {
             const q = queue.songs
-                .map((song, i) => `${i === 0 ? '▶️ กำลังเล่นเพลง ' : `${i} .`} **${song.name}** - \`${song.formattedDuration}\` นาที`)
+                .map((song, i) => `${i === 0 ? '▶️ กำลังเล่นเพลง ' : `${i} .`} **${song.name}** - \`${song.formattedDuration}\` นาที ${i === 0 ? '\n\n💾 คิวเพลงทั้งหมดในเชิฟเวอร์นี้' : ''}`)
                 .join('\n')
 
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle('🎼 คิวเพลง')
+                .setTitle('🎼 ดูคิวเพลง')
                 .setDescription(q)
                 .setTimestamp()
 
