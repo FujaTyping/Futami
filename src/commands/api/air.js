@@ -65,7 +65,7 @@ class AirCommand extends Command {
                 const Content = new EmbedBuilder()
                     .setColor(color)
                     .setTitle(`😷 สถานะการณ์ PM 2.5`)
-                    .setDescription(`ผลการตรวจสอบข้อมูลจาก : [${Response.city.name}](${Response.attributions[0].url})\n- PM 2.5 : **${Response.iaqi.pm25.v} µg/m3** | ${CheckAir(Response.iaqi.pm25.v)}\n- PM 10 : **${Response.iaqi.pm10.v} µg/m3** | ${CheckAir(Response.iaqi.pm10.v)}\n- อุณหภูมิ : **${Response.iaqi.t.v} °C**`)
+                    .setDescription(`ผลการตรวจสอบข้อมูลจาก : [${Response.city.name}](${Response.attributions[0].url})\n☁️ PM 2.5 : **${Response.iaqi.pm25.v} µg/m3** | ${CheckAir(Response.iaqi.pm25.v)}\n☁️ PM 10 : **${Response.iaqi.pm10.v} µg/m3** | ${CheckAir(Response.iaqi.pm10.v)}\n🌡️ อุณหภูมิ : **${Response.iaqi.t.v} °C**`)
                     .setFooter({ text: `ข้อมูล ณ วันที่ : ${Response.time.s}` })
                     .setTimestamp()
 

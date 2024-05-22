@@ -24,10 +24,10 @@ class InfoCommand extends Command {
         const Content = new EmbedBuilder()
             .setColor(color)
             .setTitle('ℹ️ ข้อมูลบอท')
-            .setDescription(`เวลาที่ออนไลน์ : **${Uptime(os.uptime())}** | อยู่ใน **${client.guilds.cache.size}** เชิฟเวอร์`)
+            .setDescription(`เวลาที่ออนไลน์ : **${Uptime(os.uptime())}** || อยู่ใน **${client.guilds.cache.size}** เชิฟเวอร์`)
             .addFields(
-                { name: '🖥️ เครื่องเชิฟเวอร์', value: `- ซีพียู (${cpu.length} คอร์) : \`${cpu[0].model}\`\n- แรม : \`${(os.totalmem() / (1024 ** 3)).toFixed(2) + ' กิกะไบต์'}\`\n- แพลตฟอร์ม : \`${os.platform()}\`\n- ไทพ์ : \`${os.type()}\``, inline: true },
-                { name: '🖥️ รันไทม์', value: `- ชีพียู : **${getCPUUsage()}**\n- แรม : **${getRAMUsage()}**\n- ชาร์ด : **${client.options.shardCount}**`, inline: true },
+                { name: '🖥️ เครื่องเชิฟเวอร์', value: `ซีพียู (**${cpu.length}** คอร์) : **${cpu[0].model}**\nแรม : **${(os.totalmem() / (1024 ** 3)).toFixed(2) + ' กิกะไบต์'}**\`\nแพลตฟอร์ม : **${os.platform()}**\nไทพ์ : **${os.type()}**`, inline: true },
+                { name: '🖥️ รันไทม์', value: `ชีพียู : **${getCPUUsage()}**\nแรม : **${getRAMUsage()}**\nชาร์ด : **${client.options.shardCount}**`, inline: true },
             )
             .setTimestamp()
 
