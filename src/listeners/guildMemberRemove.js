@@ -18,10 +18,10 @@ class GuildMemberRemoveListener extends Listener {
             const canvas = createCanvas(1024, 500)
             const ctx = canvas.getContext('2d')
             const Text = member.user.username
-            loadImage('./src/assets/canvas/GoodBye.png').then((Bg) => {
+            loadImage('./src/assets/canvas/GoodByeREM.png').then((Bg) => {
                 loadImage(`${member.user.avatarURL().replace(".webp", ".png")}`).then((Avatar) => {
                     ctx.drawImage(Bg, 0, 0, canvas.width, canvas.height)
-                    ctx.drawImage(Avatar, 138.5, 42, 165, 165)
+                    ctx.drawImage(Avatar, 407, 42, 165, 165)
 
                     const x = 360;
                     const y = 452;
