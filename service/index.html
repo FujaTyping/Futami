@@ -29,9 +29,11 @@
     <script defer src="./index.js"></script>
     <script defer src="./script/request.js"></script>
     <script src="./module/axios.js"></script>
+    <script src="./module/typed.js"></script>
 </head>
 
 <body onmousemove="GetCursor(event)">
+    <audio id="Hello" src="/assets/sound/Futami.wav" preload="auto"></audio>
     <!-- <div role="alert" class="alert alert-warning alert-top">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -52,8 +54,8 @@
     <div>
         <div class="hero min-h-screen hero-head">
             <div class="hero-content flex-col lg:flex-row animate__animated animate__fadeInUp">
-                <div style="margin-right: 15px;" class="tooltip tooltip-secondary" data-tip="Streaming">
-                    <div class="avatar">
+                <div style="margin-right: 15px;">
+                    <div onclick="FutamiSay('Hello')" class="avatar">
                         <div class="rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2">
                             <img class="profile" src="./assets/fav.ico" />
                         </div>
@@ -67,7 +69,7 @@
                                     src="https://uptime.betterstack.com/status-badges/v3/monitor/uu30.svg"
                                     alt="Better Stack Badge"></a>
                         </span></h1>
-                    <p class="py-6">Imagine music bot<br>Message from Futami : You're so cute 💙
+                    <p class="py-6">Imagine music bot<br>Message from Futami : <span id="FutamiMsg"></span>
                     </p>
                     <div class="btn-group">
                         <button onclick="pleaseread_modal.showModal()" class="btn btn-outline">Invite now <span

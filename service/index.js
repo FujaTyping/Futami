@@ -76,3 +76,20 @@ function ShowMoreFeature() {
     Button.style.display = 'none';
     Contaner.style.display = 'block';
 }
+
+function FutamiSay(Action) {
+    if (Action == 'Hello') {
+        document.getElementById('Hello').play();
+    }
+}
+
+function FutamiTyping() {
+    let Typing = new Typed('#FutamiMsg', {
+        strings: ["You're so cute 💙", '👋🏻 はじめまして'],
+        typeSpeed: 100,
+        backSpeed: 50,
+        backDelay: 5000,
+        cursorChar: ' |',
+        loop: true
+    });
+}

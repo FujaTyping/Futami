@@ -17,6 +17,7 @@ function CheckPath() {
         }
     } else if (CurrentUrl.includes("/") || CurrentUrl.includes("/index.html") || CurrentUrl.includes("/index")) {
         GetStat();
+        FutamiTyping();
     }
 }
 
