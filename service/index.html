@@ -34,6 +34,7 @@
 
 <body onmousemove="GetCursor(event)">
     <audio id="Hello" src="/assets/sound/Futami.wav" preload="auto"></audio>
+    <audio id="About" src="/assets/sound/AboutFutami.wav" preload="auto"></audio>
     <!-- <div role="alert" class="alert alert-warning alert-top">
         <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -62,13 +63,7 @@
                     </div>
                 </div>
                 <div>
-                    <h1 style="font-family: Young Serif;" class="text-5xl font-bold">Futami <span
-                            style="display: inline-block;"><a
-                                href="https://uptime.betterstack.com/?utm_source=status_badge"><img
-                                    class="animate__animated animate__jello animate__delay-1s animate__infinite"
-                                    src="https://uptime.betterstack.com/status-badges/v3/monitor/uu30.svg"
-                                    alt="Better Stack Badge"></a>
-                        </span></h1>
+                    <h1 style="font-family: Young Serif;" class="text-5xl font-bold">Futami</h1>
                     <p class="py-6">Imagine music bot<br>Message from Futami : <span id="FutamiMsg"></span>
                     </p>
                     <div class="btn-group">
@@ -118,11 +113,17 @@
                 </div>
             </div>
         </div>
-        <div style="padding-bottom: 20px;" class="hero bg-base-100 arrow-assets">
+        <div style="padding-bottom: 5px;" class="hero bg-base-100 arrow-assets">
             <div class="hero-content text-center">
                 <a href="./statics.html" class="btn"><span class="material-symbols-outlined">equalizer</span>
                     Futami Statics</a>
             </div>
+        </div>
+        <div style="padding-bottom: 20px;" class="hero bg-base-100">
+            <span style="display: inline-block;"><a href="https://uptime.betterstack.com/?utm_source=status_badge"><img
+                        class="vibrate-1" src="https://uptime.betterstack.com/status-badges/v3/monitor/uu30.svg"
+                        alt="Better Stack Badge"></a>
+            </span>
         </div>
         <img width="100%" src="./assets/divider.png">
         <div style="padding-top: 40px;" class="hero bg-base-200">
@@ -210,7 +211,8 @@
                             </div>
                             <div class="collapse-content lefted">
                                 <p><b style="display: inline;">filter</b> : Make your song more funny &nbsp;<span
-                                        style="display: inline;" onclick="filter_modal.showModal()">⇥</span><br>
+                                        style="display: inline;" onclick="filter_modal.showModal()"
+                                        class="point">⇥</span><br>
                                     <b>loop</b> : Loop song<br>
                                     <a class="usage">↳ usage : enter off , song or queue</a><br>
                                     <b>play</b> : Play song and join<br>
@@ -285,7 +287,8 @@
                         class="max-w-sm rounded-lg shadow-2xl" />
                     <p class="py-6">Fuumi is a music bot created by FujaTyping in response to a request from his close
                         friend, ph007phop. Futami can play music from a variety of sources and quickly gained popularity
-                        among Discord users.</p>
+                        among Discord users. &nbsp;<span style="display: inline;" onclick="FutamiSay('About')"
+                            class="point">🎙</span></p>
                     <div class="join lastjoin">
                         <button onclick="window.location.href = 'https://discord.gg/D5nVCNskqN';"
                             class="btn join-item"><span class="material-symbols-outlined">support_agent</span>

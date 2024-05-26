@@ -304,3 +304,37 @@ body::-webkit-scrollbar-thumb {
 .avatar:hover {
     cursor: grabbing !important;
 }
+
+.point:hover {
+    cursor: pointer !important;
+}
+
+.vibrate-1 {
+    animation: vibrate-1 0.3s linear infinite both;
+}
+
+@keyframes vibrate-1 {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-1px, 1px);
+    }
+
+    40% {
+        transform: translate(-1px, -1px);
+    }
+
+    60% {
+        transform: translate(1px, 1px);
+    }
+
+    80% {
+        transform: translate(1px, -1px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}

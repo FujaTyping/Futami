@@ -80,6 +80,8 @@ function ShowMoreFeature() {
 function FutamiSay(Action) {
     if (Action == 'Hello') {
         document.getElementById('Hello').play();
+    } else if (Action == 'About') {
+        document.getElementById('About').play();
     }
 }
 
