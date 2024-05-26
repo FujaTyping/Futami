@@ -47,6 +47,7 @@ function ContinueInvite() {
         window.open('https://discord.com/api/oauth2/authorize?client_id=1155156868554043484&permissions=11537416&scope=bot%20applications.commands', 'popup', 'width=500,height=700');
         setTimeout(function () {
             thankyou.showModal()
+            document.getElementById('ThankYouIV').play();
         }, 5000);
     } else {
         Text.style.color = 'red';
