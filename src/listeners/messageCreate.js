@@ -50,8 +50,9 @@ class MessageCreateListener extends Listener {
                         axios.request(Config)
                             .then(async (response) => {
                                 let Data = response.data;
+                                let Msg = Data.choices[0].message.content
                                 //console.log(response.data)
-                                await message.reply(Data.choices[0].message.content + " <:FTTF:1236510430269014047>");
+                                await message.reply(Msg.replaceAll("คะ", "ครับ").replaceAll("ค่ะ", "ครับ") + " <:FTTF:1236510430269014047>");
                             })
                             .catch(async (error) => {
                                 await message.reply(`ผมไม่สามารถคุยกับคุณได้นะตอนนี้ : \`${error}\``);
