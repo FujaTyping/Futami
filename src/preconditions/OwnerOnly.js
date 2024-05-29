@@ -21,7 +21,7 @@ class OwnerOnlyPrecondition extends Precondition {
     async checkOwner(UserId, Action) {
         const Content = new EmbedBuilder()
             .setColor(color)
-            .setTitle(`${emote.warning} เตือน !!`)
+            .setAuthor({ name: 'เตือน !!', iconURL: 'https://futami.siraphop.me/assets/icon/warning.png' })
             .setDescription('เป็นผู้พัฒนาถึงใช้งานคำสั่งได้')
             .setTimestamp()
 

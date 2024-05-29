@@ -298,7 +298,7 @@ client.distube
     .on('error', (channel, e) => {
         const Content = new EmbedBuilder()
             .setColor(color)
-            .setTitle(`${emote.error} เกิดอะไรขึ้น`)
+            .setAuthor({ name: 'เกิดอะไรขึ้น ??', iconURL: 'https://futami.siraphop.me/assets/icon/error.png' })
             .setDescription("```\n" + `${e.toString().slice(0, 1974)}` + "\n```\nหากเป็นข้อผิดผลาดที่สำคัญ ไปบอกผู้พัฒนาด้วย !!")
             .setTimestamp()
 
@@ -312,7 +312,7 @@ client.distube
     .on('searchNoResult', (message, query) => {
         const Content = new EmbedBuilder()
             .setColor(color)
-            .setTitle(`${emote.warning} เตือน ??`)
+            .setAuthor({ name: 'เตือน !!', iconURL: 'https://futami.siraphop.me/assets/icon/warning.png' })
             .setDescription("ไม่พบเพลง : **" + query + "**\nใส่ลิ้งค์เพลง / ชื่อเพลง / เพลง ใหม่ด้วย")
             .setTimestamp()
 

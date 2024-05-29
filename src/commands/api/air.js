@@ -74,7 +74,7 @@ class AirCommand extends Command {
             .catch(error => {
                 const Content = new EmbedBuilder()
                     .setColor(color)
-                    .setTitle(`${emote.error} เกิดอะไรขึ้น`)
+                    .setAuthor({ name: 'เกิดอะไรขึ้น ??', iconURL: 'https://futami.siraphop.me/assets/icon/error.png' })
                     .setDescription("```\n" + error + "\n```")
                     .setTimestamp()
 

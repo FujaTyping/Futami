@@ -30,7 +30,7 @@ class StatusCommand extends Command {
 
         const Content = new EmbedBuilder()
             .setColor(color)
-            .setTitle(`เปลื่ยนสถานะละ ${emote.success}`)
+            .setAuthor({ name: 'เปลื่ยนสถานะเรียบร้อยแล้ว !!', iconURL: 'https://futami.siraphop.me/assets/icon/checked.png' })
             .setDescription(`ชื่อสถานะ : **` + Status + '**\nหมวดหมู่ : `Streaming`\nลิ้งค์ : https://www.twitch.tv/anime')
             .setTimestamp()
 

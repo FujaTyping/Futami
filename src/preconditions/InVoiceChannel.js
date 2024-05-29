@@ -21,7 +21,7 @@ class InVoiceChannelPrecondition extends Precondition {
     async isInVoiceChannel(Channel, Action) {
         const Content = new EmbedBuilder()
             .setColor(color)
-            .setTitle(`${emote.warning} เตือน !!`)
+            .setAuthor({ name: 'เตือน !!', iconURL: 'https://futami.siraphop.me/assets/icon/warning.png' })
             .setDescription('การใช้งานคำสั่งนี้ทุกคำสั่ง ต้องเข้าในช่องเสียงก่อนทุกครั้ง')
             .setTimestamp()
 

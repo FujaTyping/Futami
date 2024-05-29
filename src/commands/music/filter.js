@@ -24,7 +24,7 @@ class FilterCommand extends Command {
         if (!queue) {
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle(`${emote.warning} เตือน !!`)
+                .setAuthor({ name: 'เตือน !!', iconURL: 'https://futami.siraphop.me/assets/icon/warning.png' })
                 .setDescription('ยังไม่มีเพลงที่เล่นอยู่ ลองเพิ่มมาสักเพลงดูสิ')
                 .setTimestamp()
 
@@ -43,7 +43,7 @@ class FilterCommand extends Command {
             } else if (filter) {
                 const Content = new EmbedBuilder()
                     .setColor(color)
-                    .setTitle(`${emote.warning} เตือน !!`)
+                    .setAuthor({ name: 'เตือน !!', iconURL: 'https://futami.siraphop.me/assets/icon/warning.png' })
                     .setDescription('ดูเหมือนว่าจะไม่มีฟิลเตอร์ที่ชื่อ : **' + filter + "** นะ\nลองดูชื่อของฟิลเตอร์ใหม่อีกทีสิ !!")
                     .setTimestamp()
 

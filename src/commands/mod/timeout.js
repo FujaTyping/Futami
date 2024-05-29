@@ -64,7 +64,7 @@ class TimeoutCommand extends Command {
         } else {
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle(`${emote.warning} เตือน !!`)
+                .setAuthor({ name: 'เตือน !!', iconURL: 'https://futami.siraphop.me/assets/icon/warning.png' })
                 .setDescription(`<@${interaction.user.id}> คิดจะทำอะไรหนะ ??\nถ้าจะใช้คำสั่งนี้ต้องมีสิทธ์ Administrator ก่อน !!`)
                 .setTimestamp()
 

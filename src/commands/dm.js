@@ -25,7 +25,7 @@ class DMCommand extends Command {
 
         const Content = new EmbedBuilder()
             .setColor(color)
-            .setTitle(`${emote.success} ส่งข้อความไปยังส่วนตัวเรียบร้อยแล้ว`)
+            .setAuthor({ name: 'ส่งข้อความไปยังส่วนตัวเรียบร้อยแล้ว !!', iconURL: 'https://futami.siraphop.me/assets/icon/checked.png' })
             .setDescription(`✉️ ข้อความ : **${Args.slice(1).join(' ')}**\n📩 ส่งไปยัง : **<@${Args[0]}>**`)
             .setTimestamp()
 

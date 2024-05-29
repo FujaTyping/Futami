@@ -49,7 +49,7 @@ class PlayCommand extends Command {
                 let PlaylistName = Song.replace('--playlist', '').trim();
                 const Content = new EmbedBuilder()
                     .setColor(color)
-                    .setTitle(`${emote.warning} เตือน !!`)
+                    .setAuthor({ name: 'เตือน !!', iconURL: 'https://futami.siraphop.me/assets/icon/warning.png' })
                     .setDescription(`ดูเหมือนว่าจะไม่มีเพลย์ลิส **${PlaylistName}** ในฐานข้อมูลของฟูตามินะ`)
                     .setTimestamp()
 

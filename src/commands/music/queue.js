@@ -24,7 +24,7 @@ class QueueCommand extends Command {
         if (!queue) {
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle(`${emote.warning} เตือน !!`)
+                .setAuthor({ name: 'เตือน !!', iconURL: 'https://futami.siraphop.me/assets/icon/warning.png' })
                 .setDescription('ยังไม่มีเพลงที่เล่นอยู่ ลองเพิ่มมาสักเพลงดูสิ')
                 .setTimestamp()
 
