@@ -4,7 +4,6 @@ const { GlobalFonts, createCanvas, loadImage } = require('@napi-rs/canvas')
 
 const config = require('../config.json');
 const color = config.chat.color
-const system = config.bot.systemchannel
 const guildID = config.bot.guild
 const compact = true
 
@@ -13,7 +12,7 @@ GlobalFonts.registerFromPath('./src/assets/canvas/font/UniSans.otf', 'Uni Sans')
 class GuildMemberAddListener extends Listener {
     async run(member) {
         if (member.guild.id == guildID) {
-            const Channel = member.guild.channels.cache.get(system)
+            const Channel = member.guild.channels.cache.get('1015645355406278679')
 
             const canvas = createCanvas(1024, 500)
             const ctx = canvas.getContext('2d')
