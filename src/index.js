@@ -16,6 +16,7 @@ const config = require('./config.json');
 const prefix = config.bot.prefix
 const color = config.chat.color
 const port = config.server.port
+const apiOnly = config.server.apiOnly
 const ssl = config.server.ssl
 const debug = config.bot.debug
 const mobile = config.bot.mobile
@@ -67,6 +68,12 @@ let MainSystemData = {
     }
 };
 
+const Data404 = {
+    error: true,
+    statuscode: 404,
+    message: "API that you finding does not exist"
+}
+
 const PlaylistDataJSON = fs.readFileSync('./src/commands/music/data/playlist.json', 'utf8');
 const DataPlaylist = JSON.parse(PlaylistDataJSON);
 
@@ -92,15 +99,21 @@ const main = async () => {
         client.logger.info('Connecting to Discord network');
         await client.login(process.env.token);
         client.logger.info(`Connected ${client.user.tag} successfully !`);
-        app.use(express.static(path.join(__dirname, '../service')))
-        app.get('/', function (req, res) { res.sendFile(__dirname + "../service/index.html") })
         app.get('/system', (req, res) => { res.json(MainSystemData) })
         app.get('/player', (req, res) => { res.json(LastData) })
         app.get('/player/playlist', (req, res) => { res.json(DataPlaylist) })
+        if (apiOnly == false) {
+            app.use(express.static(path.join(__dirname, '../service')))
+            app.get('/', function (req, res) { res.sendFile(__dirname + "../service/index.html") })
+            app.use((req, res, next) => {
+                res.status(404).sendFile(path.join(__dirname, '../service', '404.html'));
+            });
+        } else {
+            app.use((req, res, next) => {
+                res.status(404).json(Data404);
+            });
+        }
         //app.get('/.well-known/acme-challenge/YOUR_SECRET', function (req, res) { res.sendFile(__dirname + "/ssl/YOUR_SSL_HERE") })
-        app.use((req, res, next) => {
-            res.status(404).sendFile(path.join(__dirname, '../service', '404.html'));
-        });
         if (ssl == true) {
             https.createServer({
                 key: fs.readFileSync("./src/ssl/key.pem"), //privkey.pem

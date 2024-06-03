@@ -20,6 +20,7 @@
     },
     "server": {
         "port": 6947,
+        "apiOnly": true,
         "ssl": false
     }
 }
