@@ -1,4 +1,5 @@
 let top_button = document.getElementById("top-button");
+AOS.init();
 
 window.onscroll = function () {
     Check_scroll();
