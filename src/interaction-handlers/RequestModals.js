@@ -33,10 +33,10 @@ class RequestModalHandler extends InteractionHandler {
         const FormContent = new EmbedBuilder()
             .setColor(color)
             .setTitle('📥 แบบฟอร์มคำแนะนำฟูตามิ')
-            .setDescription(`**✏️ กรอกโดย** : <@${interaction.user.id}> (${interaction.user.username})`)
+            .setDescription(`**กรอกข้อมูลโดย** : <@${interaction.user.id}> \`(${interaction.user.username})\``)
             .addFields(
-                { name: '**คิดเห็นยังไงกับฟูตามิ ตอนนี้ ??**', value: `${interaction.fields.getTextInputValue('FutamiscoreInput')}` },
-                { name: '**อยากให้ฟูตามิเพิ่มอะไรเข้ามา บอกได้เลยนะ !!**', value: `${interaction.fields.getTextInputValue('FutamirecomendInput')}` }
+                { name: '1️⃣ **คิดเห็นยังไงกับฟูตามิ ตอนนี้ ??**', value: `${interaction.fields.getTextInputValue('FutamiscoreInput')}` },
+                { name: '2️⃣ **อยากให้ฟูตามิเพิ่มอะไรเข้ามา บอกได้เลยนะ !!**', value: `${interaction.fields.getTextInputValue('FutamirecomendInput')}` }
             )
             .setFooter({ text: 'ความคิดเห็นจากผู้ใช้' })
             .setTimestamp()
