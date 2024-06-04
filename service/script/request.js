@@ -62,7 +62,7 @@ function GetLastData() {
     const ContainF = document.getElementById('FetchContainer')
     const AlertFail = document.getElementById('AlertFailed')
 
-    let FailedCount = 0;
+    let FailedCount = false;
 
     axios.get(`https://${config.apiEndpoint}/player`)
         .then(function (response) {
@@ -94,7 +94,7 @@ function GetLastData() {
 
         })
         .catch(function (error) {
-            FailedCount = FailedCount + 1;
+            FailedCount = true;
             console.error('[ERROR] : ', error);
         });
 
@@ -116,12 +116,26 @@ function GetLastData() {
             document.getElementById('DataUptime').textContent = "Uptime since : " + SystemData.uptimesince;
         })
         .catch(function (error) {
-            FailedCount = FailedCount + 1;
+            FailedCount = true;
             console.error('[ERROR] : ', error);
+
+            const ErrorLoader1 = document.getElementById('LoaderError1')
+            const ErrorLoader2 = document.getElementById('LoaderError2')
+            const ErrorLoader3 = document.getElementById('LoaderError3')
+            const Loader1 = document.getElementById('Loader1');
+            const Loader2 = document.getElementById('Loader2');
+            const Loader3 = document.getElementById('Loader3');
+
+            Loader1.style.display = 'none';
+            Loader2.style.display = 'none';
+            Loader3.style.display = 'none';
+            ErrorLoader1.style.display = 'block';
+            ErrorLoader2.style.display = 'block';
+            ErrorLoader3.style.display = 'block';
         });
 
     //console.log(FailedCount)
-    if (FailedCount >= 1) {
+    if (FailedCount) {
         AlertFail.style.display = 'flex';
     } else {
         Loader.style.display = 'none';
