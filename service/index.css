@@ -338,3 +338,8 @@ body::-webkit-scrollbar-thumb {
         transform: translate(0);
     }
 }
+
+.betteruptime-announcement {
+    color: black !important;
+    background-color: #DA7706 !important;
+}
