@@ -41,6 +41,7 @@ const client = new SapphireClient({
 const { SpotifyPlugin } = require('@distube/spotify')
 const { SoundCloudPlugin } = require('@distube/soundcloud')
 const { YtDlpPlugin } = require('@distube/yt-dlp')
+const { YouTubePlugin } = require("@distube/youtube");
 
 const { GetCPUUsage, GetRAMUsage } = require('./compute.js')
 
@@ -78,20 +79,15 @@ const PlaylistDataJSON = fs.readFileSync('./src/commands/music/data/playlist.jso
 const DataPlaylist = JSON.parse(PlaylistDataJSON);
 
 client.distube = new DisTube(client, {
-    streamType: 1,
-    leaveOnStop: false,
-    leaveOnEmpty: true,
-    leaveOnFinish: false,
+    plugins: [
+        new YouTubePlugin(),
+        new YtDlpPlugin(),
+        new SpotifyPlugin(),
+        new SoundCloudPlugin()
+    ],
     emitNewSongOnly: true,
     emitAddSongWhenCreatingQueue: false,
     emitAddListWhenCreatingQueue: false,
-    plugins: [
-        new SpotifyPlugin({
-            emitEventsAfterFetching: true
-        }),
-        new SoundCloudPlugin(),
-        new YtDlpPlugin()
-    ]
 })
 
 const main = async () => {
