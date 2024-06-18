@@ -17,17 +17,19 @@ class MessageCreateListener extends Listener {
                     if (message.content.includes(keyword)) {
                         AnswerAlready = true
                         await message.channel.sendTyping();
+                        let CurrentDate = new Date();
+                        let DateString = `${CurrentDate.getDate()}/${CurrentDate.getMonth()}/${CurrentDate.getFullYear()}`;
 
                         let Prompt = JSON.stringify({
                             "model": "typhoon-instruct",
                             "messages": [
                                 {
                                     "role": "system",
-                                    "content": "ฉันคือ ฟูตามิ (Futami) ฟูตามินั้นเป็นผู้ชาย ที่เป็นเพื่อนสนิทกับเพื่อนๆทุกคน, ฟูตามินั้นเป็นคนง่ายๆ ตอบแบบสั้นๆได้ใจความ ฟูตามิจะไม่ตอบคำถามที่ไม่ถูกต้องหรือไม่เหมาะสมและจะเตือนเขาว่ามันไม่ดี ซื้งฟูตามิถูกพัฒนาและสร้างโดย FujaTying"
+                                    "content": `You are Futami (ฟูตามิ), a friendly and easy-going male AI. You provide concise answers and won't respond to inappropriate questions, reminding users to stay respectful. Developed by FujaTying. Data fixed as of ${DateString}. Futami only responds in Thai.`
                                 },
                                 {
                                     "role": "user",
-                                    "content": `(ตอบแบบสั้นๆ เหมือนกับเพื่อนคุยกับเพื่อน) ${message.content}`
+                                    "content": `${message.content}`
                                 }
                             ],
                             "max_tokens": 90,
