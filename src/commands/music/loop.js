@@ -30,32 +30,43 @@ class LoopCommand extends Command {
 
             return message.channel.send({ embeds: [Content] })
         } else {
-            let mode = null
-            const Status = await args.rest('string');
+            try {
+                const Status = await args.rest('string');
 
-            switch (Status) {
-                case 'off':
-                    mode = 0
-                    break
-                case 'song':
-                    mode = 1
-                    break
-                case 'queue':
-                    mode = 2
-                    break
+                let mode = null
+
+                switch (Status) {
+                    case 'off':
+                        mode = 0
+                        break
+                    case 'song':
+                        mode = 1
+                        break
+                    case 'queue':
+                        mode = 2
+                        break
+                }
+
+                mode = queue.setRepeatMode(mode)
+                mode = mode ? (mode === 2 ? 'ลูปเพลงในคิว' : 'ลูปแค่เพลงนี้') : 'ปิด (ไม่มีลูป)'
+
+                const Content = new EmbedBuilder()
+                    .setColor(color)
+                    .setTitle('🔁 ระบบลูป')
+                    .setDescription('สถานะตอนนี้คือ : **' + mode + '**')
+                    .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
+                    .setTimestamp()
+
+                return message.channel.send({ embeds: [Content] })
+            } catch (e) {
+                const Content = new EmbedBuilder()
+                    .setColor(color)
+                    .setAuthor({ name: 'เตือน !!', iconURL: 'https://futami.siraphop.me/assets/icon/warning.png' })
+                    .setDescription('การใช้คำสั่งลูปจำเป็นต้องบอกด้วยจะลูปอะไร\n**ลูปที่มีทั้งหมด** : song , queue , off\n**วิธีการใช้** : `f.loop song`')
+                    .setTimestamp()
+
+                return message.channel.send({ embeds: [Content] })
             }
-
-            mode = queue.setRepeatMode(mode)
-            mode = mode ? (mode === 2 ? 'ลูปเพลงในคิว' : 'ลูปแค่เพลงนี้') : 'ปิด (ไม่มีลูป)'
-
-            const Content = new EmbedBuilder()
-                .setColor(color)
-                .setTitle('🔁 ระบบลูป')
-                .setDescription('สถานะตอนนี้คือ : **' + mode + '**')
-                .setFooter({ text: `ใช้คำสั่งโดย : ${message.author.username}`, iconURL: message.author.avatarURL() })
-                .setTimestamp()
-
-            return message.channel.send({ embeds: [Content] })
         }
     }
 }
