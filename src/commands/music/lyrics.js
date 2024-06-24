@@ -52,23 +52,31 @@ class LyricsCommand extends Command {
             .then(response => {
                 const Response = response.data;
 
-                const Content = new EmbedBuilder()
-                    .setColor(color)
-                    .setTitle(`🔍 ค้นหาเนื้อเพลง`)
-                    .setDescription(`เพลง : **${Response.title}**\nผู้แต่ง : \`${Response.artist}\``)
-                    .setThumbnail(Response.image)
-                    .addFields(
-                        { name: 'เนื้อเพลง', value: `${Response.lyrics.replaceAll("[", "**[").replaceAll("]", "]**")}` }
-                    )
-                    .setTimestamp()
+                if (!Response.lyrics) {
+                    const Content = new EmbedBuilder()
+                        .setColor(color)
+                        .setTitle(`🔍 ค้นหาเนื้อเพลง`)
+                        .setDescription(`ไม่พบเนื้อเพลง : **${Song}**\nลองใส่ผู้แต่ง หรือ หาเพลงอื่นมาดูสิ !!`)
+                        .setThumbnail(Response.image)
+                        .setTimestamp()
 
-                return interaction.editReply({ embeds: [Content] });
+                    return interaction.editReply({ embeds: [Content] });
+                } else {
+                    const Content = new EmbedBuilder()
+                        .setColor(color)
+                        .setTitle(`🔍 ค้นหาเนื้อเพลง`)
+                        .setDescription(`เพลง : **${Response.title}**\nผู้แต่ง : \`${Response.artist}\`\n\n**เนื้อเพลง**\n${Response.lyrics.replaceAll("[", "**[").replaceAll("]", "]**")}`)
+                        .setThumbnail(Response.image)
+                        .setTimestamp()
+
+                    return interaction.editReply({ embeds: [Content] });
+                }
             })
             .catch(error => {
                 const Content = new EmbedBuilder()
                     .setColor(color)
                     .setAuthor({ name: 'เกิดอะไรขึ้น ??', iconURL: 'https://futami.siraphop.me/assets/icon/error.png' })
-                    .setDescription("**เนื้อเพลงอาจจะมีความยาวเกิน 1024 ตัวอักษร\n```\n" + error + "\n```")
+                    .setDescription("```\n" + error + "\n```")
                     .setTimestamp()
 
                 return interaction.editReply({ embeds: [Content] });
