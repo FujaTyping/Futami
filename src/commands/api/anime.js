@@ -43,7 +43,7 @@ class AnimeCommand extends Command {
                     const Content = new EmbedBuilder()
                         .setColor(color)
                         .setTitle('👦🏻 ข้อมูลอนิเมะ')
-                        .setDescription(`ไม่พบข้อมูลของอนิเมะเรื่อง : **${Search}**`)
+                        .setDescription(`ไม่พบข้อมูลของอนิเมะเรื่อง : **${Search}**\nลองเช็คดูว่าใส่ชื่ออนิเมะถูกมั้ย ??`)
                         .setTimestamp()
 
                     await interaction.editReply({ embeds: [Content] });
