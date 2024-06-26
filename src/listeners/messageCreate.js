@@ -57,8 +57,8 @@ class MessageCreateListener extends Listener {
 
                                 const Button = new ButtonBuilder()
                                     .setCustomId('askagain')
-                                    .setLabel('ถามฟูตามิอีกครั้ง')
-                                    .setStyle(ButtonStyle.Primary);
+                                    .setLabel('ถามอีกครั้ง')
+                                    .setStyle(ButtonStyle.Secondary);
 
                                 const Row = new ActionRowBuilder()
                                     .addComponents(Button);
