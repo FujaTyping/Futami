@@ -1,9 +1,10 @@
 const axios = require('axios');
 const { Listener } = require('@sapphire/framework');
-const { EmbedBuilder } = require('discord.js');
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 
 const config = require('../config.json');
 const ChatEndpoint = config.chat.chatEndpoint
+const Emote = config.default
 require('dotenv').config()
 
 class MessageCreateListener extends Listener {
@@ -53,11 +54,44 @@ class MessageCreateListener extends Listener {
                             .then(async (response) => {
                                 let Data = response.data;
                                 let Msg = Data.choices[0].message.content
-                                //console.log(response.data)
-                                await message.reply(Msg.replaceAll("คะ", "ครับ").replaceAll("ค่ะ", "ครับ") + " <:FTTF:1236510430269014047>");
+
+                                const Button = new ButtonBuilder()
+                                    .setCustomId('askagain')
+                                    .setLabel('ถามฟูตามิอีกครั้ง')
+                                    .setStyle(ButtonStyle.Primary);
+
+                                const Row = new ActionRowBuilder()
+                                    .addComponents(Button);
+
+                                const msg = await message.reply({ content: `${Msg.replaceAll("คะ", "ครับ").replaceAll("ค่ะ", "ครับ") + " <:FTTF:1236510430269014047>"}`, components: [Row] });
+
+                                const Collector = msg.createMessageComponentCollector({
+                                    filter: (buttonInteraction) => buttonInteraction.customId === 'askagain' && buttonInteraction.user.id === message.author.id,
+                                    time: 15000,
+                                    max: 1
+                                });
+
+                                Collector.on('collect', (buttonInteraction) => {
+                                    axios.request(Config)
+                                        .then(async (response) => {
+                                            let Data = response.data;
+                                            let Msg = Data.choices[0].message.content
+
+                                            return msg.edit({ content: `${Msg.replaceAll("คะ", "ครับ").replaceAll("ค่ะ", "ครับ") + " <:FTTF:1236510430269014047>"}`, components: [] });
+                                        })
+                                        .catch(async (error) => {
+                                            await msg.edit({ content: `${Emote.error} ไม่สามารถถามใหม่อีกครั้งได้ : \`${error}\``, components: [] });
+                                        });
+                                });
+
+                                Collector.on('end', (collected, reason) => {
+                                    if (reason === 'time') {
+                                        return msg.edit({ content: `${Msg.replaceAll("คะ", "ครับ").replaceAll("ค่ะ", "ครับ") + " <:FTTF:1236510430269014047>"}`, components: [] });
+                                    }
+                                });
                             })
                             .catch(async (error) => {
-                                await message.reply(`ผมไม่สามารถคุยกับคุณได้นะตอนนี้ : \`${error}\``);
+                                await message.reply(`${Emote.error} ไม่สามารถคุยกับคุณได้ : \`${error}\``);
                             });
                     }
                 }
