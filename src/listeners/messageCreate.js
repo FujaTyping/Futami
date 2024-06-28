@@ -4,10 +4,12 @@ const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('
 
 const config = require('../config.json');
 const ChatEndpoint = config.chat.chatEndpoint
+const color = config.chat.color
 const Emote = config.default
 require('dotenv').config()
 
 class MessageCreateListener extends Listener {
+
     run(message) {
         if (!message.author.bot) {
             let AnswerAlready = false;
@@ -54,6 +56,11 @@ class MessageCreateListener extends Listener {
                             .then(async (response) => {
                                 let Data = response.data;
                                 let Msg = Data.choices[0].message.content
+                                let ContentMsg = Msg.replaceAll("คะ", "ครับ").replaceAll("ค่ะ", "ครับ")
+
+                                const Content = new EmbedBuilder()
+                                    .setColor(color)
+                                    .setAuthor({ name: `${ContentMsg}`, iconURL: 'https://futami.siraphop.me/assets/icon/typoon.png' })
 
                                 const Button = new ButtonBuilder()
                                     .setCustomId('askagain')
@@ -63,11 +70,11 @@ class MessageCreateListener extends Listener {
                                 const Row = new ActionRowBuilder()
                                     .addComponents(Button);
 
-                                const msg = await message.reply({ content: `${Msg.replaceAll("คะ", "ครับ").replaceAll("ค่ะ", "ครับ") + " <:FTTF:1236510430269014047>"}`, components: [Row] });
+                                const msg = await message.reply({ embeds: [Content], components: [Row] });
 
                                 const Collector = msg.createMessageComponentCollector({
                                     filter: (buttonInteraction) => buttonInteraction.customId === 'askagain' && buttonInteraction.user.id === message.author.id,
-                                    time: 15000,
+                                    time: 20000,
                                     max: 1
                                 });
 
@@ -76,22 +83,37 @@ class MessageCreateListener extends Listener {
                                         .then(async (response) => {
                                             let Data = response.data;
                                             let Msg = Data.choices[0].message.content
+                                            let ContentMsg = Msg.replaceAll("คะ", "ครับ").replaceAll("ค่ะ", "ครับ")
 
-                                            return msg.edit({ content: `${Msg.replaceAll("คะ", "ครับ").replaceAll("ค่ะ", "ครับ") + " <:FTTF:1236510430269014047>"}`, components: [] });
+                                            const Content = new EmbedBuilder()
+                                                .setColor(color)
+                                                .setAuthor({ name: `${ContentMsg}`, iconURL: 'https://futami.siraphop.me/assets/icon/typoon.png' })
+
+                                            return msg.edit({ embeds: [Content], components: [] });
                                         })
                                         .catch(async (error) => {
-                                            await msg.edit({ content: `${Emote.error} ไม่สามารถถามใหม่อีกครั้งได้ : \`${error}\``, components: [] });
+                                            const Content = new EmbedBuilder()
+                                                .setColor(color)
+                                                .setAuthor({ name: `ตอนนี้ไม่สามารถคุยกับคุณได้`, iconURL: 'https://futami.siraphop.me/assets/icon/error.png' })
+                                                .setDescription("```\n" + error + "\n```")
+
+                                            await msg.edit({ embeds: [Content], components: [] });
                                         });
                                 });
 
                                 Collector.on('end', (collected, reason) => {
                                     if (reason === 'time') {
-                                        return msg.edit({ content: `${Msg.replaceAll("คะ", "ครับ").replaceAll("ค่ะ", "ครับ") + " <:FTTF:1236510430269014047>"}`, components: [] });
+                                        return msg.edit({ embeds: [Content], components: [] });
                                     }
                                 });
                             })
                             .catch(async (error) => {
-                                await message.reply(`${Emote.error} ไม่สามารถคุยกับคุณได้ : \`${error}\``);
+                                const Content = new EmbedBuilder()
+                                    .setColor(color)
+                                    .setAuthor({ name: `ตอนนี้ไม่สามารถคุยกับคุณได้`, iconURL: 'https://futami.siraphop.me/assets/icon/error.png' })
+                                    .setDescription("```\n" + error + "\n```")
+
+                                await message.reply({ embeds: [Content] });
                             });
                     }
                 }
