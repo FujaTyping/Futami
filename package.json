@@ -31,6 +31,7 @@
     "@distube/ytsr": "^2.0.4",
     "@napi-rs/canvas": "^0.1.53",
     "@sapphire/framework": "^5.2.1",
+    "@sapphire/plugin-subcommands": "^6.0.3",
     "axios": "^1.7.2",
     "cors": "^2.8.5",
     "discord-gamecord": "^4.4.2",

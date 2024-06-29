@@ -1,45 +1,31 @@
-const { Subcommand } = require('@sapphire/plugin-subcommands');
+const { isMessageInstance } = require('@sapphire/discord.js-utilities');
+const { Command } = require('@sapphire/framework');
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const axios = require('axios')
 
 const config = require('../../config.json');
 const color = config.chat.color
 const emote = config.default
-class AnimeCommand extends Subcommand {
+
+class AnimeCommand extends Command {
     constructor(context, options) {
-        super(context, {
-            ...options,
-            name: 'anime',
-            subcommands: [
-                {
-                    name: 'search',
-                    chatInputRun: 'chatInputSearch'
-                }
-            ]
-        });
+        super(context, { ...options });
     }
 
     registerApplicationCommands(registry) {
         registry.registerChatInputCommand((builder) =>
-            builder
-                .setName('anime')
-                .setDescription('คำสั่งเกี่ยวกับอนิเมะ !!')
-                .addSubcommand((command) =>
-                    command
+            builder.setName('anime').setDescription('อยากรู้เรื่องอนิเมะหรอ ??')
+                .addStringOption((option) =>
+                    option
                         .setName('search')
-                        .setDescription('อยากรู้เรื่องอนิเมะหรอ ??')
-                        .addStringOption((option) =>
-                            option
-                                .setName('query')
-                                .setDescription('ค้นหาอนิเมะเรื่องอะไรดี ??')
-                                .setRequired(true)
-                        )
+                        .setDescription('ค้นหาอนิเมะเรื่องอะไรดี ??')
+                        .setRequired(true)
                 )
         );
     }
 
-    async chatInputSearch(interaction) {
-        const Search = interaction.options.getString('query')
+    async chatInputRun(interaction) {
+        const Search = interaction.options.getString('search')
 
         const Content = new EmbedBuilder()
             .setColor(color)
