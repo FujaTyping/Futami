@@ -35,7 +35,7 @@ openssl req -new -key key.pem -out csr.pem
 openssl x509 -req -days 9999 -in csr.pem -signkey key.pem -out cert.pem
 ```
 ## Source : [adamtheautomator.com](https://adamtheautomator.com/https-nodejs/)
-> If you want to use certbot : certbot renewtps://certbot.eff.org/
+> If you want to use certbot : certbot renew https://certbot.eff.org/
 > 1. run `certbot certonly --manual` and follow the instructions
 > 2. edit your **cert** and **key** in `index.js`<br>
 > Want to renew run `certbot renew`
