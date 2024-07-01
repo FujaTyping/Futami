@@ -206,7 +206,7 @@ class AnimeCommand extends Subcommand {
                 const Content = new EmbedBuilder()
                     .setColor(color)
                     .setTitle('👦🏻 ข้อมูลอนิเมะ')
-                    .setDescription(`เรื่อง : **${Response.title_japanese}**\nประเภท : **${Response.genres[0].name}**\nรูปแบบ : **${Response.type}** (${Response.source})\nความรุนแรง : **${Response.rating}**\n\nทั้งหมดมี \`${Response.episodes}\` ตอน **${Response.airing ? 'ขณะนี้ กำลังดำเนินเนื้อเรื่องอยู่' : 'เนื้อเรื่องไม่ได้ออกอากาศต่อแล้ว'}**`)
+                    .setDescription(`เรื่อง : **${Response.title_japanese}**\nรูปแบบ : **${Response.type}** (${Response.source})\nความรุนแรง : **${Response.rating}**\n\nทั้งหมดมี \`${Response.episodes}\` ตอน **${Response.airing ? 'ขณะนี้ กำลังดำเนินเนื้อเรื่องอยู่' : 'เนื้อเรื่องไม่ได้ออกอากาศต่อแล้ว'}**`)
                     .setTimestamp()
 
                 const MoreInfo = new ButtonBuilder()
@@ -246,7 +246,7 @@ class AnimeCommand extends Subcommand {
                     const Content = new EmbedBuilder()
                         .setColor(color)
                         .setTitle('👦🏻 ข้อมูลอนิเมะ')
-                        .setDescription(`เรื่อง : **${Response.title_japanese}**\nประเภท : **${Response.genres[0].name}**\nรูปแบบ : **${Response.type}** (${Response.source})\nความรุนแรง : **${Response.rating}**\n\n**เรื่องย่อ** : ${Response.synopsis.replace(/\[Written by MAL Rewrite\]/g, '').trim()}\n\nทั้งหมดมี \`${Response.episodes}\` ตอน **${Response.airing ? 'ขณะนี้ กำลังดำเนินเนื้อเรื่องอยู่' : 'เนื้อเรื่องไม่ได้ออกอากาศต่อแล้ว'}**`)
+                        .setDescription(`เรื่อง : **${Response.title_japanese}**\nรูปแบบ : **${Response.type}** (${Response.source})\nความรุนแรง : **${Response.rating}**\n\n**เรื่องย่อ** : ${Response.synopsis.replace(/\[Written by MAL Rewrite\]/g, '').trim()}\n\nทั้งหมดมี \`${Response.episodes}\` ตอน **${Response.airing ? 'ขณะนี้ กำลังดำเนินเนื้อเรื่องอยู่' : 'เนื้อเรื่องไม่ได้ออกอากาศต่อแล้ว'}**`)
                         .setTimestamp()
 
                     const Info = new ButtonBuilder()
@@ -312,7 +312,7 @@ class AnimeCommand extends Subcommand {
     }
 }
 function IsNull(Text) {
-    if (Text == null || Text == 'null' || Text == undefined || Text == 'undefined' || !Text) {
+    if (Text === null || Text == 'null' || Text === undefined || Text == 'undefined' || !Text) {
         return '-'
     }
 }
