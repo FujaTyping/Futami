@@ -68,7 +68,7 @@ class TicTacToeCommand extends Command {
                 reqTimeoutTime: 30000,
                 requestMessage: '{player} เชิญให้เล่นเกม เอกซ์-โอ (XO) ในรอบนี้',
                 rejectMessage: 'ยกเลิกคำขอ ในการเล่นเกมรอบนี้แล้ว',
-                reqTimeoutMessage: 'ไม่ได้ตอบรับคำขอ และเกมจะไม่เริ่ม'
+                reqTimeoutMessage: 'ไม่ได้ตอบรับคำขอในเวลาที่กำหนด'
             });
 
             Game.startGame();
