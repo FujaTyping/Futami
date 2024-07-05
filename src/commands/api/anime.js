@@ -5,6 +5,12 @@ const axios = require('axios')
 const config = require('../../config.json');
 const color = config.chat.color
 const emote = config.default
+
+function IsNull(Text) {
+    if (Text === null || Text == 'null' || Text === undefined || Text == 'undefined' || !Text) {
+        return '-'
+    }
+}
 class AnimeCommand extends Subcommand {
     constructor(context, options) {
         super(context, {
@@ -18,6 +24,10 @@ class AnimeCommand extends Subcommand {
                 {
                     name: 'random',
                     chatInputRun: 'chatInputRandom'
+                },
+                {
+                    name: 'character',
+                    chatInputRun: 'chatInputCharacter'
                 }
             ]
         });
@@ -43,6 +53,17 @@ class AnimeCommand extends Subcommand {
                     command
                         .setName('random')
                         .setDescription('สุ่มอนิเมะสักเรื่องไหม ??')
+                )
+                .addSubcommand((command) =>
+                    command
+                        .setName('character')
+                        .setDescription('อยากรู้เรื่องตัวละครอนิเมะหรอ ??')
+                        .addStringOption((option) =>
+                            option
+                                .setName('search')
+                                .setDescription('ค้นหาตัวละครอะไรดี ??')
+                                .setRequired(true)
+                        )
                 )
         );
     }
@@ -310,10 +331,58 @@ class AnimeCommand extends Subcommand {
                 return interaction.editReply({ embeds: [Content] });
             });
     }
-}
-function IsNull(Text) {
-    if (Text === null || Text == 'null' || Text === undefined || Text == 'undefined' || !Text) {
-        return '-'
+
+    async chatInputCharacter(interaction) {
+        const Search = interaction.options.getString('search')
+
+        const Content = new EmbedBuilder()
+            .setColor(color)
+            .setTitle('👦🏻 ข้อมูลตัวละครอนิเมะ')
+            .setDescription('กำลังค้นหาข้อมูล ..')
+            .setTimestamp()
+
+        const msg = await interaction.reply({ embeds: [Content], fetchReply: true });
+
+        axios.get(`https://api.jikan.moe/v4/characters?q=${Search}&limit=1`)
+            .then(async response => {
+                const Response = response.data.data[0];
+
+                if (!Response) {
+                    const Content = new EmbedBuilder()
+                        .setColor(color)
+                        .setTitle('👦🏻 ข้อมูลตัวละครอนิเมะ')
+                        .setDescription(`ไม่พบข้อมูลของตัวละคร : **${Search}**\nลองเช็คดูว่าใส่ชื่อตัวละครถูกมั้ย ??`)
+                        .setTimestamp()
+
+                    await interaction.editReply({ embeds: [Content] });
+                } else {
+                    const Content = new EmbedBuilder()
+                        .setColor(color)
+                        .setTitle('👦🏻 ข้อมูลตัวละครอนิเมะ')
+                        .setDescription(`ชื่อตัวละคร : **${Response.name}** (${Response.name_kanji})\nคนถูกใจ : **❤️ ${Response.favorites}** คน\n\n**เกี่ยวกับตัวละคร** : ${Response.about.replace(/\(Source:.*?\)/g, '').trim()}`)
+                        .setThumbnail(`${Response.images.jpg.image_url}`)
+                        .setTimestamp()
+
+                    const MoreInfo = new ButtonBuilder()
+                        .setLabel('ดูข้อมูลเพิ่มเติม')
+                        .setURL(Response.url)
+                        .setStyle(ButtonStyle.Link);
+
+                    const Row = new ActionRowBuilder()
+                        .addComponents(MoreInfo);
+
+                    await interaction.editReply({ embeds: [Content], components: [Row] });
+                }
+            })
+            .catch(error => {
+                const Content = new EmbedBuilder()
+                    .setColor(color)
+                    .setAuthor({ name: 'เกิดอะไรขึ้น ??', iconURL: 'https://futami.siraphop.me/assets/icon/error.png' })
+                    .setDescription("**ลองเช็คดูว่าใส่ชื่อตัวละครถูกไหม\n```\n" + error + "\n```")
+                    .setTimestamp()
+
+                return interaction.editReply({ embeds: [Content] });
+            });
     }
 }
 module.exports = {
