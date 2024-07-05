@@ -87,6 +87,8 @@ class AnimeCommand extends Subcommand {
 
                     await interaction.editReply({ embeds: [Content] });
                 } else {
+                    const MainText = `เรื่อง : **${Response.title_english}** (${Response.title_japanese})\nประเภท : **${Response.genres[0].name}**\nคะแนน : **⭐ ${Response.score}**\nรูปแบบ : **${Response.type}** (${Response.source})\nความรุนแรง : **${Response.rating}**\n\nทั้งหมดมี \`${Response.episodes}\` ตอน **${Response.airing ? 'ขณะนี้ กำลังดำเนินเนื้อเรื่องอยู่' : 'เนื้อเรื่องไม่ได้ออกอากาศต่อแล้ว'}** (${Response.year})`
+
                     const Img = new EmbedBuilder()
                         .setColor(color)
                         .setImage(Response.images.jpg.large_image_url)
@@ -94,7 +96,7 @@ class AnimeCommand extends Subcommand {
                     const Content = new EmbedBuilder()
                         .setColor(color)
                         .setTitle('👦🏻 ข้อมูลอนิเมะ')
-                        .setDescription(`เรื่อง : **${Response.title_english}** (${Response.title_japanese})\nประเภท : **${Response.genres[0].name}**\nคะแนน : **⭐ ${Response.score}**\nรูปแบบ : **${Response.type}** (${Response.source})\nความรุนแรง : **${Response.rating}**\n\nทั้งหมดมี \`${Response.episodes}\` ตอน **${Response.airing ? 'ขณะนี้ กำลังดำเนินเนื้อเรื่องอยู่' : 'เนื้อเรื่องไม่ได้ออกอากาศต่อแล้ว'}** (${Response.year})`)
+                        .setDescription(`${MainText.replaceAll("null", "-").replaceAll("undefined", "-")}`)
                         .setFooter({ text: `${Response.producers[0].name} • ${Response.studios[0].name}` })
                         .setTimestamp()
 
@@ -132,10 +134,12 @@ class AnimeCommand extends Subcommand {
                     });
 
                     Collector.on('collect', (buttonInteraction) => {
+                        const MainText = `เรื่อง : **${Response.title_english}** (${Response.title_japanese})\nประเภท : **${Response.genres[0].name}**\nคะแนน : **⭐ ${Response.score}**\nรูปแบบ : **${Response.type}** (${Response.source})\nความรุนแรง : **${Response.rating}**\n\n**เรื่องย่อ** : ${/\[Written by MAL Rewrite\]|\(Source:.*?\)/.test(Response.synopsis) ? Response.synopsis.replace(/\[Written by MAL Rewrite\]|\(Source:.*?\)/g, '').trim() : Response.synopsis}\n\nทั้งหมดมี \`${Response.episodes}\` ตอน **${Response.airing ? 'ขณะนี้ กำลังดำเนินเนื้อเรื่องอยู่' : 'เนื้อเรื่องไม่ได้ออกอากาศต่อแล้ว'}** (${Response.year})`
+
                         const Content = new EmbedBuilder()
                             .setColor(color)
                             .setTitle('👦🏻 ข้อมูลอนิเมะ')
-                            .setDescription(`เรื่อง : **${Response.title_english}** (${Response.title_japanese})\nประเภท : **${Response.genres[0].name}**\nคะแนน : **⭐ ${Response.score}**\nรูปแบบ : **${Response.type}** (${Response.source})\nความรุนแรง : **${Response.rating}**\n\n**เรื่องย่อ** : ${/\[Written by MAL Rewrite\]/.test(Response.synopsis) ? Response.synopsis.replace(/\[Written by MAL Rewrite\]/g, '').trim() : Response.synopsis}\n\nทั้งหมดมี \`${Response.episodes}\` ตอน **${Response.airing ? 'ขณะนี้ กำลังดำเนินเนื้อเรื่องอยู่' : 'เนื้อเรื่องไม่ได้ออกอากาศต่อแล้ว'}** (${Response.year})`)
+                            .setDescription(`${MainText.replaceAll("null", "-").replaceAll("undefined", "-")}`)
                             .setFooter({ text: `${Response.producers[0].name} • ${Response.studios[0].name}` })
                             .setTimestamp()
 
@@ -219,10 +223,12 @@ class AnimeCommand extends Subcommand {
                     .setColor(color)
                     .setImage(Response.images.jpg.large_image_url)
 
+                const MainText = `เรื่อง : **${Response.title_japanese}** (${Response.title_english})\nประเภท : **${Response.genres[0].name}**\nคะแนน : **⭐ ${Response.score}**\nรูปแบบ : **${Response.type}** (${Response.source})\nความรุนแรง : **${Response.rating}**\n\nทั้งหมดมี \`${Response.episodes}\` ตอน **${Response.airing ? 'ขณะนี้ กำลังดำเนินเนื้อเรื่องอยู่' : 'เนื้อเรื่องไม่ได้ออกอากาศต่อแล้ว'}** (${Response.year})`
+
                 const Content = new EmbedBuilder()
                     .setColor(color)
                     .setTitle('👦🏻 ข้อมูลอนิเมะ')
-                    .setDescription(`เรื่อง : **${Response.title_japanese}**\nรูปแบบ : **${Response.type}** (${Response.source})\nความรุนแรง : **${Response.rating}**\n\nทั้งหมดมี \`${Response.episodes}\` ตอน **${Response.airing ? 'ขณะนี้ กำลังดำเนินเนื้อเรื่องอยู่' : 'เนื้อเรื่องไม่ได้ออกอากาศต่อแล้ว'}**`)
+                    .setDescription(`${MainText.replaceAll("null", "-").replaceAll("undefined", "-")}`)
                     .setTimestamp()
 
                 const MoreInfo = new ButtonBuilder()
@@ -259,10 +265,12 @@ class AnimeCommand extends Subcommand {
                 });
 
                 Collector.on('collect', (buttonInteraction) => {
+                    const MainText = `เรื่อง : **${Response.title_japanese}** (${Response.title_english})\nประเภท : **${Response.genres[0].name}**\nคะแนน : **⭐ ${Response.score}**\nรูปแบบ : **${Response.type}** (${Response.source})\nความรุนแรง : **${Response.rating}**\n\n**เรื่องย่อ** : ${/\[Written by MAL Rewrite\]|\(Source:.*?\)/.test(Response.synopsis) ? Response.synopsis.replace(/\[Written by MAL Rewrite\]|\(Source:.*?\)/, '').trim() : Response.synopsis}\n\nทั้งหมดมี \`${Response.episodes}\` ตอน **${Response.airing ? 'ขณะนี้ กำลังดำเนินเนื้อเรื่องอยู่' : 'เนื้อเรื่องไม่ได้ออกอากาศต่อแล้ว'}** (${Response.year})`
+
                     const Content = new EmbedBuilder()
                         .setColor(color)
                         .setTitle('👦🏻 ข้อมูลอนิเมะ')
-                        .setDescription(`เรื่อง : **${Response.title_japanese}**\nรูปแบบ : **${Response.type}** (${Response.source})\nความรุนแรง : **${Response.rating}**\n\n**เรื่องย่อ** : ${/\[Written by MAL Rewrite\]/.test(Response.synopsis) ? Response.synopsis.replace(/\[Written by MAL Rewrite\]/g, '').trim() : Response.synopsis}\n\nทั้งหมดมี \`${Response.episodes}\` ตอน **${Response.airing ? 'ขณะนี้ กำลังดำเนินเนื้อเรื่องอยู่' : 'เนื้อเรื่องไม่ได้ออกอากาศต่อแล้ว'}**`)
+                        .setDescription(`${MainText.replaceAll("null", "-").replaceAll("undefined", "-")}`)
                         .setTimestamp()
 
                     const Info = new ButtonBuilder()
@@ -351,10 +359,12 @@ class AnimeCommand extends Subcommand {
 
                     await interaction.editReply({ embeds: [Content] });
                 } else {
+                    const MainText = `ชื่อตัวละคร : **${Response.name}** (${Response.name_kanji})\nคนถูกใจ : **❤️ ${Response.favorites}** คน\n\n**เกี่ยวกับตัวละคร** : ${/\(Source:.*?\)/.test(Response.about) ? Response.about.replace(/\(Source:.*?\)/g, '').trim() : Response.about}`
+
                     const Content = new EmbedBuilder()
                         .setColor(color)
                         .setTitle('👦🏻 ข้อมูลตัวละครอนิเมะ')
-                        .setDescription(`ชื่อตัวละคร : **${Response.name}** (${Response.name_kanji})\nคนถูกใจ : **❤️ ${Response.favorites}** คน\n\n**เกี่ยวกับตัวละคร** : ${/\(Source:.*?\)/.test(Response.about) ? Response.about.replace(/\(Source:.*?\)/g, '').trim() : Response.about}`)
+                        .setDescription(`${MainText.replaceAll("null", "-").replaceAll("undefined", "-")}`)
                         .setThumbnail(`${Response.images.jpg.image_url}`)
                         .setTimestamp()
 
