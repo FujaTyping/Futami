@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="aqua">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/fav.ico" type="image/x-icon">
+    <meta property="og:type" content="website" />
+    <title>Futami | วิธีการใช้งานฟูตามิ</title>
+    <meta name="theme-color" content="#345ca8" />
+    <meta name="description" content="Futami - Instruction">
+    <meta property="og:image" content="https://futami.siraphop.me/assets/banner/content-index.png" />
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Futami - Instruction">
+    <meta name="twitter:description"
+        content="Futami a bot created by FujaTyping at the request of his friend ph007phop, offers music, moderation, fun, and API commands, quickly becoming popular among Discord users">
+    <meta name="twitter:site" content="@fujatyping" />
+    <meta name="twitter:creator" content="@fujatyping" />
+    <meta property="twitter:image" content="https://futami.siraphop.me/assets/banner/content-index.png" />
+    <link href="/module/daisyui.css" rel="stylesheet" type="text/css" />
+    <script src="/module/tailwind.js"></script>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/module/animate.css" />
+    <link rel="stylesheet" href="/module/aos.css" />
+    <script src="/script/darkmode.js"></script>
+    <script defer src="/index.js"></script>
+    <script src="/module/aos.js"></script>
+    <script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="165796" async="async"
+        type="text/javascript"></script>
+</head>
+
+<body onmousemove="GetCursor(event)">
+    <button class="btn btn-circle btn-outline button-top animate__animated" id="top-button">
+        <span class="material-symbols-outlined">
+            vertical_align_top
+        </span>
+    </button>
+    <button onclick="RealDarkMode()" class="btn btn-circle btn-outline button-dark animate__animated">
+        <span class="material-symbols-outlined">
+            nights_stay
+        </span>
+    </button>
+    <div>
+        <div class="hero hero-normal hero-tap">
+            <div class="hero-content text-center animate__animated animate__fadeInUp">
+                <div class="max-w-md">
+                    <h1 style="font-family: Young Serif;" class="text-5xl font-bold">Instruction</h1>
+                    <p class="py-6"><b>Instruction & How to use Futami</b></p>
+                    <div class="join">
+                        <button onclick="window.location.href = '/';" class="btn join-item"><span
+                                class="material-symbols-outlined">arrow_back</span>Back</button>
+                        <div class="dropdown">
+                            <button tabindex="0" role="button" class="btn join-item">Menu <span
+                                    class="material-symbols-outlined">menu</span></button>
+                            <ul tabindex="0"
+                                class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                                <li><a>Item 1</a></li>
+                                <li><a>Item 2</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img width="100%" src="/assets/divider.png">
+        <div style="padding-bottom: 0px !important;" class="hero bg-base-200 hero-normal">
+            <div class="hero-content text-center">
+                <div class="max-w-md lefted">
+                    <h1 style="font-family: Young Serif;" class="text-5xl font-bold">Command</h1>
+                    <p class="py-6">My prefix is <kbd class="kbd kbd-sm">f.</kbd> , You cannot use @MENTION , Some
+                        command also use <kbd class="kbd kbd-sm">/</kbd> slash command</p>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: -35px;" class="hero bg-base-200">
+            <div class="hero-content text-center">
+                <div class="max-w-md lefted">
+                    <p id="Music" class="py-4">● Music command</p>
+                    <div class="overflow-x-auto bg-base-100">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Prefix</th>
+                                    <th>Name</th>
+                                    <th>Usage (Description)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                    <td>lyrics</td>
+                                    <td>Show lyrics of the song</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                    <td>filter</td>
+                                    <td>Make your song more funny &nbsp;<span style="display: inline;"
+                                            onclick="filter_modal.showModal()" class="point">★</span></td>
+                                </tr>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                    <td>loop</td>
+                                    <td>Loop song <a class="usage">(usage : enter off , song or queue)</a></td>
+                                </tr>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                    <td>play</td>
+                                    <td>Play song and join <a class="usage">(usage : enter song name or url)</a></td>
+                                </tr>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                    <td>pause</td>
+                                    <td>pause a song</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                    <td>queue</td>
+                                    <td>See song queue</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                    <td>shuffle</td>
+                                    <td>Shuffle song queue</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                    <td>skip/td>
+                                    <td>Skip current song</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                    <td>stop</td>
+                                    <td>Stop current song and leave</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                    <td>volume</td>
+                                    <td>Change volume <a class="usage">(usage : usage : enter value of volume)</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: -10px;" class="hero bg-base-200">
+            <div class="hero-content text-center">
+                <div class="max-w-md lefted">
+                    <p id="Music" class="py-4">● Music command</p>
+                    <div class="overflow-x-auto bg-base-100">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Prefix</th>
+                                    <th>Name</th>
+                                    <th>Usage (Description)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                    <td>lyrics</td>
+                                    <td>Show lyrics of the song</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                    <td>filter</td>
+                                    <td>Make your song more funny &nbsp;<span style="display: inline;"
+                                            onclick="filter_modal.showModal()" class="point">★</span></td>
+                                </tr>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                    <td>loop</td>
+                                    <td>Loop song <a class="usage">(usage : enter off , song or queue)</a></td>
+                                </tr>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                    <td>play</td>
+                                    <td>Play song and join <a class="usage">(usage : enter song name or url)</a></td>
+                                </tr>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                    <td>pause</td>
+                                    <td>pause a song</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                    <td>queue</td>
+                                    <td>See song queue</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                    <td>shuffle</td>
+                                    <td>Shuffle song queue</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                    <td>skip/td>
+                                    <td>Skip current song</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                    <td>stop</td>
+                                    <td>Stop current song and leave</td>
+                                </tr>
+                                <tr>
+                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                    <td>volume</td>
+                                    <td>Change volume <a class="usage">(usage : usage : enter value of volume)</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer footer-center p-4 bg-base-300 text-base-content">
+            <aside>
+                <p>Copyright © <a href="https://siraphop.me/">FujaTyping</a> 2023-2024 | All right reserved</p>
+            </aside>
+        </footer>
+    </div>
+    <dialog id="filter_modal" class="modal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg">Filter list <a href="https://ffmpeg.org/ffmpeg-filters.html">(FFmpeg audio
+                    filter)</a></h3>
+            <p class="py-4">3d , bassboost , echo , karaoke , nightcore , vaporwave , flanger , gate , haas , reverse ,
+                surround , mcompand , phaser , tremolo , earwax<br>
+                <a class="usage">(usage : enter filter)</a>
+            </p>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+</body>
+
+</html>
