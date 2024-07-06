@@ -24,10 +24,9 @@
     <script src="/module/tailwind.js"></script>
     <link rel="stylesheet" href="/index.css">
     <link rel="stylesheet" href="/module/animate.css" />
-    <link rel="stylesheet" href="/module/aos.css" />
     <script src="/script/darkmode.js"></script>
     <script defer src="/index.js"></script>
-    <script src="/module/aos.js"></script>
+    <script defer src="/script/docs.js"></script>
     <script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="165796" async="async"
         type="text/javascript"></script>
 </head>
@@ -57,8 +56,10 @@
                                     class="material-symbols-outlined">menu</span></button>
                             <ul tabindex="0"
                                 class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                                <li><a>Item 1</a></li>
-                                <li><a>Item 2</a></li>
+                                <li><a class="point" onclick="Navigation('Music')">Music command</a></li>
+                                <li><a class="point" onclick="Navigation('Mod')">Moderation command</a></li>
+                                <li><a class="point" onclick="Navigation('Fun')">Fun command</a></li>
+                                <li><a class="point" onclick="Navigation('Others')">Other command</a></li>
                             </ul>
                         </div>
                     </div>
@@ -66,153 +67,234 @@
             </div>
         </div>
         <img width="100%" src="/assets/divider.png">
-        <div style="padding-bottom: 0px !important;" class="hero bg-base-200 hero-normal">
+        <div style="padding-bottom: 45px !important;" class="hero bg-base-200 hero-normal hero-grass">
             <div class="hero-content text-center">
                 <div class="max-w-md lefted">
                     <h1 style="font-family: Young Serif;" class="text-5xl font-bold">Command</h1>
                     <p class="py-6">My prefix is <kbd class="kbd kbd-sm">f.</kbd> , You cannot use @MENTION , Some
                         command also use <kbd class="kbd kbd-sm">/</kbd> slash command</p>
-                </div>
-            </div>
-        </div>
-        <div style="margin-top: -35px;" class="hero bg-base-200">
-            <div class="hero-content text-center">
-                <div class="max-w-md lefted">
-                    <p id="Music" class="py-4">● Music command</p>
-                    <div class="overflow-x-auto bg-base-100">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Prefix</th>
-                                    <th>Name</th>
-                                    <th>Usage (Description)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">/</kbd></td>
-                                    <td>lyrics</td>
-                                    <td>Show lyrics of the song</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
-                                    <td>filter</td>
-                                    <td>Make your song more funny &nbsp;<span style="display: inline;"
-                                            onclick="filter_modal.showModal()" class="point">★</span></td>
-                                </tr>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
-                                    <td>loop</td>
-                                    <td>Loop song <a class="usage">(usage : enter off , song or queue)</a></td>
-                                </tr>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
-                                    <td>play</td>
-                                    <td>Play song and join <a class="usage">(usage : enter song name or url)</a></td>
-                                </tr>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
-                                    <td>pause</td>
-                                    <td>pause a song</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
-                                    <td>queue</td>
-                                    <td>See song queue</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
-                                    <td>shuffle</td>
-                                    <td>Shuffle song queue</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
-                                    <td>skip/td>
-                                    <td>Skip current song</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
-                                    <td>stop</td>
-                                    <td>Stop current song and leave</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
-                                    <td>volume</td>
-                                    <td>Change volume <a class="usage">(usage : usage : enter value of volume)</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div role="alert" class="alert alert-warning">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                        <span>The data on this page maybe not up to date.</span>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div style="margin-top: -10px;" class="hero bg-base-200">
-            <div class="hero-content text-center">
-                <div class="max-w-md lefted">
-                    <p id="Music" class="py-4">● Music command</p>
-                    <div class="overflow-x-auto bg-base-100">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Prefix</th>
-                                    <th>Name</th>
-                                    <th>Usage (Description)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">/</kbd></td>
-                                    <td>lyrics</td>
-                                    <td>Show lyrics of the song</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
-                                    <td>filter</td>
-                                    <td>Make your song more funny &nbsp;<span style="display: inline;"
-                                            onclick="filter_modal.showModal()" class="point">★</span></td>
-                                </tr>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
-                                    <td>loop</td>
-                                    <td>Loop song <a class="usage">(usage : enter off , song or queue)</a></td>
-                                </tr>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
-                                    <td>play</td>
-                                    <td>Play song and join <a class="usage">(usage : enter song name or url)</a></td>
-                                </tr>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
-                                    <td>pause</td>
-                                    <td>pause a song</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
-                                    <td>queue</td>
-                                    <td>See song queue</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
-                                    <td>shuffle</td>
-                                    <td>Shuffle song queue</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
-                                    <td>skip/td>
-                                    <td>Skip current song</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
-                                    <td>stop</td>
-                                    <td>Stop current song and leave</td>
-                                </tr>
-                                <tr>
-                                    <td><kbd class="kbd kbd-sm">f.</kbd></td>
-                                    <td>volume</td>
-                                    <td>Change volume <a class="usage">(usage : usage : enter value of volume)</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="text-focus-in" id="Music">
+                        <p class="py-6">● Music command</p>
+                        <div class="overflow-x-auto bg-base-100">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Prefix</th>
+                                        <th>Name</th>
+                                        <th>Usage (Description)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                        <td>lyrics</td>
+                                        <td>Show lyrics of the song</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                        <td>filter</td>
+                                        <td>Make your song more funny &nbsp;<span style="display: inline;"
+                                                onclick="filter_modal.showModal()" class="point">★</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                        <td>loop</td>
+                                        <td>Loop song <a class="usage">(usage : enter off , song or queue)</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                        <td>play</td>
+                                        <td>Play song and join <a class="usage">(usage : enter song name or url)</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                        <td>pause</td>
+                                        <td>pause a song</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                        <td>queue</td>
+                                        <td>See song queue</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                        <td>shuffle</td>
+                                        <td>Shuffle song queue</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                        <td>skip/td>
+                                        <td>Skip current song</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                        <td>stop</td>
+                                        <td>Stop current song and leave</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                        <td>volume</td>
+                                        <td>Change volume <a class="usage">(usage : usage : enter value of volume)</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="text-focus-in" style="display: none;" id="Mod">
+                        <p class="py-6">● Moderation command</p>
+                        <div class="overflow-x-auto bg-base-100">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Prefix</th>
+                                        <th>Name</th>
+                                        <th>Usage (Description)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                        <td>timeout</td>
+                                        <td>timeout member in guild</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                        <td>kick</td>
+                                        <td>kick member</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="text-focus-in" style="display: none;" id="Fun">
+                        <p class="py-6">● Fun command</p>
+                        <div class="overflow-x-auto bg-base-100">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Prefix</th>
+                                        <th>Name</th>
+                                        <th>Usage (Description)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                        <td>emote</td>
+                                        <td>Show your emote</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                        <td>meme</td>
+                                        <td>Random meme generator</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                        <td>tictactoe</td>
+                                        <td>Play tic tac toe game</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                        <td>fasttype</td>
+                                        <td>Test your type speed</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                        <td>matchpairs</td>
+                                        <td>Play match pairs emoji game</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                        <td>canvas</td>
+                                        <td>Create you own meme</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                        <td>waifu</td>
+                                        <td>Random waifu image</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="text-focus-in" style="display: none;" id="Others">
+                        <p class="py-6">● Other command</p>
+                        <div class="overflow-x-auto bg-base-100">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Prefix</th>
+                                        <th>Name</th>
+                                        <th>Usage (Description)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">f.</kbd></td>
+                                        <td>ping</td>
+                                        <td>See my response time</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                        <td>anime random</td>
+                                        <td>Random anime info</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                        <td>anime search</td>
+                                        <td>Search anime info</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                        <td>anime character</td>
+                                        <td>Search anime character info</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                        <td>air</td>
+                                        <td>Check PM 2.5 Status</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                        <td>info</td>
+                                        <td>Show server info</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                        <td>about</td>
+                                        <td>See about me</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                        <td>url</td>
+                                        <td>A Url tools</td>
+                                    </tr>
+                                    <tr>
+                                        <td><kbd class="kbd kbd-sm">/</kbd></td>
+                                        <td>request</td>
+                                        <td>Give Futami a feedback</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="margin-top: 30px;" role="alert" class="alert alert-info">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            class="h-6 w-6 shrink-0 stroke-current">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span>To find others command use the menu button.</span>
                     </div>
                 </div>
             </div>
