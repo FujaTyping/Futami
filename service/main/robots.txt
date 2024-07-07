@@ -1,0 +1,7 @@
+User-agent: *
+
+Disallow: /assets/
+Disallow: /module/
+Disallow: /script/
+
+Sitemap: https://futami.siraphop.me/sitemap.xml
