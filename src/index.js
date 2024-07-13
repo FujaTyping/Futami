@@ -9,7 +9,7 @@ const { DisTube, Song } = require('distube');
 const app = express()
 const path = require('path');
 app.use(cors({
-    origin: 'https://futami.siraphop.me/',
+    origin: 'https://futami.siraphop.me',
     methods: 'GET'
 }));
 
