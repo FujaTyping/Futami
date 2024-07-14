@@ -38,7 +38,7 @@ class DMCommand extends Command {
                   const CountryCode = country.country_id.toLowerCase();
                   const Probability = country.probability.toFixed(4);
 
-                  Report += `**${LineNumber}.** :flag_${CountryCode}: ความเป็นไปได้ : **${Probability}**\n`;
+                  Report += `**${LineNumber}.** :flag_${CountryCode}: (${country.country_id.toLowerCase()}) ความเป็นไปได้ : \`${Probability}\`\n`;
                 });
 
                 const Content = new EmbedBuilder()
