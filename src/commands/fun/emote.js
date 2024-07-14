@@ -38,24 +38,7 @@ class EmoteCommand extends Command {
                     option
                         .setName('action')
                         .setDescription('เลือกท่าทางมาเลย !!')
-                        .addChoices(
-                            { name: 'กอด', value: 'hug' },
-                            { name: 'จูบ', value: 'kiss' },
-                            { name: 'บองก์', value: 'bonk' },
-                            { name: 'ยีท', value: 'yeet' },
-                            { name: 'โบกมือ', value: 'wave' },
-                            { name: 'ไฮไฟว์', value: 'highfive' },
-                            { name: 'จับมือ', value: 'handhold' },
-                            { name: 'ตบ', value: 'slap' },
-                            { name: 'ฆ่า', value: 'kill' },
-                            { name: 'เตะ', value: 'kick' },
-                            { name: 'กัด', value: 'bite' },
-                            { name: 'เต้น', value: 'dance' },
-                            { name: 'ยิ้ม', value: 'smile' },
-                            { name: 'ร้องให้', value: 'cry' },
-                            { name: 'มีความสุข', value: 'happy' },
-                            { name: 'ลูบหัว', value: 'pat' }
-                        )
+                        .addChoices(Choices)
                         .setRequired(true)
                 )
                 .addUserOption((option) =>

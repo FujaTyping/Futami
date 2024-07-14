@@ -8,6 +8,19 @@ const color = config.chat.color
 
 GlobalFonts.registerFromPath('./src/commands/fun/data/canvas/font/impact.ttf', 'Impact')
 
+const Choices = [
+    { name: 'Stonks', value: 'stonks' },
+    { name: 'Change My Mind', value: 'changemymind' },
+    { name: 'UNO Draw 25 Cards', value: 'unodrawcards' },
+    { name: 'Waiting Skeleton', value: 'waitingskeleton' },
+    { name: 'Unsettled Tom', value: 'unsettledtom' },
+    { name: 'I Am Once Again Asking', value: 'iamonceagainasking' },
+    { name: 'Surprised Pikachu', value: 'surprisedpikachu' },
+    { name: 'This is Worthless', value: 'thisisworthless' },
+    { name: 'Dr Evil air quotes', value: 'drevilairquotes' },
+    { name: "Now That’s What I Call", value: 'nowthatswhaticall' }
+];
+
 class CanvasCommand extends Command {
     constructor(context, options) {
         super(context, { ...options });
@@ -20,18 +33,7 @@ class CanvasCommand extends Command {
                     option
                         .setName('create')
                         .setDescription('เลือกรูปแบบมาเลย !!')
-                        .addChoices(
-                            { name: 'Stonks', value: 'stonks' },
-                            { name: 'Change My Mind', value: 'changemymind' },
-                            { name: 'UNO Draw 25 Cards', value: 'unodrawcards' },
-                            { name: 'Waiting Skeleton', value: 'waitingskeleton' },
-                            { name: 'Unsettled Tom', value: 'unsettledtom' },
-                            { name: 'I Am Once Again Asking', value: 'iamonceagainasking' },
-                            { name: 'Surprised Pikachu', value: 'surprisedpikachu' },
-                            { name: 'This is Worthless', value: 'thisisworthless' },
-                            { name: 'Dr Evil air quotes', value: 'drevilairquotes' },
-                            { name: "Now That’s What I Call", value: 'nowthatswhaticall' }
-                        )
+                        .addChoices(Choices)
                         .setRequired(true)
                 )
                 .addUserOption((option) =>

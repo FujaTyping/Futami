@@ -26,13 +26,7 @@ class WaifuCommand extends Command {
                     option
                         .setName('type')
                         .setDescription('อยากได้แบบไหนหละ !!')
-                        .addChoices(
-                            { name: 'Waifu', value: 'waifu' },
-                            { name: 'Neko', value: 'neko' },
-                            { name: 'Megumin', value: 'megumin' },
-                            { name: 'Shinobu', value: 'shinobu' },
-                            { name: 'Trap', value: 'trap' }
-                        )
+                        .addChoices(Choices)
                         .setRequired(true)
                 )
                 .addStringOption((option) =>

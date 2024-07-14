@@ -8,6 +8,29 @@ const color = config.chat.color
 const emote = config.default
 require('dotenv').config()
 
+const Choices = [
+    { name: 'กรุงเทพ', value: 'bangkok' },
+    { name: 'หาดใหญ่', value: '@A47920' },
+    { name: 'เชียงใหม่', value: '@A40330' },
+    { name: 'ยะลา', value: '@A112192' },
+    { name: 'กระบี่', value: '@A419488' },
+    { name: 'อุดรธานี', value: '@13637' },
+    { name: 'พิษณุโลก', value: '@A473494' },
+    { name: 'สงขลา', value: '@A419365' },
+    { name: 'ชุมพร', value: '@A248455' },
+    { name: 'เพชรบุรี', value: '@A419617' },
+    { name: 'นครพนม', value: '@A197185' },
+    { name: 'ระยอง', value: '@A234487' },
+    { name: 'ระนอง', value: '@A419548' },
+    { name: 'ประจวบคีรีขันธ์', value: '@A121969' },
+    { name: 'สมุทรสงคราม', value: '@A419419' },
+    { name: 'กาญจนบุรี', value: '@A236419' },
+    { name: 'อุทัยธานี', value: '@A473482' },
+    { name: 'กาฬสินธุ์', value: '@A419266' },
+    { name: 'สุโขทัย', value: '@A419233' },
+    { name: 'หนองคาย', value: '@A477193' }
+];
+
 class AirCommand extends Command {
     constructor(context, options) {
         super(context, { ...options });
@@ -20,28 +43,7 @@ class AirCommand extends Command {
                     option
                         .setName('city')
                         .setDescription('เลือกเมือง ?')
-                        .addChoices(
-                            { name: 'กรุงเทพ', value: 'bangkok' },
-                            { name: 'หาดใหญ่', value: '@A47920' },
-                            { name: 'เชียงใหม่', value: '@A40330' },
-                            { name: 'ยะลา', value: '@A112192' },
-                            { name: 'กระบี่', value: '@A419488' },
-                            { name: 'อุดรธานี', value: '@13637' },
-                            { name: 'พิษณุโลก', value: '@A473494' },
-                            { name: 'สงขลา', value: '@A419365' },
-                            { name: 'ชุมพร', value: '@A248455' },
-                            { name: 'เพชรบุรี', value: '@A419617' },
-                            { name: 'นครพนม', value: '@A197185' },
-                            { name: 'ระยอง', value: '@A234487' },
-                            { name: 'ระนอง', value: '@A419548' },
-                            { name: 'ประจวบคีรีขันธ์', value: '@A121969' },
-                            { name: 'สมุทรสงคราม', value: '@A419419' },
-                            { name: 'กาญจนบุรี', value: '@A236419' },
-                            { name: 'อุทัยธานี', value: '@A473482' },
-                            { name: 'กาฬสินธุ์', value: '@A419266' },
-                            { name: 'สุโขทัย', value: '@A419233' },
-                            { name: 'หนองคาย', value: '@A477193' }
-                        )
+                        .addChoices(Choices)
                         .setRequired(true)
                 )
         );
