@@ -10,7 +10,7 @@ const emote = config.default
 const Choices = [
     { name: 'รูปอย่างง่าย', value: 'simplify', example: '2^2+2(2)' },
     { name: 'แฟกเตอร์', value: 'factor', example: 'x^2+2x' },
-    { name: 'อุนพันธ์', value: 'derive',  example: 'x^2+2x' },
+    { name: 'อนุพันธ์', value: 'derive',  example: 'x^2+2x' },
     { name: 'ปริพันธ์', value: 'integrate',  example: 'x^2+2x' },
     { name: 'พื้นที่ใต้กราฟ', value: 'area',  example: '2:4lx^3' },
     { name: 'เส้นสัมผัส (ตรีโกณมิติ)', value: 'tangent',  example: '2lx^3' },

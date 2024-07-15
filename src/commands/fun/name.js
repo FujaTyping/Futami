@@ -30,24 +30,36 @@ class DMCommand extends Command {
 
         axios.get(`https://api.nationalize.io/?name=${Args}`)
             .then(response => {
-                const Response = response.data.country;
-                let Report = '';
+                const RawResponse = response.data.count;
 
-                Response.forEach((country, index) => {
-                  const LineNumber = index + 1;
-                  const CountryCode = country.country_id.toLowerCase();
-                  const Probability = country.probability.toFixed(4);
+                if (RawResponse == 0) {
+                  const Content = new EmbedBuilder()
+                      .setColor(color)
+                      .setTitle(`✒️ วิเคราห์ชื่อ`)
+                      .setDescription(`ไม่สามารถวิเคราห์ชื่อ **${Args}** ได้\nลองเปลื่ยนชื่อที่ค้องการวิเคราห์ใหม่ !!`)
+                      .setTimestamp()
 
-                  Report += `**${LineNumber}.** :flag_${CountryCode}: (${country.country_id.toLowerCase()}) ความเป็นไปได้ : \`${Probability}\`\n`;
-                });
+                  return msg.edit({ embeds: [Content] });
+                } else {
+                    const Response = response.data.country;
+                    let Report = '';
 
-                const Content = new EmbedBuilder()
-                    .setColor(color)
-                    .setTitle(`✒️ วิเคราห์ชื่อ`)
-                    .setDescription(`ผลการวิเคราห์ชื่อ : **${Args}**\n` + Report)
-                    .setTimestamp()
+                    Response.forEach((country, index) => {
+                      const LineNumber = index + 1;
+                      const CountryCode = country.country_id.toLowerCase();
+                      const Probability = country.probability.toFixed(4);
 
-                return msg.edit({ embeds: [Content] });
+                      Report += `**${LineNumber}.** :flag_${CountryCode}: (${country.country_id.toLowerCase()}) ความเป็นไปได้ : \`${Probability}\`\n`;
+                    });
+
+                    const Content = new EmbedBuilder()
+                        .setColor(color)
+                        .setTitle(`✒️ วิเคราห์ชื่อ`)
+                        .setDescription(`ผลการวิเคราห์ชื่อ : **${Args}**\n` + Report)
+                        .setTimestamp()
+
+                    return msg.edit({ embeds: [Content] });
+                }
             })
             .catch(error => {
                 console.log(error)
