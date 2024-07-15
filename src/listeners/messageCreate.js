@@ -1,6 +1,6 @@
 const axios = require('axios');
 const { Listener } = require('@sapphire/framework');
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 const config = require('../config.json');
 const ChatEndpoint = config.chat.chatEndpoint
@@ -57,55 +57,13 @@ class MessageCreateListener extends Listener {
                                 let Data = response.data;
                                 let Msg = Data.choices[0].message.content
                                 let ContentMsg = Msg.replaceAll("คะ", "ครับ").replaceAll("ค่ะ", "ครับ")
+                                const Warning = `${Emote.mutedwarning} Futami NOT collect your chat & message data`
 
                                 const Content = new EmbedBuilder()
                                     .setColor(color)
                                     .setAuthor({ name: `${ContentMsg}`, iconURL: 'https://futami.siraphop.me/assets/icon/typoon.png' })
 
-                                const Button = new ButtonBuilder()
-                                    .setCustomId('askagain')
-                                    .setLabel('ถามอีกครั้ง')
-                                    .setStyle(ButtonStyle.Secondary);
-
-                                const Row = new ActionRowBuilder()
-                                    .addComponents(Button);
-
-                                const msg = await message.reply({ embeds: [Content], components: [Row] });
-
-                                const Collector = msg.createMessageComponentCollector({
-                                    filter: (buttonInteraction) => buttonInteraction.customId === 'askagain' && buttonInteraction.user.id === message.author.id,
-                                    time: 20000,
-                                    max: 1
-                                });
-
-                                Collector.on('collect', (buttonInteraction) => {
-                                    axios.request(Config)
-                                        .then(async (response) => {
-                                            let Data = response.data;
-                                            let Msg = Data.choices[0].message.content
-                                            let ContentMsg = Msg.replaceAll("คะ", "ครับ").replaceAll("ค่ะ", "ครับ")
-
-                                            const Content = new EmbedBuilder()
-                                                .setColor(color)
-                                                .setAuthor({ name: `${ContentMsg}`, iconURL: 'https://futami.siraphop.me/assets/icon/typoon.png' })
-
-                                            return msg.edit({ embeds: [Content], components: [] });
-                                        })
-                                        .catch(async (error) => {
-                                            const Content = new EmbedBuilder()
-                                                .setColor(color)
-                                                .setAuthor({ name: `ตอนนี้ไม่สามารถคุยกับคุณได้`, iconURL: 'https://futami.siraphop.me/assets/icon/error.png' })
-                                                .setDescription("```\n" + error + "\n```")
-
-                                            await msg.edit({ embeds: [Content], components: [] });
-                                        });
-                                });
-
-                                Collector.on('end', (collected, reason) => {
-                                    if (reason === 'time') {
-                                        return msg.edit({ embeds: [Content], components: [] });
-                                    }
-                                });
+                                await message.reply({ content:`-# ${Warning}`, embeds: [Content] });
                             })
                             .catch(async (error) => {
                                 const Content = new EmbedBuilder()
