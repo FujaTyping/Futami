@@ -58,7 +58,7 @@ class EmoteCommand extends Command {
 
         const Content = new EmbedBuilder()
             .setColor(color)
-            .setTitle('😀 ระบบท่าทาง')
+            .setTitle('😀 ท่าทาง')
             .setDescription('กำลังเลือกท่าทางที่ดีที่สุด ..')
             .setTimestamp()
 
@@ -70,7 +70,7 @@ class EmoteCommand extends Command {
 
                 const Content = new EmbedBuilder()
                     .setColor(color)
-                    .setTitle(`😀 ระบบท่าทาง`)
+                    .setTitle(`😀 ท่าทาง`)
                     .setDescription(`<@${interaction.user.id}> ${Emote} ${User}`)
                     .setImage(`${Response.url}`)
                     .setTimestamp()

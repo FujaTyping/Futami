@@ -40,7 +40,7 @@ class UrlCommand extends Command {
 
         const Content = new EmbedBuilder()
             .setColor(color)
-            .setTitle('🔗 ระบบลิ้งค์')
+            .setTitle('🔗 เครื่องมือลิ้งค์')
             .setDescription('กำลังดำเนินการ ..')
             .setTimestamp()
 

@@ -21,7 +21,7 @@ class MemeCommand extends Command {
     async chatInputRun(interaction) {
         const Content = new EmbedBuilder()
             .setColor(color)
-            .setTitle('🖼 ระบบมีม')
+            .setTitle('🖼 มีม')
             .setDescription('กำลังเลือกมีมที่ดีที่สุด ..')
             .setTimestamp()
 
@@ -33,7 +33,7 @@ class MemeCommand extends Command {
 
                 const Content = new EmbedBuilder()
                     .setColor(color)
-                    .setTitle(`🖼 ระบบมีม`)
+                    .setTitle(`🖼 มีม`)
                     .setDescription(`คำบรรยาย : **${Response.title}**`)
                     .setImage(Response.url)
                     .setTimestamp()

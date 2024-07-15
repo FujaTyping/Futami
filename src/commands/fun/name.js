@@ -18,16 +18,9 @@ class DMCommand extends Command {
 
     async messageRun(message, args) {
         const Args = await args.rest('string');
-        console.log(Args)
+        const Warning = `${emote.mutedwarning} Futami NOT collect you name or anything that you enter`
 
-        const Content = new EmbedBuilder()
-            .setColor(color)
-            .setTitle('✒️  วิเคราห์ชื่อ')
-            .setDescription(`กำลังวิเคราห์ชื่อ ${Args}  ..`)
-            .setTimestamp()
-
-        const msg = await message.reply({ embeds: [Content], fetchReply: true });
-
+        await message.channel.sendTyping();
         axios.get(`https://api.nationalize.io/?name=${Args}`)
             .then(response => {
                 const RawResponse = response.data.count;
@@ -39,7 +32,7 @@ class DMCommand extends Command {
                       .setDescription(`ไม่สามารถวิเคราห์ชื่อ **${Args}** ได้\nลองเปลื่ยนชื่อที่ค้องการวิเคราห์ใหม่ !!`)
                       .setTimestamp()
 
-                  return msg.edit({ embeds: [Content] });
+                  return message.reply({ embeds: [Content] });
                 } else {
                     const Response = response.data.country;
                     let Report = '';
@@ -49,7 +42,7 @@ class DMCommand extends Command {
                       const CountryCode = country.country_id.toLowerCase();
                       const Probability = country.probability.toFixed(4);
 
-                      Report += `**${LineNumber}.** :flag_${CountryCode}: (${country.country_id.toLowerCase()}) ความเป็นไปได้ : \`${Probability}\`\n`;
+                      Report += `**${LineNumber}.** :flag_${CountryCode}: **(${country.country_id})** ความเป็นไปได้ : \`${Probability}\`\n`;
                     });
 
                     const Content = new EmbedBuilder()
@@ -58,7 +51,7 @@ class DMCommand extends Command {
                         .setDescription(`ผลการวิเคราห์ชื่อ : **${Args}**\n` + Report)
                         .setTimestamp()
 
-                    return msg.edit({ embeds: [Content] });
+                    return message.reply({ content:`-# ${Warning}`, embeds: [Content] });
                 }
             })
             .catch(error => {
@@ -69,7 +62,7 @@ class DMCommand extends Command {
                     .setDescription("```\n" + error + "\n```")
                     .setTimestamp()
 
-                return msg.edit({ embeds: [Content] });
+                return message.reply({ embeds: [Content] });
             });
     }
 }

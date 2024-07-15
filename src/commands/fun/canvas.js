@@ -64,7 +64,7 @@ class CanvasCommand extends Command {
 
         const Content = new EmbedBuilder()
             .setColor(color)
-            .setTitle('✏️ ระบบสร้างมีม')
+            .setTitle('✏️ สร้างมีม')
             .setDescription('กำลังสร้างมีม รอแปปนึง ..')
             .setTimestamp()
 
@@ -96,7 +96,7 @@ class CanvasCommand extends Command {
 
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle(`✏️ ระบบสร้างมีม`)
+                .setTitle(`✏️ สร้างมีม`)
                 .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
                 .setImage('attachment://Stonks.png')
                 .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
@@ -130,7 +130,7 @@ class CanvasCommand extends Command {
 
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle(`✏️ ระบบสร้างมีม`)
+                .setTitle(`✏️ สร้างมีม`)
                 .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
                 .setImage('attachment://ChangeMyMind.png')
                 .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
@@ -176,7 +176,7 @@ class CanvasCommand extends Command {
             if (Text2) {
                 const Content = new EmbedBuilder()
                     .setColor(color)
-                    .setTitle(`✏️ ระบบสร้างมีม`)
+                    .setTitle(`✏️ สร้างมีม`)
                     .setDescription(`คำบรรยาย : (${User}) **${Text} ${Text2}**`)
                     .setImage('attachment://Uno.png')
                     .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
@@ -186,7 +186,7 @@ class CanvasCommand extends Command {
             } else {
                 const Content = new EmbedBuilder()
                     .setColor(color)
-                    .setTitle(`✏️ ระบบสร้างมีม`)
+                    .setTitle(`✏️ สร้างมีม`)
                     .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
                     .setImage('attachment://Uno.png')
                     .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
@@ -220,7 +220,7 @@ class CanvasCommand extends Command {
 
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle(`✏️ ระบบสร้างมีม`)
+                .setTitle(`✏️ สร้างมีม`)
                 .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
                 .setImage('attachment://Skeleton.png')
                 .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
@@ -251,7 +251,7 @@ class CanvasCommand extends Command {
 
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle(`✏️ ระบบสร้างมีม`)
+                .setTitle(`✏️ สร้างมีม`)
                 .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
                 .setImage('attachment://Tom.png')
                 .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
@@ -293,7 +293,7 @@ class CanvasCommand extends Command {
             if (Text2) {
                 const Content = new EmbedBuilder()
                     .setColor(color)
-                    .setTitle(`✏️ ระบบสร้างมีม`)
+                    .setTitle(`✏️ สร้างมีม`)
                     .setDescription(`คำบรรยาย : (${User}) **${Text} ${Text2}**`)
                     .setImage('attachment://Pikachu.png')
                     .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
@@ -303,7 +303,7 @@ class CanvasCommand extends Command {
             } else {
                 const Content = new EmbedBuilder()
                     .setColor(color)
-                    .setTitle(`✏️ ระบบสร้างมีม`)
+                    .setTitle(`✏️ สร้างมีม`)
                     .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
                     .setImage('attachment://Pikachu.png')
                     .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
@@ -337,7 +337,7 @@ class CanvasCommand extends Command {
 
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle(`✏️ ระบบสร้างมีม`)
+                .setTitle(`✏️ สร้างมีม`)
                 .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
                 .setImage('attachment://Ask.png')
                 .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
@@ -381,7 +381,7 @@ class CanvasCommand extends Command {
             if (Text2) {
                 const Content = new EmbedBuilder()
                     .setColor(color)
-                    .setTitle(`✏️ ระบบสร้างมีม`)
+                    .setTitle(`✏️ สร้างมีม`)
                     .setDescription(`คำบรรยาย : (${User}) **${Text} ${Text2}**`)
                     .setImage('attachment://Worth.png')
                     .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
@@ -391,7 +391,7 @@ class CanvasCommand extends Command {
             } else {
                 const Content = new EmbedBuilder()
                     .setColor(color)
-                    .setTitle(`✏️ ระบบสร้างมีม`)
+                    .setTitle(`✏️ สร้างมีม`)
                     .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
                     .setImage('attachment://Worth.png')
                     .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
@@ -425,7 +425,7 @@ class CanvasCommand extends Command {
 
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle(`✏️ ระบบสร้างมีม`)
+                .setTitle(`✏️ สร้างมีม`)
                 .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
                 .setImage('attachment://Dr.png')
                 .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
@@ -456,7 +456,7 @@ class CanvasCommand extends Command {
 
             const Content = new EmbedBuilder()
                 .setColor(color)
-                .setTitle(`✏️ ระบบสร้างมีม`)
+                .setTitle(`✏️ สร้างมีม`)
                 .setDescription(`คำบรรยาย : (${User}) **${Text}**`)
                 .setImage('attachment://Now.png')
                 .setFooter({ text: `สร้างโดย : ${interaction.user.username}`, iconURL: interaction.user.avatarURL() })
