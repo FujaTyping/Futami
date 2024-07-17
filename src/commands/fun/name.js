@@ -18,7 +18,7 @@ class DMCommand extends Command {
 
     async messageRun(message, args) {
         const Args = await args.rest('string');
-        const Warning = `${emote.mutedwarning} Futami NOT collect you name or anything that you enter`
+        const Warning = `${emote.mutedwarning} Futami NOT collect your name or anything that you enter`
 
         await message.channel.sendTyping();
         axios.get(`https://api.nationalize.io/?name=${Args}`)
