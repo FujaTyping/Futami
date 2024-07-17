@@ -70,6 +70,8 @@ let MainSystemData = {
     }
 };
 
+let ServiceStatus = { status : "Operational", statuscode : 200}
+
 const Data404 = {
     error: true,
     statuscode: 404,
@@ -97,6 +99,7 @@ const main = async () => {
         await client.login(process.env.token);
         client.logger.info(`Connected ${client.user.tag} successfully !`);
         app.get('/system', (req, res) => { res.json(MainSystemData) })
+        app.get('/status', (req, res) => { res.json(ServiceStatus) })
         app.get('/player', (req, res) => { res.json(LastData) })
         app.get('/player/playlist', (req, res) => { res.json(DataPlaylist) })
         if (apiOnly == false) {
