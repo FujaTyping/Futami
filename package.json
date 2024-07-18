@@ -4,7 +4,8 @@
   "description": "Imagine music bot",
   "main": "src/index.js",
   "scripts": {
-    "start": "pm2 start src/index.js"
+    "start": "pm2 start src/index.js",
+    "dev": "live-server service/main/ --port=6947"
   },
   "engines": {
     "node": ">=21.7.3",
@@ -48,6 +49,7 @@
   },
   "devDependencies": {
     "husky": "^9.0.11",
+    "live-server": "^1.2.2",
     "pm2": "^5.4.2"
   }
 }

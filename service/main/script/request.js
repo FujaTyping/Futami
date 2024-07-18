@@ -17,6 +17,7 @@ function CheckPath() {
         }
     } else if (CurrentUrl.includes("/") || CurrentUrl.includes("/index.html") || CurrentUrl.includes("/index")) {
         GetStat();
+        CheckStatus();
         FutamiTyping();
     }
 }
@@ -53,7 +54,23 @@ function GetStat() {
             ErrorLoader1.style.display = 'block';
             ErrorLoader2.style.display = 'block';
         });
+}
 
+function CheckStatus() {
+  axios.get(`https://${config.apiEndpoint}/status`)
+      .then(function (response) {
+          const StatusData = response.data.status
+          const StatusBadge = document.getElementById('badgeStatus')
+          StatusBadge.classList.remove('badge-error')
+          StatusBadge.classList.add('badge-success')
+          StatusBadge.classList.add('vibrate-1')
+          StatusBadge.innerHTML = `API & Bot service : ${StatusData}`
+      })
+      .catch(function (error) {
+          console.error('[ERROR] : ', error);
+          const StatusBadge = document.getElementById('badgeStatus')
+          StatusBadge.classList.add('vibrate-1')
+      });
 }
 
 function GetLastData() {
