@@ -59,16 +59,31 @@ function GetStat() {
 function CheckStatus() {
   axios.get(`https://${config.apiEndpoint}/status`)
       .then(function (response) {
-          const StatusData = response.data.status
+          const StatusData = response.data
+          const StatusCode = StatusData.code
           const StatusBadge = document.getElementById('badgeStatus')
-          StatusBadge.classList.remove('badge-error')
-          StatusBadge.classList.add('badge-success')
-          StatusBadge.classList.add('vibrate-1')
-          StatusBadge.innerHTML = `API & Bot service : ${StatusData}`
+          const Frame = document.getElementById('StatusFrame')
+
+          if (StatusCode == 1) {
+            StatusBadge.classList.remove('badge-error')
+            StatusBadge.classList.add('badge-success')
+            StatusBadge.classList.add('heartbeat')
+          } else if (StatusCode == 0) {
+            StatusBadge.classList.add('vibrate-1')
+          } else if (StatusCode == 2) {
+            StatusBadge.classList.remove('badge-error')
+            StatusBadge.classList.add('badge-warning')
+            StatusBadge.classList.add('vibrate-1')
+          }
+
+          Frame.style.display = 'grid';
+          StatusBadge.innerHTML = `API & Bot service : ${StatusData.status}`
       })
       .catch(function (error) {
           console.error('[ERROR] : ', error);
           const StatusBadge = document.getElementById('badgeStatus')
+          const Frame = document.getElementById('StatusFrame')
+          Frame.style.display = 'grid';
           StatusBadge.classList.add('vibrate-1')
       });
 }

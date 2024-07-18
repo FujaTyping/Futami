@@ -126,10 +126,10 @@ const main = async () => {
                 ServiceStatus.code = code;
                 ServiceStatus.status = 'Degraded Performance';
               } else {
-                res.json({ errormessage: 'Status code not match' });
+                return res.json({ errormessage: 'Status code not match' });
               }
 
-              res.json(ServiceStatus);
+              return res.json(ServiceStatus);
             }
         });
         app.get('/player', (req, res) => { res.json(LastData) })
