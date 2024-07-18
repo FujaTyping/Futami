@@ -8,12 +8,27 @@ const color = config.chat.color
 const Emote = config.default
 require('dotenv').config()
 
+let model = 'typhoon-v1.5-instruct';
+
 class MessageCreateListener extends Listener {
 
     run(message) {
         if (!message.author.bot) {
             let AnswerAlready = false;
             const Keyword = ['Futami', 'futami', 'ฟูตามิ', 'ฟุตามิ', '<@1155156868554043484>']
+            const ContentMessage = message.content.replaceAll("--70b", "")
+
+            if (message.content.includes('--70b') && message.author.id == config.bot.owner) {
+              model = 'typhoon-v1.5x-70b-instruct'
+            } else if (message.content.includes('--70b')) {
+              const Content = new EmbedBuilder()
+                  .setColor(color)
+                  .setAuthor({ name: 'เตือน !!', iconURL: 'https://futami.siraphop.me/assets/icon/warning.png' })
+                  .setDescription('เป็นผู้พัฒนาถึงใช้งานโมเดลภาษาขนาดใหญ่ได้')
+                  .setTimestamp()
+
+              return message.reply({ embeds: [Content] });
+            }
 
             Keyword.forEach(async keyword => {
                 if (AnswerAlready == false) {
@@ -24,15 +39,15 @@ class MessageCreateListener extends Listener {
                         let DateString = `${CurrentDate.getDate()}/${CurrentDate.getMonth()}/${CurrentDate.getFullYear()}`;
 
                         let Prompt = JSON.stringify({
-                            "model": "typhoon-instruct",
+                            "model": `${model}`,
                             "messages": [
                                 {
                                     "role": "system",
-                                    "content": `You are Futami (ฟูตามิ), a friendly and easy-going male AI. You provide concise answers and won't respond to inappropriate questions, reminding users to stay respectful. Developed by FujaTying. Data fixed as of ${DateString}. Futami only responds in Thai with short answers.`
+                                    "content": `You are Futami (ฟูตามิ), a friendly and easy-going male AI. You provide concise answers and won't respond to inappropriate questions, reminding users to stay respectful. Developed by FujaTying. Data fixed as of ${DateString}. Futami responds with short answers.`
                                 },
                                 {
                                     "role": "user",
-                                    "content": `${message.content}`
+                                    "content": `${ContentMessage}`
                                 }
                             ],
                             "max_tokens": 90,
@@ -63,7 +78,7 @@ class MessageCreateListener extends Listener {
                                     .setColor(color)
                                     .setAuthor({ name: `${ContentMsg}`, iconURL: 'https://futami.siraphop.me/assets/icon/typoon.png' })
 
-                                await message.reply({ content:`-# ${Warning}`, embeds: [Content] });
+                                return await message.reply({ content:`-# ${Warning}`, embeds: [Content] });
                             })
                             .catch(async (error) => {
                                 const Content = new EmbedBuilder()
@@ -71,7 +86,7 @@ class MessageCreateListener extends Listener {
                                     .setAuthor({ name: `ตอนนี้ไม่สามารถคุยกับคุณได้`, iconURL: 'https://futami.siraphop.me/assets/icon/error.png' })
                                     .setDescription("```\n" + error + "\n```")
 
-                                await message.reply({ embeds: [Content] });
+                                return await message.reply({ embeds: [Content] });
                             });
                     }
                 }
