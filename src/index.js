@@ -11,7 +11,7 @@ const path = require('path');
 app.use(cors({
     origin: 'https://futami.siraphop.me',
     methods: 'GET'
-}));
+}),express.json());
 
 const config = require('./config.json');
 const prefix = config.bot.prefix
@@ -70,7 +70,7 @@ let MainSystemData = {
     }
 };
 
-let ServiceStatus = { status : "Operational", statuscode : 200}
+let ServiceStatus = { status : "Operational", code : 1}
 
 const Data404 = {
     error: true,
@@ -93,6 +93,16 @@ client.distube = new DisTube(client, {
     emitAddListWhenCreatingQueue: false,
 })
 
+const Authenticate = (req, res, next) => {
+    const AuthHeader = req.get('AuthToken');
+
+    if (!AuthHeader || AuthHeader !== config.bot.owner) {
+        return res.json({ errormessage: "Invalid credentials"});
+    }
+
+    next();
+};
+
 const main = async () => {
     try {
         client.logger.info('Connecting to Discord network');
@@ -100,6 +110,28 @@ const main = async () => {
         client.logger.info(`Connected ${client.user.tag} successfully !`);
         app.get('/system', (req, res) => { res.json(MainSystemData) })
         app.get('/status', (req, res) => { res.json(ServiceStatus) })
+        app.post('/status', Authenticate, (req, res) => {
+            const code = req.body.code;
+
+            if (!code) {
+              res.json({ errormessage: 'Missing status code' });
+            } else {
+              if (code == 0) {
+                ServiceStatus.code = code;
+                ServiceStatus.status = 'Service Disruption'
+              } else if (code == 1) {
+                ServiceStatus.code = code;
+                ServiceStatus.status = 'Operational';
+              } else if (code == 2) {
+                ServiceStatus.code = code;
+                ServiceStatus.status = 'Degraded Performance';
+              } else {
+                res.json({ errormessage: 'Status code not match' });
+              }
+
+              res.json(ServiceStatus);
+            }
+        });
         app.get('/player', (req, res) => { res.json(LastData) })
         app.get('/player/playlist', (req, res) => { res.json(DataPlaylist) })
         if (apiOnly == false) {
