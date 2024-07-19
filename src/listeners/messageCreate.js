@@ -8,7 +8,7 @@ const color = config.chat.color
 const Emote = config.default
 require('dotenv').config()
 
-let model = 'typhoon-v1.5-instruct';
+let model = 'v1.5-instruct';
 
 class MessageCreateListener extends Listener {
 
@@ -19,7 +19,7 @@ class MessageCreateListener extends Listener {
             const ContentMessage = message.content.replaceAll("--70b", "")
 
             if (message.content.includes('--70b') && message.author.id == config.bot.owner) {
-              model = 'typhoon-v1.5x-70b-instruct'
+              model = 'v1.5x-70b-instruct'
             } else if (message.content.includes('--70b')) {
               const Content = new EmbedBuilder()
                   .setColor(color)
@@ -39,7 +39,7 @@ class MessageCreateListener extends Listener {
                         let DateString = `${CurrentDate.getDate()}/${CurrentDate.getMonth()}/${CurrentDate.getFullYear()}`;
 
                         let Prompt = JSON.stringify({
-                            "model": `${model}`,
+                            "model": `typhoon-${model}`,
                             "messages": [
                                 {
                                     "role": "system",
@@ -76,7 +76,8 @@ class MessageCreateListener extends Listener {
 
                                 const Content = new EmbedBuilder()
                                     .setColor(color)
-                                    .setAuthor({ name: `${ContentMsg}`, iconURL: 'https://futami.siraphop.me/assets/icon/typoon.png' })
+                                    .setAuthor({ name: `${ContentMsg}` })
+                                    .setFooter({ text: `futami-${model}`, iconURL: 'https://futami.siraphop.me/assets/icon/typoon.png' });
 
                                 return await message.reply({ content:`-# ${Warning}`, embeds: [Content] });
                             })
