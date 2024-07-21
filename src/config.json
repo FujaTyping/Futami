@@ -1,27 +1,27 @@
 {
-    "bot": {
-        "name": "Futami",
-        "prefix": "f.",
-        "owner": "729556554491232256",
-        "guild": "1015645354789703680",
-        "mobile": false,
-        "debug": false
-    },
-    "chat": {
-        "chatEndpoint": "ENDPOINT_HERE",
-        "color": 7453402,
-        "colorHex": "#71BADA"
-    },
-    "default": {
-        "success": "<:checked:1264477406035447848>",
-        "mutedwarning": "<:mutedwarning:1264497475247542272>",
-        "warning": "<:warning:1264477331192287294>",
-        "failed": "<:failed:1264477377212452864>",
-        "error": "<:error:1264477391938650114>"
-    },
-    "server": {
-        "port": 6947,
-        "apiOnly": true,
-        "ssl": false
-    }
+  "bot": {
+    "name": "Futami",
+    "prefix": "f.",
+    "owner": "729556554491232256",
+    "guild": "1015645354789703680",
+    "mobile": false,
+    "debug": false
+  },
+  "chat": {
+    "chatEndpoint": "ENDPOINT_HERE",
+    "color": 7453402,
+    "colorHex": "#71BADA"
+  },
+  "default": {
+    "success": "<:checked:1264477406035447848>",
+    "mutedwarning": "<:mutedwarning:1264497475247542272>",
+    "warning": "<:warning:1264477331192287294>",
+    "failed": "<:failed:1264477377212452864>",
+    "error": "<:error:1264477391938650114>"
+  },
+  "server": {
+    "port": 6947,
+    "apiOnly": true,
+    "ssl": false
+  }
 }

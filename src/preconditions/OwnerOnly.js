@@ -1,35 +1,38 @@
-const { Precondition } = require('@sapphire/framework');
-const { EmbedBuilder } = require('discord.js');
-const config = require('../config.json');
+const { Precondition } = require("@sapphire/framework");
+const { EmbedBuilder } = require("discord.js");
+const config = require("../config.json");
 
-const color = config.chat.color
-const emote = config.default
+const color = config.chat.color;
+const emote = config.default;
 
 class OwnerOnlyPrecondition extends Precondition {
-    async messageRun(message) {
-        return this.checkOwner(message.author.id, message);
-    }
+  async messageRun(message) {
+    return this.checkOwner(message.author.id, message);
+  }
 
-    async chatInputRun(interaction) {
-        return this.checkOwner(interaction.user.id, interaction);
-    }
+  async chatInputRun(interaction) {
+    return this.checkOwner(interaction.user.id, interaction);
+  }
 
-    async contextMenuRun(interaction) {
-        return this.checkOwner(interaction.user.id, interaction);
-    }
+  async contextMenuRun(interaction) {
+    return this.checkOwner(interaction.user.id, interaction);
+  }
 
-    async checkOwner(UserId, Action) {
-        const Content = new EmbedBuilder()
-            .setColor(color)
-            .setAuthor({ name: 'เตือน !!', iconURL: 'https://futami.siraphop.me/assets/icon/warning.png' })
-            .setDescription('เป็นผู้พัฒนาถึงใช้งานคำสั่งได้')
-            .setTimestamp()
+  async checkOwner(UserId, Action) {
+    const Content = new EmbedBuilder()
+      .setColor(color)
+      .setAuthor({
+        name: "เตือน !!",
+        iconURL: "https://futami.siraphop.me/assets/icon/warning.png",
+      })
+      .setDescription("เป็นผู้พัฒนาถึงใช้งานคำสั่งได้")
+      .setTimestamp();
 
-        return config.bot.owner.includes(UserId)
-            ? this.ok()
-            : this.error(Action.reply({ embeds: [Content] }));
-    }
+    return config.bot.owner.includes(UserId)
+      ? this.ok()
+      : this.error(Action.reply({ embeds: [Content] }));
+  }
 }
 module.exports = {
-    OwnerOnlyPrecondition
+  OwnerOnlyPrecondition,
 };

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "pm2 start src/index.js",
     "bot": "node src/index.js",
-    "dev": "live-server service/main/ --port=6947"
+    "dev": "live-server service/main/ --port=6947",
+    "format": "npx prettier src/ --write"
   },
   "engines": {
     "node": ">=21.7.3",
@@ -51,6 +52,7 @@
   "devDependencies": {
     "husky": "^9.1.1",
     "live-server": "^1.2.2",
-    "pm2": "^5.4.2"
+    "pm2": "^5.4.2",
+    "prettier": "3.3.3"
   }
 }
