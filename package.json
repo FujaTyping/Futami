@@ -49,7 +49,7 @@
     "ytdl-core": "^4.11.5"
   },
   "devDependencies": {
-    "husky": "^9.0.11",
+    "husky": "^9.1.1",
     "live-server": "^1.2.2",
     "pm2": "^5.4.2"
   }
