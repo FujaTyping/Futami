@@ -77,7 +77,7 @@ function CheckStatus() {
           }
 
           Frame.style.display = 'grid';
-          StatusBadge.innerHTML = `API & Bot service : ${StatusData.status}`
+          StatusBadge.innerHTML = `API : ${StatusData.status}`
       })
       .catch(function (error) {
           console.error('[ERROR] : ', error);
