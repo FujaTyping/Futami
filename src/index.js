@@ -129,6 +129,7 @@ const main = async () => {
     client.logger.info("Connecting to Discord network");
     await client.login(process.env.token);
     client.logger.info(`Connected ${client.user.tag} successfully !`);
+    //app.get('/.well-known/acme-challenge/YOUR_SECRET', function (req, res) { res.sendFile(__dirname + "/ssl/YOUR_SSL_HERE") })
     app.get("/system", (req, res) => {
       res.json(MainSystemData);
     });
@@ -178,7 +179,6 @@ const main = async () => {
         res.status(404).json(Data404);
       });
     }
-    //app.get('/.well-known/acme-challenge/YOUR_SECRET', function (req, res) { res.sendFile(__dirname + "/ssl/YOUR_SSL_HERE") })
     if (ssl == true) {
       https
         .createServer(
