@@ -43,7 +43,12 @@ class GuildCreateListener extends Listener {
       .setURL("https://futami.siraphop.me/")
       .setStyle(ButtonStyle.Link);
 
-    const Row = new ActionRowBuilder().addComponents(Button);
+    const Help = new ButtonBuilder()
+      .setLabel("วิธีการใช้ฟูตามิ")
+      .setURL("https://futami.siraphop.me/instruction")
+      .setStyle(ButtonStyle.Link);
+
+    const Row = new ActionRowBuilder().addComponents(Button, Help);
 
     guild.systemChannel.send({ embeds: [Img, Content], components: [Row] });
     Channel.send({ embeds: [LogContent] });

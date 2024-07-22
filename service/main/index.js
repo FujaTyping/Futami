@@ -39,7 +39,7 @@ function ContinueInvite() {
     } else {
         Text.style.color = 'red';
         Text2.style.color = 'red';
-    } 
+    }
     */
 
     if (Box.checked) {

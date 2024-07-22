@@ -7,6 +7,7 @@ class ReadyListener extends Listener {
       `in ${client.guilds.cache.size} Servers`,
       "at Voice Channel",
       `with ${client.users.cache.size} Users`,
+      `with you`,
     ];
 
     setInterval(() => {
