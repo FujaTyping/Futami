@@ -1,6 +1,6 @@
 const BaseUrl = window.location.href;
 const config = {
-    apiEndpoint: "api.futami.siraphop.me:6947"
+    apiEndpoint: "api.futami.siraphop.me:80"
 }
 
 window.onload = CheckPath()
