@@ -136,7 +136,7 @@ const main = async () => {
     app.get("/status", (req, res) => {
       res.json(ServiceStatus);
     });
-    app.post("/status", Authenticate, (req, res) => {
+    app.patch("/status", Authenticate, (req, res) => {
       const code = req.body.code;
 
       if (!code) {
