@@ -26,15 +26,9 @@ app.use(
 const config = require("./config.json");
 const prefix = config.bot.prefix;
 const color = config.chat.color;
-const port = config.server.port;
-const apiOnly = config.server.apiOnly;
-const ssl = config.server.ssl;
-const debug = config.bot.debug;
-const mobile = config.bot.mobile;
-const emote = config.default;
 require("dotenv").config();
 
-if (mobile == true) {
+if (config.bot.mobile == true) {
   const {
     DefaultWebSocketManagerOptions: { identifyProperties },
   } = require("@discordjs/ws");
@@ -124,6 +118,9 @@ const Authenticate = (req, res, next) => {
   next();
 };
 
+let PortServer;
+let ServerType;
+
 const main = async () => {
   try {
     client.logger.info("Connecting to Discord network");
@@ -164,7 +161,7 @@ const main = async () => {
     app.get("/player/playlist", (req, res) => {
       res.json(DataPlaylist);
     });
-    if (apiOnly == false) {
+    if (config.server.apiOnly == false) {
       app.use(express.static(path.join(__dirname, "../service")));
       app.get("/", function (req, res) {
         res.sendFile(__dirname + "../service/index.html");
@@ -179,7 +176,7 @@ const main = async () => {
         res.status(404).json(Data404);
       });
     }
-    if (ssl == true) {
+    if (config.server.ssl == true) {
       https
         .createServer(
           {
@@ -188,15 +185,21 @@ const main = async () => {
           },
           app,
         )
-        .listen(port);
+        .listen(config.server.httpsPort);
+      PortServer = config.server.httpsPort;
+      ServerType = "Http(s)";
     } else {
-      app.listen(port);
+      app.listen(config.server.port);
+      PortServer = config.server.port;
+      ServerType = "Http";
     }
     UpdateSystemData();
     setInterval(() => {
       UpdateSystemData();
     }, 180000);
-    client.logger.info("Web service is online at port : " + port);
+    client.logger.info(
+      `Web service is online with ${ServerType} at port : ${PortServer}`,
+    );
   } catch (error) {
     client.logger.fatal(error);
     client.destroy();
@@ -455,7 +458,7 @@ client.distube
     queue.textChannel.send({ embeds: [Content] });
   });
 
-if (debug) {
+if (config.bot.debug) {
   client.on("debug", (d) => {
     console.log(d);
   });

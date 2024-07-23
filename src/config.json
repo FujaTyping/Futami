@@ -20,7 +20,8 @@
     "error": "<:error:1264477391938650114>"
   },
   "server": {
-    "port": 6947,
+    "port": 80,
+    "httpsPort": 443,
     "apiOnly": true,
     "ssl": false
   }
