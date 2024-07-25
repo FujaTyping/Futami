@@ -6,7 +6,7 @@ const config = require("../../config.json");
 const color = config.chat.color;
 const emote = config.default;
 
-class DMCommand extends Command {
+class NameCommand extends Command {
   constructor(context, options) {
     super(context, {
       ...options,
@@ -73,5 +73,5 @@ class DMCommand extends Command {
   }
 }
 module.exports = {
-  DMCommand,
+  NameCommand,
 };
