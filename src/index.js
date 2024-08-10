@@ -407,7 +407,7 @@ client.distube
       }
     });
   })
-  .on("error", (channel, e) => {
+  .on("error", (error, queue, song) => {
     const Content = new EmbedBuilder()
       .setColor(color)
       .setAuthor({
@@ -421,8 +421,8 @@ client.distube
       )
       .setTimestamp();
 
-    if (channel) {
-      channel.send({ embeds: [Content] });
+    if (queue.textChannel) {
+      queue.textChannel.send({ embeds: [Content] });
     } else {
       console.error(e);
     }
