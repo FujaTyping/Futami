@@ -35,8 +35,8 @@ node .  or  node src/index.js
 # 🔷 Custom components
 - Custom **discord-gamecord** text : `node_modules/discord-gamecord/src/...`
 
-~~# ⚠️ This project is archive~~
-~~It's mean no longer maintained , won't receive updates or bug fixes and completely discontinued after 31.03.24~~
+# ⚠️ This project is archive
+It's mean no longer maintained , won't receive updates or bug fixes and completely discontinued after 21.09.24
 
 # 
 <p align="center"> <img src="https://count.getloli.com/get/@futami?theme=moebooru" alt="futami" /> </p>
